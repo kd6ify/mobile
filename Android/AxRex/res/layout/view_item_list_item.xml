@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical" >
+	<RelativeLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" >
+	    <TextView android:id="@+id/name"
+	        style="@style/HeaderText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true" />
+	    <ImageView android:id="@+id/clickable"
+	        android:layout_width="32sp"
+	        android:layout_height="32sp"
+	        android:scaleType="fitXY"
+	        android:layout_alignParentRight="true"
+	        android:src="@drawable/right_arrow"
+	        android:visibility="gone" />
+    </RelativeLayout>
+    <TextView android:id="@+id/value"
+    	style="@style/DatumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

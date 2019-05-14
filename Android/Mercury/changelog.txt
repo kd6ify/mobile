@@ -1,0 +1,338 @@
+==== Mercury Change Log ====
+VersionCode=54 (0.0.54)
+*Added legal piece to mercury.
+
+VersionCode=53 (0.0.53)
+*android.intent.action.MEDIA_MOUNTED is protected now. Android 4.4
+     - Changed android.intent.action.MEDIA_MOUNTED to Intent.ACTION_MEDIA_SCANNER_SCAN_FILE on
+     	 DownloadMapFileService.java(ln 372)
+
+VersionCode=52 (0.0.52)
+	-Comment-out because they where causing a crash if you tap on the XMPP Password setting: 
+		//String pwd = _config.getXmppPassword();
+		//Log.d(TAG, pwd);
+	-Unable to create build until comment-out:
+		 <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM" />
+	-Replaced default button "refresh" with ImageButton in download_map_file.xml
+	-Added refreshbar.xml refresh_bar_normal.png and refresh_bar_pressed.png
+	
+VersionCode=51 (0.0.51)
+	-JIRA TKMER-8:
+		-This was the issue: user open AntaresX Updates-> then a request is made to the server in a
+		different thread. The app is killed  by the user or by the OS but the
+		request thread is not killed (holding a reference to the activity) and when it finish it would
+		try to continue with the process crashing the app in this two scenarios: close a dialog
+		that no longer exist and display a alert message if there was an issue with the request.
+		-Added method onDestroy to CheckUpdateActivity.java.
+		-Added try catch to the show call on the alert in onError method of CheckUpdateActicity.java
+
+VersionCode=50 (0.0.50)
+		- Verify if the images Server address, username and password exist before made request to  image server.
+	JIRA TKMER-7:
+		-Added setMediaImagesServerAddressField, setMediaImagesServerUserField ,setMediaImagesServerPasswordField
+			methods to Config.java
+		-DownloadConfigurationActivity now looks also for
+			MediaImagesServerAddress,MediaImagesServerUser and MediaImagesServerPassword.
+		
+	JIRA TKMER-6:
+		-Updated DownloadMapFileService.java:
+			*send notification when the map file is complete
+			*send notification when the download process fail.
+		-Added MapsNotification.java.
+		- The notifications are send only when the user is not in the download map files activity.
+	JIRA TKMER-5:
+		-Updated DownloadMapFileActivity.java
+			*Added definitions for map files: downloaded, partially, new.
+			*On map file click, a pop up with the options available for the file appears.
+			*Added method downloadMapFile.
+			*Added method deleteFileMap.
+			*Added method getMapFileStatus.
+			*Added method getOptionsForFile.
+			*Added method showOptionsForMapItem
+		
+
+VersionCode=49 (0.0.49)
+	JIRA TKMER-4:
+		-Added service declaration in manifest for DownloadMapFileService.
+		-Added onClick method that call the service for the selected file to download.
+		-Added interface ServerRequestAddParameters.
+		-Added SHA1 class.
+		-Added ServerRequestObject class.
+		-Added ServerRequest class.
+		-Added DownloadMapFileService class.		
+		-Added MapAdapter class;
+		-Added download_map_list_item.xml
+		-Added DonwloadMapFileNotifier interface;
+		-DownloadMapActivity implements DonwloadMapFileNotifier interface.
+		-Updated DownloadMapFileService. Now notifies the progress, file complete and if the request fail.
+		-Now the progress of the request is shown in the activity.
+		-If the map was not downloaded a message is displayed.
+		-Display the status of the map file: Downloaded, Partially Downloaded, New.		
+		-Updated download_map_list_item.xml. Change container to RelativeLayout.
+		-Added refresh button to DownloadMapActivity.java.
+		-Added new downloadFileServiceStart method to DonwloadMapFileNotifier interface.
+		
+
+	JIRA TKMER-3:
+		-Added new package mercury.maps
+		-Added Client.java
+		-Added maps.php file to server.
+		-Display message "No Internet connection found" if there is not Internet connection.
+		
+	JIRA TKMER-2:
+		-Added new setting category "Mapping"
+		-Added new setting Map files.
+		-Added new Activity DownloadMapFileActivity to mercury manifest.
+		-Added layout download_map_file.xml.
+
+VersionCode=48 (0.0.48)
+	*Added Code in DownloadonfigurationActivity to handle "MediaImagesServerAddress" setting.
+	*Added "setMediaImagesServerAddressField" method to Config class.	
+	*Mantis 8657:
+	-Added code to verify if the GPS is/was disable and notify the user.
+	-Prevent recreation of SettingsActivity and ToggleActivity when the orientation of the phone change.
+	
+VersionCode=47 (0.0.47)
+	* fix HTTP Internal error in WSUSBridge
+		when Mercury sends a Device Name with a single quote (') in
+		a CheckUpdate request.  
+		Added the following to CheckUpdateActivity, line 285:
+			vp.deviceName = _config.getDeviceName().replace("'", "");
+	Mantis: 7776
+	
+VersionCode=46 (0.0.46)
+	* Fix tracker mode distance text to show "100 meters" to match
+		the actual distance for casual.
+	Mantis: 7771
+	
+VersionCode=45 (0.0.45)
+	* Use Equipment Name in tracker status widget instead of DeviceID (IMEI)
+		- if Equipment name is null, use DeviceID
+	Mantis: 7746
+		
+VersionCode=44 (0.0.44)
+	* Changed casual min distance threshold to 100 meters per conversation with Wayne and Ryan.
+	
+VersionCode=43 (0.0.43)
+	* Fix crash when running on Android 4.2 caused by a change in crypto provider.
+		- See:
+			http://stackoverflow.com/questions/13433529/android-4-2-broke-my-encrypt-decrypt-code-and-the-provided-solutions-dont-work
+		- this bug will force the user to re-enter their login credentials, which is probably ok
+			since they will only have to do it when the device is upgraded to Android 4.2
+
+VersionCode=42 (0.0.42)
+	* added "AntaresX" messenger profile type.
+	
+VersionCode=41 (0.0.41)
+	* Support xmpp_config_profile, xmpp_username, xmpp_password settings
+	
+VersionCode=40 (0.0.40)
+	* Added time/distance user hints to frequent/casual settings
+	Mantis: 6487
+
+VersionCode=39 (0.0.39)
+	* Changed app label to "AX Settings"
+	* Added support for new config settings: camera_horizontal_angle, camera_vertical_angle, compass_offset
+	
+VersionCode=38 (0.0.38)
+	* Changes to mercury main icon
+	* Use Download.ROWID as basis for notification ID when posting download notification.
+		Fixes issue when two updates are available, but only one will show
+	Mantis: 6367
+	
+VersionCode=37 (0.0.37)
+	* whoops--I flipped the tracker state icons on the status widget
+	Mantis: 6366
+	
+VersionCode=36 (0.0.36)
+	* Replaced main icon
+	Mantis: 6361
+	
+VersionCode=35 (0.0.35)
+	* Replaced tracker widget icons with new icons from Cheryl
+	* Prompt user to download configuration when Check for Updates is selected when
+		configuration is not downloaded.
+		
+VersionCode=34 (0.0.34)
+	* Display message when an update is scheduled.
+	Mantis: 6224
+	* Fix crash when SettingsActivity is finished. (super.onDestroy() not called)
+	Mantis: 6222
+	* fix crash if you try to update while it's updating.  In status_bar_ongoing_event_progress_bar,
+		removed a reference to an unknown class:
+		com.android.server.status.AnimatedImageView and replaced it with ImageView
+	Mantis: 6223, 6234
+	
+VersionCode=33 (0.0.33)
+	* Don't overwrite "device_name" configuration item during DownloadConfiguration
+	* Change default value of "device_name" to "Trikorder"
+	* Show changes to preferences as they occur in SettingsActivity
+	* Fix bug in parsing VersionedPackage
+	
+VersionCode=32 (0.0.32)
+	* Changes to VersionedPackages definition to support 
+	* Support new downloadable configuration item "device_name"
+
+VersionCode=31 (0.0.31)
+	* Fix "Conversion to Dalvik format error"
+	* Fix crash when launching Mercury caused by supposed missing providers
+	* Removed dependency on GQueue library--moved GQueue library into GQueue package within Mercury,
+		thus removing all library dependencies
+	* Mercury no longer uses GlobalSettings.*--these are all available in mercury.Config
+	Mantis: 6165
+	
+VersionCode=30 (0.0.30)
+	* Remove debug/instrumentation code
+
+VersionCode=29 (0.0.29)
+	* WSUS changes
+		* MobileServer no longer supports updates--it is now handled directly by the WSUS Bridge Service
+			running on the WSUS Server host.
+		* Added new WsusBridgeServiceAddress to mercury configuration
+		* Download Configuration now fetches WsusBridgeServiceAddress from MobileServer,
+			which gets the address from FutureConcepts.Settings.WSUSSettings,
+			which by default is defined in C:\AntaresXData\StaticSettings\Settings.fcs in the WSUSSettings
+			section.
+		* Major changes to the CheckUpdateActivity(), which locates the WSUS Bridge by using the new
+			configuration.
+
+VersionCode=28 (0.0.28)
+	* Revision 17 of the Android tools significantly changed the way project
+		dependencies are handled, which caused Mercury to implode and blow smoke
+		and Dave to chase his tail.  The fix was to put all dependent jars
+		in the project libs folder instead of in a top-level Mobile folder.
+		Trinity will most likely see similar changes.
+	* Removed some dead code
+	 
+VersionCode=27 (0.0.27)
+	* Removed "Start Tracker at boot setting".  This setting has been deprecated.
+		- The tracker is ALWAYS started at boot even if it's setting is "not enabled".
+		- A tracker that is enabled will attempt to send location updates.  A tracker
+			not enabled will not send location updates.  
+	Mantis: 5990
+
+VersionCode=26 (0.0.26)
+	* Completely disable battery tracking.
+		USB cable was disconnected and Mercury crashed.  Logcat attached to mantis 5786 shows
+		a crash trying to load TrackerService$BatteryReceiver.  Battery tracking is currently disabled
+		until we determine how we want to handle low battery conditions. 
+	Mantis: 5786
+	
+VersionCode=25 (0.0.25)
+	* broadcast "com.futureconcepts.action.LOGIN_COMPLETED" to all applications when 
+		the user has logged in/changed password
+	* added loginCompletedReceiver to common code HttpQueueService to handle "com.futureconcepts.action.LOGIN_COMPLETED"
+		broadcast intents.  When a HttpQueueService receives the LOGIN_COMPLETED intent it will reset authentication
+		credentials to be used on next server request.  HttpQueueService is common code used by all futurec apps.
+		
+VersionCode=24 (0.0.24)
+	* When the service address is set from AdminSettings, start the SetPasswordActivity not DownloadConfigurationActivity.
+		- the password needs to be set before DownloadConfigurationActivity will work
+	* Add preemptiveAuth to DownloadConfigurationActivity (all requests to server now require authentication).
+	* Remove "Set Password" from AdminSettingsActivity--redundant because already on SettingsActivity
+	* In the TrackerQueueService, use auth token returned from MobileServer instead of reauthenticating on every update 
+		
+VersionCode=23 (0.0.23)
+	* started work on XMPP remote control interface to the tracker
+	* fix crash when trying to start Mercury--apparently problem with APK build
+
+VersionCode=22 (0.0.22)
+	* Added main.StatusWidgetDispatchActivity
+		- this activity determines which LAUNCHER activity to launch
+		- depending on whether Trinity is installed.  If Trinity is installed,
+			com.futureconcepts.trinity.main.Launcher is started, otherwise
+			com.futureconcepts.mercury.main.SettingsActivity is started
+	Mantis: 5323
+	 
+VersionCode=21 (0.0.21)
+	* Added SimpleCrypto class
+	* network password is now stored in mercury encrypted using AES-128
+	
+VersionCode=20 (0.0.20)
+	* disabled the push service--it is not required at this time
+	
+VersionCode=19 (0.0.19)
+	* removed checkupdate and upgrade handling from push service client
+	
+VersionCode=18 (0.0.18)
+	* queue services added to Mercury for Trinity sync support
+	
+VersionCode=17 (0.0.17)
+	* Major V3 changes - untested
+
+VersionCode=16 (0.0.16)
+	* Fix crash in PushReceiverService receiver
+	Mantis: 4352
+
+VersionCode=15 (0.0.15)
+	* remove ACTION_BATTERY_CHANGED Intent receiver from TrackerService
+	Mantis: 4346
+	
+VersionCode=14 (0.0.14)
+	* fix crash in TrackerService when trying to unregisterReceiver(ACTION_BATTERY_CHANGED).  It was never registered.
+	Mantis: 4137
+
+VersionCode=13 (0.0.13)
+	* fix to tracker notification consistency--Show tracker state
+		in notification panel on any of the following broadcast intents:
+				com.futureconcepts.mercury.action.START_SERVICES
+				com.futureconcepts.action.RESTART
+				android.intent.action.BOOT_COMPLETED
+	Mantis: 4077
+	* Fix problem restarting push service after authentication error
+	Mantis: 4110
+	
+VersionCode=12 (0.0.12)
+	* Remove UserName from AdminSettings
+	Mantis: 4092
+
+VersionCode=11 (0.0.11)
+	* Remove debug code in DownloadConfiguration
+
+VersionCode=10 (0.0.10)
+	* Fix bug in DownloadConfiguration (wasn't setting fetch values)
+	* if DownloadConfiguration fails or times-out, return error to user
+	Mantis: 4025
+	* Fix inconsistent notifications (tracker/push)
+	Mantis: 4077
+	* Fix Tapping AntaresX Updates in SettingsActivity never times-out
+		Progress wheel spins forever
+	Mantis: 4023
+	* Add AntaresX to Mercury application
+	Mantis 4022
+	
+VersionCode=9 (0.0.9)
+	* Added battery state (Low, Okay) to TrackerState
+	
+VersionCode=8 (0.0.8)
+	* Fixed bug where tracker_mode was not get proper notification locally and to server
+
+VersionCode=7 (0.0.7)
+	* Don't send tracker state changes if new state=old state
+	* Added expiration time to UpLinkQueue--this will prevent stale tracker location
+		updates from getting backed up and overwhelming the UpSyncService.
+		
+VersionCode=6 (0.0.6)
+	* Moved Tracker out of Trinity and into Mercury
+	
+VersionCode=5 (0.0.5)
+	* Reliability changes to push service
+	
+VersionCode=4 (0.0.4)
+	* Change "Route Recorder Status" to "Push Service Status"
+	* Fixed  on devices without IMEI, failing to put into Admin/Configuration/<DeviceID> slot 
+	Mantis: 3405
+	* 
+
+VersionCode=3 (0.0.3)
+	* Added the backdoor menu item to Settings
+	
+VersionCode=2 (0.0.2)
+	* Fix crash in SettingsActivity
+		( E/AndroidRuntime( 2533): Caused by: java.lang.SecurityException:
+		WifiService: Neither user 10044 nor current process has android.permission.ACCESS_WIFI_STATE.
+
+VersionCode=1 (0.0.1)
+	* Initial release
+	
+	

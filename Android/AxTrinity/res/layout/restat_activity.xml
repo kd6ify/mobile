@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	orientation="vertical" >
+	<FrameLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" >
+		<LinearLayout 
+			android:id="@+id/restat_scrollview"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" >
+		</LinearLayout>
+		<TextView android:id="@+id/no_data"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="@string/no_data"
+			android:textSize="24sp"
+			android:visibility="gone" />
+	</FrameLayout>
+</ScrollView>

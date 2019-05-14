@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:id="@+id/tasks_top_buttons">
+		<ToggleButton android:id="@+id/btn_priority_tasks"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@drawable/ptask_bar_down"
+		    android:onClick="onPriorityTasksClicked"
+		    android:textOff=""
+		    android:textOn=""
+		    android:checked="true" />
+		<ToggleButton android:id="@+id/btn_tasks"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@drawable/task_bar"
+		    android:textOff=""
+		    android:textOn=""
+		    android:onClick="onTasksClicked" />
+	</LinearLayout>
+	<FrameLayout android:id="@+id/task_list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/menu"
+	    android:layout_below="@+id/tasks_top_buttons" >
+	</FrameLayout>
+	<LinearLayout 
+		android:id="@+id/menu"
+		android:orientation="horizontal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_centerHorizontal="true"
+		android:background="@android:color/background_dark"
+		android:layout_alignParentBottom="true" >
+		<ImageButton android:id="@+id/menu_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/menu_bar"
+			android:onClick="displayMenuOptions" />
+		<ImageButton android:id="@+id/menu_refresh"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:layout_weight="1"
+			android:background="@android:color/transparent"
+			android:src="@drawable/refresh_bar"
+			android:onClick="refresh" />
+		<ImageButton android:id="@+id/back_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/back_bar"
+			android:onClick="goBack" />
+	</LinearLayout>	 
+</RelativeLayout>

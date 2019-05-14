@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/mainView"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	
+	<org.mapsforge.map.android.view.MapView android:id="@+id/mapView"
+		android:layout_width="fill_parent" android:layout_height="fill_parent" />
+	
+	<LinearLayout 
+		android:id="@+id/menuButtons"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:orientation="horizontal"
+		android:padding="3dp"
+		android:gravity="center_horizontal"
+		android:visibility="visible">
+		<ImageButton 
+			android:id="@+id/search_current_location"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:scaleType="centerCrop"
+			android:clickable="false"
+			android:src="@android:drawable/ic_menu_compass"/>	
+		<ImageButton 
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/center_icon"
+			android:onClick="displayCenterMode"/>	
+			
+		<ImageButton 
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/globe_icon"
+			android:onClick="displayMapMode"/>	
+		<ImageButton 
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/menu_icon"
+			android:onClick="displayGeneralOptions"/>
+		<ImageButton 
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:src="@drawable/backbaricon"
+			android:onClick="goBack"/>			
+	</LinearLayout>
+
+		
+	<TextView android:id="@+id/attribution"
+	    android:layout_width="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentBottom="true"
+		android:text="Copyright Open Street Maps"
+		android:textColor="#000"
+		android:textSize="6pt"
+		android:paddingRight="5dp"
+		android:layout_marginBottom="1dip"
+		android:layout_height="wrap_content"
+		android:visibility="visible"/>
+
+	<TextView
+	    android:id="@+id/trackerModeText"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/menuButtons"
+	    android:layout_centerHorizontal="true"
+	    android:text="Tracking Mode(Normal:1min/50m)"
+	    android:textColor="#90000000" />
+
+	<TextView
+	    android:id="@+id/danger_zone_text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/trackerModeText"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center_horizontal"
+	    android:textStyle="bold"
+	    android:textColor="@color/red"
+	    android:text="You are in a DANGER ZONE"
+	    android:textSize="24dp" 
+	    android:visibility="gone"/>
+
+</RelativeLayout>

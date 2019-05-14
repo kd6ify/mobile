@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schools_Type>
+	<record ID="28c57c66-4c41-40ab-a8aa-b51c9fb3f083" Name="Elementary School"/>
+	<record ID="74e1aa34-9211-4b5a-b41e-0aaaa9ec5195" Name="Middle School"/>
+	<record ID="bf5bb4f7-6a10-454a-a745-274eb9960645" Name="High School"/>
+	<record ID="014e8646-78d4-4828-8270-71d336206266" Name="College/University"/>
+</schools_Type>
+

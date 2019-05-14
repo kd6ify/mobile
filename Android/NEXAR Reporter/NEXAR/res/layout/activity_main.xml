@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/brushed_metal_background_dark"
+    android:orientation="vertical"
+    tools:context=".ContactList" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/headerbackground"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/homeheader7" />
+
+      <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF" 
+
+
+            android:text="@string/version"
+            android:layout_gravity="bottom"
+            android:textStyle="italic"
+            android:paddingRight="3sp" >
+
+
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:onClick="setOptions"
+            android:src="@drawable/menu_selector" />
+    </LinearLayout>
+
+
+
+
+
+
+
+<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="Report Category"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/background_overlay_dark"
+        android:duplicateParentState="false"
+        android:fadingEdge="horizontal"
+        android:paddingBottom="9dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="10dp"
+        android:paddingTop="7dp" >
+
+        <GridView
+            android:id="@+id/categoryGrid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:numColumns="1"
+            android:scrollbarDefaultDelayBeforeFade="50000"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+            android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="10dp"/>
+            <!-- android:listSelector="@drawable/day_tile_down"--> 
+
+    </FrameLayout>
+<!--      <LinearLayout -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:gravity="center_horizontal">             -->
+<!-- 		<com.google.ads.AdView -->
+<!--         xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads" -->
+<!--         android:id="@+id/ad" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="73dp" -->
+<!--         googleads:adSize="BANNER" -->
+<!--         googleads:adUnitId="ca-app-pub-5336350587251909/1809112670" /> -->
+<!--     </LinearLayout> -->
+
+</LinearLayout>
+ 

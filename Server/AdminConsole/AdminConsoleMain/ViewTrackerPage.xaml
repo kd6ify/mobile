@@ -1,0 +1,58 @@
+﻿<Page x:Class="FutureConcepts.Mobile.AdminConsole.ViewTrackerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="{Binding MobileDevice.UserName}">
+
+    <Grid Grid.IsSharedSizeScope="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" SharedSizeGroup="DataLabel"/>
+            <ColumnDefinition Width="auto" SharedSizeGroup="DataValue"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <Expander Grid.Row="0" Grid.ColumnSpan="2">
+            <Expander.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding MobileDevice.UserName}"/>
+                    <Button Click="CheckUpdate_Click" Margin="20,2,2,2">Check Update</Button>
+                </StackPanel>
+            </Expander.Header>
+            
+            <Border BorderBrush="Black" BorderThickness="1">
+                <ContentControl Content="{Binding MobileDevice}"/>
+            </Border>
+        </Expander>
+        
+        <Label Grid.Row="1" Grid.Column="0">Agency</Label>
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding AgencyName}" />
+        
+        <Label Grid.Row="2" Grid.Column="0">Tracker State</Label>
+        <Label Grid.Row="2" Grid.Column="1">
+            <Hyperlink Click="Hyperlink_Click"
+                       NavigateUri="ChangeTrackerStatePage.xaml">
+                <TextBlock Text="{Binding TrackerState}" />
+            </Hyperlink>
+        </Label>
+
+        <Label Grid.Row="3" Grid.Column="0">Push State</Label>
+        <Label Grid.Row="3" Grid.Column="1" Content="{Binding PushState}" />
+
+        <Expander Header="Last Known Location" Grid.Row="4" Grid.ColumnSpan="2">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Vertical">
+                    <ContentControl Grid.Row="4" Grid.ColumnSpan="2" Content="{Binding LastKnownLocation}"/>
+                    <WebBrowser Visibility="Collapsed" x:Name="locationWebView" />
+                    <Button Click="GoogleEarthButton_Click">Track with Google Earth</Button>
+                </StackPanel>
+            </Border>
+        </Expander>
+    </Grid>
+</Page>

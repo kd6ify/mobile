@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:padding="0dp" >
+	<LinearLayout
+	    android:id="@+id/header_group"
+		android:orientation="horizontal"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="40sp"
+	    android:gravity="center" >
+    	<ImageView android:id="@+id/ax_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:src="@drawable/launcher_ax_bar" />
+		<ImageButton android:id="@+id/incident_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/launcher_incident_bar" />
+		<ImageButton android:id="@+id/operationalperiod_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/launcher_operationalperiod_bar" />
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:padding="5sp"
+	    android:gravity="center" >
+		<TextView android:id="@+id/incident_period"
+		    android:layout_width="wrap_content"
+		    android:layout_height="fill_parent"
+		    android:gravity="center"
+		    android:singleLine="true"
+		    android:textSize="18sp"
+		    android:textColor="@android:color/white"
+		    android:ellipsize="marquee"
+		    android:fadingEdge="horizontal"
+		    android:marqueeRepeatLimit="marquee_forever"
+		    android:scrollHorizontally="true" />"
+	</LinearLayout>
+	<FrameLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="75" >
+		<GridView android:id="@+id/grid"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="fill_parent"
+	     	android:persistentDrawingCache="none"
+	     	android:columnWidth="160dp"
+	     	android:listSelector="@drawable/list_item_selector_transparent_focused_state"
+	     	android:verticalSpacing="0dp"
+	     	android:horizontalSpacing="0dp"
+	     	android:numColumns="auto_fit"
+	     	android:padding="0dp"
+	     	android:scrollingCache="false"
+	     	android:fadeScrollbars="false" />
+		<com.futureconcepts.ax.trinity.widget.SyncProgressView android:id="@+id/progress_view"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent" />
+	</FrameLayout>
+	<LinearLayout
+		android:orientation="horizontal"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="40sp"
+	    android:gravity="center" >
+		<ImageButton android:id="@+id/menu_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/menu_bar" />
+		<ImageButton android:id="@+id/back_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/back_bar" />
+	</LinearLayout>
+ </LinearLayout>

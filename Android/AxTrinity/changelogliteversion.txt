@@ -1,0 +1,6 @@
+==== AX Trinity Lite Change Log ====
+
+VersionCode=1 (1.0.0)
+	* Limit Logs and logs Entries to 10 items
+	-Disabled download Images.
+	-Disable All functions only logs works.

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="event_alert">#660000</color>
+<color name="event_inprogress">#003300</color>
+<color name="event_pending">#000033</color>
+<color name="event_unknown">#111111</color>
+<color name="incident_header">#000066</color>
+<color name="widget_background">#5f5f5f</color>
+<color name="geo_map_drawer_background">#77000000</color>
+<color name="layer_background">#88000000</color>
+<color name="popup_text">#000000</color>
+<color name="red">#ffff0000</color>
+<color name="yellow">#ffffff00</color>
+<color name="yellow1">#F9E60E</color>
+<color name="yellow2">#F9F89D</color>
+<color name="orange">#b85a00</color>
+<color name="orange4">#b85a00</color>
+<color name="orange5">#b85a00</color>
+<color name="blue">#19FCDA</color>
+<color name="grey05">#ACA899</color>
+<color name="white1">#FFFFFF</color>
+<color name="white2">#DDDDDD</color>
+<color name="red_button_gradient_start">#ff640000</color>
+<color name="red_button_gradient_end">#ffba0000</color>
+<color name="red_button_border">#ff640000</color>
+<color name="green_button_gradient_start">#ff006600</color>
+<color name="green_button_gradient_end">#ff12bf00</color>
+<color name="green_button_border">#ff0b4902</color>
+<color name="blue_button_gradient_start">#ff000a8f</color>
+<color name="blue_button_gradient_end">#ff0600ff</color>
+<color name="blue_button_border">#ff000a6c</color>
+<color name="grey_button_gradient_start">#ff090909</color>
+<color name="grey_button_gradient_end">#ff393939</color>
+<color name="grey_button_border">#ff000000</color>
+<color name="yellow_button_gradient_start">#fffda100</color>
+<color name="yellow_button_gradient_end">#fffddd00</color>
+<color name="yellow_button_border">#ff000000</color>
+<color name="yellow_transparent_background">#ccFFFF00</color>
+<color name="orange_button_gradient_start">#ffd46500</color>
+<color name="orange_button_gradient_end">#fffe7c00</color>
+<color name="orange_button_border">#ffb85a00</color>
+<!-- <color name="orange_transparent_background">#80999900</color>FFFF00 -->
+    
+</resources>

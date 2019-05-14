@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tracker_modes_preference">
+        <item>Frequent: 1 min/50 meters</item>
+        <item>Casual: 15 mins/100 meters</item>
+    </string-array>
+    <string-array name="tracker_modes_values_preference">
+        <item>frequent</item>
+        <item>casual</item>
+    </string-array>
+    <string-array name="xmpp_profiles_preference">
+        <item>Google Talk</item>
+        <item>AntaresX</item>
+    </string-array>
+    <string-array name="xmpp_profiles_values_preference">
+        <item>google-talk</item>
+        <item>ax</item>
+    </string-array>
+</resources>

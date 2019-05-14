@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:descendantFocusability="blocksDescendants"	
+	android:background="@color/widget_background"
+	android:padding="5sp" >
+    <Button android:id="@+id/tracking_id"
+    	style="@style/triage_tracking_id"
+    	android:gravity="center"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/list_background_grey" />
+</LinearLayout>

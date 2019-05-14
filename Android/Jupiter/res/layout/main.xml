@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="horizontal" >
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:orientation="vertical" >
+		<Button
+			android:layout_width="160sp"
+			android:layout_height="wrap_content"
+			android:onClick="tripsOnClick"
+			android:text="Trips" />
+		<Button
+			android:layout_width="160sp"
+			android:layout_height="wrap_content"
+			android:onClick="foldersOnClick"
+			android:text="Folders" />
+		<Button
+			android:layout_width="160sp"
+			android:layout_height="wrap_content"
+			android:onClick="mapOnClick"
+			android:text="Map" />
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:orientation="vertical" >
+		<Button
+			android:layout_width="160sp"
+			android:layout_height="wrap_content"
+			android:onClick="computerOnClick"
+			android:text="Computer" />
+		<Button
+			android:layout_width="160sp"
+			android:layout_height="wrap_content"
+			android:onClick="compassOnClick"
+			android:text="Compass" />
+		<Button
+			android:layout_width="160sp"
+			android:layout_height="wrap_content"
+			android:onClick="preferencesOnClick"
+			android:text="Preferences" />
+	</LinearLayout>
+</LinearLayout>

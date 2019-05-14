@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AxVideoViewer</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_list_sources">List Sources</string>
+    <string name="action_view_video">View Video</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

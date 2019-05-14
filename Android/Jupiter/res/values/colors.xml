@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+<color name="event_alert">#660000</color>
+<color name="event_inprogress">#003300</color>
+<color name="event_pending">#000033</color>
+<color name="event_unknown">#111111</color>
+<color name="incident_header">#000066</color>
+<color name="widget_background">#5f5f5f</color>
+<color name="geo_map_drawer_background">#77000000</color>
+<color name="layer_background">#88000000</color>
+<color name="gpsstat_background">#88ffffff</color>
+<color name="popup_text">#000000</color>
+<color name="map_coords">#000000</color>
+<color name="transparent">#00000000</color>
+</resources>
+

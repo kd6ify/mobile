@@ -1,0 +1,221 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/brushed_metal_background_dark"
+    android:orientation="vertical"
+    tools:context=".ContactList" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/headerbackground"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/homeheader7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingRight="3sp"
+            android:text="@string/version"
+            android:textColor="#FFFFFF"
+            android:textStyle="italic" >
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:onClick="setOptions"
+            android:src="@drawable/menu_selector" />
+    </LinearLayout>
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:paddingTop="5dp">
+<!--     <ImageButton -->
+<!--         android:id="@+id/report" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:background="@null" -->
+<!--         android:gravity="center_vertical" -->
+<!--         android:onClick="report" -->
+<!--         android:scaleType="center" -->
+<!--         android:src="@drawable/submit_report" /> -->
+		 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:splitMotionEvents="false" >
+	     <Button
+                       android:id="@+id/submit_report_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingTop="13dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/button_selector_long"
+                        android:drawableBottom="@drawable/activerequests"
+                        android:onClick="report"
+                        android:text="Submit Report"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic" />
+	      <Button
+                       android:id="@+id/pending_report_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_selector_long"
+                        android:drawableBottom="@drawable/pendingrequests"
+                        android:onClick="pendingReports"
+                        android:paddingTop="13dp"
+                         android:paddingBottom="10dp"
+                        android:text="@string/pending_reports"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic" />
+<!-- 	          <Button -->
+<!--                         android:id="@+id/select_image" -->
+<!--                         android:layout_width="fill_parent" -->
+<!--                         android:layout_height="75dp" -->
+<!--                         android:layout_weight="1" -->
+<!--                         android:background="@drawable/trinity_grey_button" -->
+<!--                         android:drawableLeft="@drawable/activerequests" -->
+<!--                         android:gravity="center" -->
+<!--                         android:onClick="report" -->
+<!--                         android:text="Submit Report" -->
+<!--                         android:textColor="#ffffff" -->
+<!--                         android:textSize="20sp" -->
+<!--                         android:textStyle="bold|italic"  -->
+<!--                         android:paddingLeft="5dp"/> -->
+<!-- 	            <Button -->
+<!--                         android:id="@+id/select_image" -->
+<!--                         android:layout_width="fill_parent" -->
+<!--                         android:layout_height="75dp" -->
+<!--                         android:layout_weight="1" -->
+<!--                         android:background="@drawable/trinity_grey_button" -->
+<!--                         android:gravity="center" -->
+<!--                         android:onClick="report" -->
+<!--                         android:text="@string/pending_reports" -->
+<!--                         android:textColor="#ffffff" -->
+<!--                         android:textSize="20sp" -->
+<!--                         android:textStyle="bold|italic"  -->
+<!--                         android:paddingLeft="5dp"/> -->
+	           
+<!--                 <Button -->
+<!--                     android:id="@+id/pendingReportsButton" -->
+<!--                     android:layout_width="match_parent" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:layout_gravity="center" -->
+<!--                     android:layout_weight="1" -->
+<!--                     android:background="@drawable/button_selector" -->
+<!--                     android:gravity="center" -->
+<!--                     android:includeFontPadding="true" -->
+<!--                     android:onClick="pendingReports" -->
+<!--                     android:paddingBottom="7dp" -->
+<!--                     android:paddingTop="7dp" -->
+<!--                     android:scaleType="center" -->
+<!--                     android:text="@string/pending_reports" -->
+<!--                     android:textColor="#ffffff" -->
+<!--                     android:textSize="25sp" -->
+<!--                     android:textStyle="bold|italic" -->
+<!--                     android:paddingRight="10dp" /> -->
+                
+		</LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        android:scaleType="center"
+        android:src="@drawable/divider" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:paddingLeft="5dp"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:text="  School Feed"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:background="@drawable/background_overlay_dark"
+            android:duplicateParentState="false"
+            android:fadingEdge="horizontal"
+            android:paddingBottom="9dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="5dp"
+            android:paddingTop="7dp" >
+
+            <ListView
+            	android:id="@+id/schoolFeed"
+            	android:layout_width="match_parent"
+            	android:layout_height="fill_parent"
+            	android:dividerHeight="2dp"
+            	android:footerDividersEnabled="false"
+            	android:headerDividersEnabled="true"
+            	android:listSelector="@android:color/transparent"
+            	android:padding="10dp"
+            	android:scrollbarDefaultDelayBeforeFade="50000"
+            	android:scrollbarStyle="outsideInset"
+            	android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+            	android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track"
+            	android:scrollingCache="false" >
+
+            </ListView>
+        </FrameLayout>
+<!--       <LinearLayout -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_weight="1" -->
+<!--         android:gravity="center_horizontal">             -->
+<!-- 		<com.google.ads.AdView -->
+<!--         xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads" -->
+<!--         android:id="@+id/ad" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="73dp" -->
+<!--         googleads:adSize="BANNER" -->
+<!--         googleads:adUnitId="ca-app-pub-5336350587251909/1809112670" /> -->       
+<!--     </LinearLayout> -->    
+    </LinearLayout>   
+</LinearLayout>

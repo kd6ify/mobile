@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.futureconcepts.anonymous"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" >
+    </uses-permission>
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="14" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <receiver android:name="com.futureconcepts.anonymous.NetworkReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.futureconcepts.anonymous.ChooseSchool"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.AnonymousActivity"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity android:name="com.futureconcepts.anonymous.Create" >
+        </activity>
+
+        <provider
+            android:name="com.futureconcepts.contentprovider.anonymous.MyContentProvider"
+            android:authorities="com.futureconcepts.contentprovider.anonymous"
+            android:exported="true"
+            android:multiprocess="true" />
+
+        <activity android:name="com.futureconcepts.anonymous.MainActivity" >
+        </activity>
+        <activity android:name="com.futureconcepts.anonymous.AnonymousHome" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.futureconcepts.anonymous.CustomOnItemSelectedListener" >
+        </activity>
+        <activity android:name="com.futureconcepts.anonymous.AnonymousSchoolRegion" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.PlannerMain"
+            android:label="@string/title_activity_planner_main" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.CalenderView"
+            android:label="@string/title_activity_calender_view" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.CalendarView"
+            android:label="@string/title_activity_calendar_view" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.CalendarAdapter"
+            android:label="@string/title_activity_calendar_adapter" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.CalendarViewSampleActivity"
+            android:label="@string/title_activity_calendar_view_sample" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.SimpleCalenderViewActivity"
+            android:label="@string/title_activity_simple_calender_view" >
+        </activity>
+        <activity
+            android:name="com.futureconcepts.anonymous.SimpleCalendarViewActivity"
+            android:label="@string/title_activity_simple_calendar_view" >
+        </activity>
+        
+        <activity
+            android:name="com.futureconcepts.anonymous.CurrentList">
+        </activity>
+    </application>
+
+</manifest>

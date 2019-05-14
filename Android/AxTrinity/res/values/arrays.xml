@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+       
+    <string-array name="log_priority">
+		<item>Low</item>
+		<item>High</item>
+		<item>Immediate</item>
+	</string-array>
+	<string-array name="log_priority_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+	</string-array>
+	
+	 <string-array name="task_type">
+        <item>Area Containment</item>
+        <item>Crowd Control</item>
+        <item>Escort Service</item>
+        <item>Evacuation</item>
+        <item>Other</item>
+        <item>Patrol</item>
+        <item>Reserve</item>
+        <item>Site Security</item>
+        <item>Supervise</item>
+        <item>Traffic Control</item>
+    </string-array>
+    
+    <string-array name="priority_task_status">
+        <item>Active</item>
+        <item>Complete</item>
+        <item>Pending</item>
+    </string-array>
+	
+    <string-array name="priority_task_priority">
+        <item>Normal</item>
+        <item>Immediate</item>
+    </string-array>
+	 
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	 android:orientation="vertical"
+	 android:layout_width="fill_parent" 
+	 android:layout_height="fill_parent" >
+    <LinearLayout
+    	android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" >
+	    <TextView
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:text="Title: " />
+	    <ImageView android:id="@+id/marker_icon"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content" />
+   	</LinearLayout>
+	<EditText android:id="@+id/title"
+     	android:layout_width="fill_parent"
+     	android:layout_height="wrap_content"
+     	android:gravity="top" />
+    <TextView
+     	android:layout_width="fill_parent"
+     	android:layout_height="wrap_content"
+     	android:text="Description:" />
+	<EditText android:id="@+id/description"
+     	android:layout_width="fill_parent"
+     	android:layout_height="wrap_content"
+     	android:gravity="top" />
+    <LinearLayout android:id="@+id/save_or_discard"
+    	android:orientation="vertical"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:visibility="invisible" >
+		<VideoView android:id="@+id/video_preview"
+	    	android:layout_width="250sp"
+	    	android:layout_height="350sp"
+	    	android:spacing="5sp" />
+	    <LinearLayout
+	    	android:orientation="horizontal"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:visibility="visible" >
+		    <Button android:id="@+id/save"
+		     	android:layout_width="150sp"
+		     	android:layout_height="wrap_content"
+		     	android:text="Save" />
+		    <Button android:id="@+id/discard"
+		     	android:layout_width="150sp"
+		     	android:layout_height="wrap_content"
+		     	android:text="Discard" />
+     	</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

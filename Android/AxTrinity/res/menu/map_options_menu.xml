@@ -1,0 +1,39 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_refresh"
+          android:title="Refresh" />
+    <item android:id="@+id/menu_gps_status"
+          android:title="GPS Status" />
+    <item android:id="@+id/menu_center_mode" android:title="Center Mode">
+    	<menu>
+		    <group android:id="@+id/menu_center_mode_group" android:checkableBehavior="single" android:menuCategory="container">
+			    <item android:id="@+id/menu_center_pan"
+			          android:title="Center Me" />
+			    <item android:id="@+id/menu_center_incident"
+			          android:title="Center Incident" />
+			</group>
+		</menu>
+    </item>
+	<item android:id="@+id/menu_layers" android:title="Layers">
+		<menu>
+			<group android:id="@+id/menu_layers_group" android:checkableBehavior="all" android:menuCategory="container">
+				<item android:id="@+id/menu_layer_sat"
+					android:title="Satellite"
+					android:checkable="true" />
+				<item android:id="@+id/menu_layer_traffic"
+				 	android:title="Traffic"
+				 	android:checkable="true" />
+			</group>
+		</menu>
+	</item>
+<!-- 	//see JIRA:TKTRIN-19 -->
+<!-- 	<item android:title="Icon Size"> -->
+<!-- 		<menu> -->
+<!-- 		    <item android:id="@+id/menu_icon_larger" -->
+<!-- 		          android:title="Larger" /> -->
+<!-- 		    <item android:id="@+id/menu_icon_smaller" -->
+<!-- 		    	  android:title="Smaller" /> -->
+<!--    		    <item android:id="@+id/menu_icon_normal" -->
+<!-- 		    	  android:title="Normal" /> -->
+<!--    		</menu> -->
+<!-- 	</item> -->
+</menu>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <com.futureconcepts.ax.trinity.ar.CameraSurfaceView
+    	android:id="@+id/CameraSurfaceView"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" />
+    <com.futureconcepts.ax.trinity.ar.OverviewView
+    	android:id="@+id/OverviewView"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" />
+</FrameLayout>

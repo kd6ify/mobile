@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_backdoor"
+          android:title="Backdoor" />
+    <item android:id="@+id/menu_start_service"
+          android:title="Restart Service" />
+</menu>

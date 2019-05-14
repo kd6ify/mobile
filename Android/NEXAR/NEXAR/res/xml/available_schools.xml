@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schools>
+	<record ID="5a5b48e4-110c-444d-ac7f-dfe3816c927c" Name="Glendora High School" State="null" type="null"/>
+	<record ID="6d8026c2-3986-4a0c-a0df-c63fafb1e269" Name="La Fetra Elementary School" State="null" type="null"/>
+	<record ID="154df5af-29e6-4618-98f1-b932e1b0882e" Name="Sandburg Middle School" State="null" type="null"/>
+	<record ID="9b552e29-08e8-4d2b-8cca-b5f98fda52a1" Name="Goddard Middle School" State="null" type="null"/>
+	<record ID="82a12a2a-6705-47bd-bf44-34f0cb246637" Name="Citrus College" State="null" type="null"/>
+	<record ID="9e3d760f-f955-4b98-b1a5-60df5b2447a0" Name="Cal State Long Beach" State="null" type="null"/>
+	<record ID="a36d26b4-5f21-44c9-94b0-1cdd21ed334a" Name="San Diego State University" State="null" type="null"/>
+</schools>

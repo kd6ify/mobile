@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical" >
+	<LinearLayout android:id="@+id/wkt_group"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+	    <TextView
+	    	style="@style/HeaderText"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="WKT" />
+	    <TextView android:id="@+id/wkt"
+	    	style="@style/DatumText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+	</LinearLayout>
+	<LinearLayout android:id="@+id/wkt_group"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+	    <TextView
+	    	style="@style/HeaderText"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="WKT" />
+	    <TextView android:id="@+id/wkt"
+	    	style="@style/DatumText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+	</LinearLayout>
+	<LinearLayout android:id="@+id/postal_group"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+	    <TextView
+	    	style="@style/HeaderText"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="Postal Address" />
+	    <TextView android:id="@+id/postal"
+	    	style="@style/DatumText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+	</LinearLayout>
+	<LinearLayout android:id="@+id/notes_group"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+	    <TextView
+	    	style="@style/HeaderText"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="Notes" />
+	    <TextView android:id="@+id/postal"
+	    	style="@style/DatumText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+	</LinearLayout>
+</LinearLayout>

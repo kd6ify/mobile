@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NEXAR</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Category">Category:</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_anonymous_home">AnonymousHome</string>
+    <string name="region_prompt">Select a State/Region</string>
+    <string name="type_prompt">Select a School Type</string>
+    <string name="school_prompt">Select a School</string>
+    <string name="title_activity_custom_on_item_selected_listener">CustomOnItemSelectedListener</string>
+    <string name="title_activity_planner_main">PlannerMain</string>
+    <string name="title_activity_calender_view">CalenderView</string>
+    <string name="title_activity_calendar_view">CalendarView</string>
+    <string name="title_activity_calendar_adapter">CalendarAdapter</string>
+    <string name="title_activity_calendar_view_sample">CalendarViewSampleActivity</string>
+    <string name="title_activity_simple_calender_view">SimpleCalenderViewActivity</string>
+    <string name="title_activity_simple_calendar_view">SimpleCalendarViewActivity</string>
+    <string name="select_state">Select a State/Region</string>
+    <string name="select_school_type">Select a School Type</string>
+    <string name="select_school_name">Select a School</string>
+    <string name="title_activity_my_relative_layout">MyRelativeLayout</string>
+    <string name="set_contact_info">Set User Information</string>
+    <string name="pending_data">Pending Details</string>
+    <string name="pending_reports">Pending Reports</string>
+    <string name="pending_images">Pending Images</string>
+    <string name="version">V25.9</string>
+    <string name="title_activity_view_pending_data">ViewPendingData</string>
+</resources>

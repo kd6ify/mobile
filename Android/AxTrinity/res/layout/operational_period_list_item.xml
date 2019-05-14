@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:background="@color/widget_background"
+    android:padding="5dp"  >
+	<LinearLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_alignParentLeft="true"
+		android:background="@drawable/list_background_grey" >
+		 <TextView android:id="@+id/text1Title"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:textColor="@color/white2"
+	         android:textStyle="bold"
+	         android:text="Name" />
+	    <TextView android:id="@+id/text1"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:layout_alignParentLeft="true"
+	         android:layout_marginLeft="10dp"
+	         android:textSize="14sp" />
+	     <TextView android:id="@+id/dateTitle"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	            android:textColor="@color/white2"
+	         android:textStyle="bold"
+	         android:text="Start Time" />
+	    <TextView android:id="@+id/date"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:gravity="right"
+	          android:layout_marginLeft="10dp"
+	         android:textSize="14sp" />
+	    <TextView android:id="@+id/endTime"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	             android:textColor="@color/white2"
+	         android:textStyle="bold"
+	         android:text="End Time" />
+	    <TextView android:id="@+id/date_end_time"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:gravity="right"
+	          android:layout_marginLeft="10dp"
+	         android:textSize="14sp" />
+<!-- 	    <TextView android:id="@+id/type_name" -->
+<!-- 	        android:layout_width="wrap_content" -->
+<!-- 	        android:layout_height="wrap_content" -->
+<!-- 	        android:textSize="14sp" /> -->
+	</LinearLayout>
+<!--     <ImageView android:id="@+id/type_icon" -->
+<!--         android:layout_width="48dip" -->
+<!--         android:layout_height="48dip" -->
+<!--         android:layout_alignParentRight="true" -->
+<!--         android:scaleType="fitXY" -->
+<!--         android:background="@drawable/image_icon_background" /> -->
+</RelativeLayout>
+ 

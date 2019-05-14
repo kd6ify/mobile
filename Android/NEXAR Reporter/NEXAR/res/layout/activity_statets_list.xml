@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/brushed_metal_background_dark"
+    android:orientation="vertical"
+    tools:context=".ContactList" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/background_overlay_dark"
+        android:duplicateParentState="false"
+        android:fadingEdge="horizontal"
+        android:paddingBottom="9dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="10dp"
+        android:paddingTop="7dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/selectRegion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:text="Select a State"
+                android:textColor="@android:color/white"
+                android:textSize="25sp"
+                android:textStyle="bold|italic" />
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Search..."
+                android:inputType="textCapSentences"
+                android:maxLength="60"
+                android:textColor="#000000" 
+                android:singleLine="true"
+                android:imeOptions="actionDone"/>
+
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:scrollingCache="false"
+                android:dividerHeight="2dp"   		
+                android:choiceMode="singleChoice"
+                android:scrollbarDefaultDelayBeforeFade="50000"
+            	android:scrollbarStyle="outsideInset"
+           		android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+           		android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track"  />
+            <TextView
+                android:id="@+id/noItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:text="There are no Available Schools for your selection."
+                android:textColor="@android:color/white"
+                android:textSize="25sp"
+                android:textStyle="bold|italic" 
+                />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

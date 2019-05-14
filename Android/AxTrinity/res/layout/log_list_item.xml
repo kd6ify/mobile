@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:padding="5dp"
+	android:background="@color/widget_background">
+	<RelativeLayout 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"	
+		android:background="@drawable/list_background_grey">
+  		<LinearLayout 
+  			android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:id="@+id/dateContainer"
+	    	android:orientation="horizontal"
+	    	android:layout_alignParentTop="true"
+     		android:layout_alignParentRight="true">
+  			<TextView android:id="@+id/dateTitle"
+         		android:layout_width="wrap_content"
+         		android:layout_height="wrap_content"
+         		android:gravity="right"
+         		android:text="Date/Time "/>
+      		<TextView android:id="@+id/date"
+      			style="@style/DateTimeText"
+         		android:layout_width="wrap_content"
+         		android:layout_height="wrap_content"
+         		android:gravity="right"
+         		android:textColor="@color/white2"/>
+      		</LinearLayout>
+      	<TextView android:id="@+id/title"
+      		android:layout_below="@+id/dateContainer"
+     		android:layout_width="wrap_content"
+     		android:layout_height="wrap_content"
+     		android:layout_alignParentLeft="true"
+     		android:text="Text" />			
+  		 <TextView android:id="@+id/text1"
+			style="@style/TitleText"
+     		android:layout_width="wrap_content"
+     		android:layout_height="wrap_content"
+     		android:layout_below="@+id/title"
+     		android:ellipsize="end"
+     		android:maxLines="7"
+     		android:layout_alignParentLeft="true"
+     		android:layout_marginLeft="5dp"/>
+      	<LinearLayout
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:id="@+id/log_image_container"
+	    	android:orientation="horizontal"
+	    	android:gravity="right"
+	    	android:layout_alignParentRight="true"
+	    	android:layout_below="@+id/text1"
+	    	android:layout_alignParentBottom="true" >	     
+      	 	<TextView
+           		android:id="@+id/num_images"
+           		style="@style/DateTimeText"
+           		android:layout_width="wrap_content"
+           		android:layout_height="wrap_content"
+           		android:text="0"
+           		android:textColor="@color/white2"/>
+       		<ImageView android:id="@+id/log_images"
+	       		android:layout_width="32dip"
+	       		android:layout_height="32dip"
+	       		android:layout_gravity="right"
+	       		android:src="@drawable/logbook_icon"/>       	
+		</LinearLayout>
+	</RelativeLayout>
+</LinearLayout>
+ 

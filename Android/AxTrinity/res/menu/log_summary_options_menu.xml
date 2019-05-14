@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_add_log"
+		android:icon="@android:drawable/ic_menu_add"	
+		android:title="Add Log Category" />
+    <item android:id="@+id/menu_show_master"
+		android:title="Master Log" />
+    <item android:id="@+id/menu_refresh"
+		android:title="Refresh" />
+</menu>

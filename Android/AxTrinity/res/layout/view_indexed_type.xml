@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:padding="5sp"  >
+	<RelativeLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/list_background_grey" >
+		 <TextView android:id="@+id/label"
+    		style="@style/HeaderText"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+        	android:text="Type" />
+	    <TextView android:id="@+id/value"
+	    	style="@style/DatumText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/label"
+	        android:layout_toLeftOf="@+id/icon"
+	        android:layout_alignParentLeft="true" />
+	    <ImageView android:id="@+id/icon"
+	        android:contentDescription="@string/icon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:adjustViewBounds="true"
+        	android:background="@drawable/image_icon_background" />
+    </RelativeLayout>
+</LinearLayout>

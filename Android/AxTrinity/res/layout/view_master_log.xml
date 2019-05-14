@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content" 
+	android:orientation="vertical"
+	android:padding="5dp" >
+	<include layout="@layout/images_need_resend_message"
+		android:visibility="gone"/>	
+	<com.futureconcepts.ax.trinity.widget.EditTextWithSearch 
+        android:id="@+id/master_log_search"
+        android:layout_height="wrap_content"
+        android:hint="Search Journal Entries..."
+        android:gravity="left"
+        android:layout_below="@+id/resendImages"
+        android:layout_width="fill_parent"
+        android:padding="5dp"/>
+	<TextView android:id="@android:id/empty"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/master_log_search"
+		android:text="No Logs Found"
+		android:textSize="24sp" />
+	<ListView android:id="@android:id/list"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:scrollingCache="false"
+		android:divider="@null"
+		android:layout_below="@+id/master_log_search"
+		android:dividerHeight="0dp"
+		android:layout_above="@+id/menu_options_container"/>
+	<LinearLayout 
+		android:id="@+id/menu_options_container"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:background="@android:color/background_dark"
+		android:layout_alignParentBottom="true" >
+		<ImageButton android:id="@+id/menu_refresh" 
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/refresh_bar"
+			android:onClick="refresh" />
+		<ImageButton android:id="@+id/back_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/back_bar"
+			android:onClick="goBack" />
+	</LinearLayout>	 
+</RelativeLayout>
+

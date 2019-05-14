@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:padding="5sp" 
+	android:background="@color/widget_background">
+	<RelativeLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"	
+		android:orientation="vertical"
+		android:background="@drawable/list_background_grey">
+		    	
+   		<ImageView android:id="@+id/type_icon"
+        	android:layout_width="48dp"
+        	android:layout_height="48dp"
+        	android:adjustViewBounds="true"
+	    	android:layout_alignParentRight="true"
+        	android:scaleType="fitXY"
+        	android:contentDescription="@string/collection_type"
+        	android:background="@drawable/image_icon_background"  /> 
+   		
+		<TextView android:id="@+id/callsignTitle"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="Callsign"
+        	android:layout_alignBaseline="@+id/type_icon" />
+		
+		<TextView android:id="@+id/callsign"
+   			style="@style/StateText"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"  		
+        	android:layout_marginLeft="4dp"
+    		android:layout_below="@+id/callsignTitle" />		
+		
+		<TextView android:id="@+id/nameTitle"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="Name" 
+        	android:layout_below="@+id/callsign"/>
+		
+    	<TextView android:id="@+id/name"
+    		style="@style/TitleText"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="4dp"
+        	android:layout_alignParentLeft="true"
+        	android:layout_toLeftOf="@+id/type_icon"
+        	android:layout_below="@+id/nameTitle" />
+    	
+    	<TextView android:id="@+id/typeTitle"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="Type" 
+        	android:layout_below="@+id/name"/>
+    	
+    	<TextView android:id="@+id/type_name"
+   			style="@style/StateText"
+     		android:layout_width="wrap_content"
+     		android:layout_height="wrap_content"
+     		android:layout_marginLeft="4dp"
+     		android:layout_below="@+id/typeTitle"/>
+
+   	</RelativeLayout>
+</LinearLayout>
+ 
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" -->
+<!-- 	android:layout_width="fill_parent" -->
+<!-- 	android:layout_height="wrap_content" -->
+<!-- 	android:orientation="vertical" -->
+<!-- 	android:padding="5sp" > -->
+<!--    <TextView android:id="@+id/callsign" -->
+<!--    	style="@style/StateText" -->
+<!--      android:layout_width="wrap_content" -->
+<!--      android:layout_height="wrap_content" -->
+<!--      android:gravity="center" /> -->
+<!--   <RelativeLayout -->
+<!--   	android:layout_width="fill_parent" -->
+<!--   	android:layout_height="wrap_content" > -->
+<!--     <TextView android:id="@+id/name" -->
+<!--     	style="@style/TitleText" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" /> -->
+<!--     <ImageView android:id="@+id/type_icon" -->
+<!--         android:layout_width="48dip" -->
+<!--         android:layout_height="48dip" -->
+<!--         android:adjustViewBounds="true" -->
+<!-- 	    android:layout_alignParentRight="true" -->
+<!--         android:scaleType="fitXY" -->
+<!--         android:contentDescription="@string/collection_type" /> -->
+<!--    </RelativeLayout> -->
+<!--    <TextView android:id="@+id/type_name" -->
+<!--    	style="@style/StateText" -->
+<!--      android:layout_width="wrap_content" -->
+<!--      android:layout_height="wrap_content" -->
+<!--      android:gravity="center" /> -->
+<!-- </LinearLayout> -->
+ 

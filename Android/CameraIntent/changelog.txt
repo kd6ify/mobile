@@ -1,0 +1,8 @@
+==== Camera Intent Change Log ====
+Version code =1 (1.0.1)
+	*android.intent.action.MEDIA_MOUNTED is protected now.
+     - Changed android.intent.action.MEDIA_MOUNTED to Intent.ACTION_MEDIA_SCANNER_SCAN_FILE on TakePhoto.java(ln 140)
+
+Version code =1 (1.0.0)
+	*Added take photo and select photo functionality. 
+

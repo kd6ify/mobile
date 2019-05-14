@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/brushed_metal_background_dark"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/headerbackground"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/homeheader7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingRight="3sp"
+            android:text="@string/version"
+            android:textColor="#FFFFFF"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+    
+    <ListView
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"                
+                android:scrollingCache="false"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:paddingLeft="22dp"   
+                android:paddingRight="20dp"       
+                android:background="@drawable/background_overlay_dark"  
+                android:choiceMode="singleChoice"
+                android:scrollbarDefaultDelayBeforeFade="50000"
+            	android:scrollbarStyle="outsideInset"
+           		android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+           		android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track"  />
+    
+    <TextView
+                    android:id="@+id/labelPending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="The information will be deleted 10 days after it  was stored."
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic"
+                    android:layout_marginBottom="40dp"  />
+    
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" >
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Title" />
+		<EditText android:id="@+id/title"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content" />
+    	</LinearLayout>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="2dip"
+     	android:background="?android:attr/listDivider" />
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:text="Status" />
+	     <Spinner android:id="@+id/intel_status"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:prompt="@string/select_intel_status" />
+	</LinearLayout>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="2dip"
+     	android:background="?android:attr/listDivider" />
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Comments" />
+		<EditText android:id="@+id/comments"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content" />
+	</LinearLayout>
+</LinearLayout>

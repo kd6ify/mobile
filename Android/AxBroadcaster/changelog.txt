@@ -1,0 +1,71 @@
+==== AxBroadcaster (AntaresX Video Broadcaster) ====
+
+VersionCode=12 (0.0.12)
+	* VSM integration
+	* Removed "Stream Name" from settings
+		- broadcaster will now always use the deviceID as the stream name
+		- cell devices will use the IMEI/ESN, etc.  wifi-only devices will use the MAC address 
+	* New UI features:
+		- added two new action bar icons:
+			1) broadcast - green indicates broadcasting, grey indicates not broadcasting
+				if grey, tap to start broadcasting
+			2) screen on - green indicates screen is locked on and will never go to sleep
+				if grey, screen will go to sleep, tap to lock screen on
+	* Removed "swipe to broadcast" gesture--replaced by start broadcasting action icon
+	Jira TKBRD-3, TKBRD-2
+	
+VersionCode=11 (0.0.11)
+	* Added "Swipe to Broadcast" swipe gesture --
+		this helps avoid broadcasting when the user didn't intent to
+	
+VersionCode=10 (0.0.10)
+	* rebuild--9 had corrupted build
+	
+VersionCode=9 (0.0.9)
+	* Added "streaming sound" to be played when streaming is active
+		- this feature is managed through AxBroadcaster settings and through normal
+			Android ringtone management.  The user can add any ringtones they want
+			to be played as the streaming sound and	the volume of the streaming sound
+			is managed through the Android->Settings->Sounds->Volumes setting
+			 
+VersionCode=8 (0.0.8)
+	* Removed superfluous settings (H.264/H.263), etc.
+	* Removed "WOWZA" text from broadcasting settings
+	I w
+VersionCode=7 (0.0.7)
+	* Hacked code to work on Motorola devices--tested on Motorola RAZR (XT916)
+		Changed H264Packetizer.java, line 150:
+		while (buffer[rtphl] == 0x3f)
+		{
+			// UGLY and unreliable hack for Motorola devices that return 0x3f, 0x3f, 0x3f, 0x3f
+			// as the NALU length--if we see this, we hope the next 4 bytes are actual NALU length
+			// if not, keep trying with fingers crossed and lots of incantations
+			fill(rtphl,4);
+		}
+
+VersionCode=6 (0.0.6)
+	* don't delete temp MP4 file
+	
+VersionCode=5 (0.0.5)
+	* Front/back camera now configurable
+	* Use MP4 video format instead of 3GPP
+	* set default bitrate to 256000
+	
+VersionCode=4 (0.0.4)
+	* Fix parse session id parse error--wasn't using the correct session id from SETUP
+		in RECORD during RTSP conversation.
+	* Added better error handling to RTSPClient
+
+VersionCode=3 (0.0.3)
+	* update launcher icon with Deanna's new icon
+	* fix bug where two sessions to WOWZA were invoked when started for the first time.
+	
+VersionCode=2 (0.0.2)
+	* Allow changes to settings with automatic restart of stream
+	* Support audio
+		-- Please don't test audio at this time--there is a lip sync issue 
+			that is being worked on.
+
+VersionCode=1 (0.0.1)
+	* Initial Release
+	

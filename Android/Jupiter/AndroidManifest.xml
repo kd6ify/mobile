@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.futureconcepts.jupiter"
+      android:versionName="0.16" android:versionCode="16">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-sdk android:minSdkVersion="4" />
+      
+    <application android:icon="@drawable/navigation" android:label="Navigation" android:debuggable="true" >
+        <activity android:name=".AboutActivity" android:icon="@drawable/navigation" android:label="About Jupiter" >
+        </activity>
+        <activity android:name=".MainMapActivity" android:icon="@drawable/navigation" android:label="Topo Map"
+        	android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="com.futureconcepts.jupiter.intent.category.map" /> 
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.jupiter.Folder" /> 
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="com.futureconcepts.jupiter.intent.category.map" /> 
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.jupiter.Placemark" /> 
+			</intent-filter>
+        </activity>
+        <activity android:name=".LayersActivity" android:icon="@drawable/navigation" android:label="Layers" >
+        </activity>
+        <activity android:name=".ViewFolderActivity" android:icon="@drawable/navigation" android:label="Folders" >
+        </activity>
+        <activity android:name=".ViewPlacemarkActivity" android:icon="@drawable/navigation" android:label="View Placemark" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" /> 
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.jupiter.Placemark" /> 
+			</intent-filter>
+        </activity>
+        <activity android:name=".EditTripActivity" android:icon="@drawable/navigation" android:label="Edit Trip" >
+        </activity>
+        <activity android:name=".EditFolderActivity" android:icon="@drawable/navigation" android:label="Edit Folder" >
+        </activity>
+        <activity android:name=".EditPlacemarkActivity" android:icon="@drawable/navigation" android:label="Edit Placemark" >
+        </activity>
+        <activity android:name=".GeocodeActivity" android:icon="@drawable/navigation" android:label="Enter Address" >
+        </activity>
+        <activity android:name=".TripsActivity" android:icon="@drawable/navigation" android:label="Trips" >
+        </activity>
+        <activity android:name=".SetupTrackActivity" android:icon="@drawable/navigation" android:label="Setup Track" >
+        </activity>
+        <activity android:name=".PrefsActivity" android:icon="@drawable/navigation" android:label="Preferences" >
+        </activity>
+        <activity android:name=".TrackRecorderToggleActivity" android:icon="@drawable/navigation" android:label="Recorder Toggle" >
+        </activity>
+        <activity android:name=".compass.MainCompassActivity" android:icon="@drawable/navigation" android:label="Compass" >
+        </activity>
+
+		<service android:name="com.futureconcepts.jupiter.TrackRecorderService" android:label="Recorder Service" /> 
+        
+		<provider android:name="com.futureconcepts.jupiter.provider.FolderProvider" android:authorities="com.futureconcepts.jupiter.provider.folder" /> 
+		<provider android:name="com.futureconcepts.jupiter.provider.TrackProvider" android:authorities="com.futureconcepts.jupiter.provider.track" /> 
+		<provider android:name="com.futureconcepts.jupiter.provider.PlacemarkProvider" android:authorities="com.futureconcepts.jupiter.provider.placemark" /> 
+        
+		<activity android:name="com.futureconcepts.jupiter.filemanager.OpenFileActivity" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="com.futureconcepts.action.OPEN_FILE" /> 
+				<category android:name="android.intent.category.DEFAULT" /> 
+				<data android:scheme="file" /> 
+			</intent-filter>
+			<intent-filter>
+				<action android:name="com.futureconcepts.action.OPEN_FILE" /> 
+				<category android:name="android.intent.category.DEFAULT" /> 
+			</intent-filter>
+		</activity>
+		<activity android:name="com.futureconcepts.jupiter.filemanager.SaveFileActivity" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="com.futureconcepts.action.SAVE_FILE" /> 
+				<category android:name="android.intent.category.DEFAULT" /> 
+				<data android:scheme="file" /> 
+			</intent-filter>
+			<intent-filter>
+				<action android:name="com.futureconcepts.action.SAVE_FILE" /> 
+				<category android:name="android.intent.category.DEFAULT" /> 
+			</intent-filter>
+		</activity>
+		<provider android:name="com.futureconcepts.jupiter.filemanager.FileManagerProvider" android:authorities="com.futureconcepts.filemanager" /> 
+	        
+    </application>
+</manifest> 

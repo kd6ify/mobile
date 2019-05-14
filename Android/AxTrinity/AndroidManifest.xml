@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.futureconcepts.ax.trinity"
+	android:versionCode="292"
+	android:versionName="6.0.242" >
+
+	<uses-sdk android:minSdkVersion="8"/>
+<!-- 			  android:targetSdkVersion="18" /> -->
+	<uses-feature android:name="android.hardware.camera" />
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_GPS" />
+	<uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.READ_SMS" />
+	<uses-permission android:name="android.permission.WRITE_SMS" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />	
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	
+	<application
+		android:icon="@drawable/redswoosh64"
+		android:label="AntaresX Trikorder"
+		android:name=".AxTrinityApplication">
+		<uses-library android:name="com.google.android.maps" />
+
+		<activity
+			android:name="com.futureconcepts.ax.trinity.main.Launcher"
+			android:icon="@drawable/launcher"
+			android:label="@string/app_name"
+			android:configChanges="orientation" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.main.AboutActivity"
+			android:icon="@drawable/preferences" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.main.Prefs"
+			android:icon="@drawable/preferences"
+			android:label="Preferences" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.main.AdminSettings"
+			android:label="Admin Settings" >
+		</activity>
+
+		<receiver
+			android:name="com.futureconcepts.ax.trinity.main.PackageReceiver"
+			android:label="PackageReceiver" >
+			<intent-filter>
+				<action android:name="android.intent.action.PACKAGE_ADDED" />
+				<action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+				<data android:scheme="package" />
+			</intent-filter>
+		</receiver>
+
+		<activity
+			android:name="com.futureconcepts.ax.trinity.address.ViewAddressActivity"
+			android:icon="@drawable/mapping"
+			android:configChanges="orientation|keyboardHidden"
+			android:label="Address" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Address" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.address.ViewCountryActivity"
+			android:icon="@drawable/mapping"
+			android:label="Country" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.ISO3166" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.address.ViewStateActivity"
+			android:icon="@drawable/mapping"
+			android:label="State" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.INCITS38200x" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.geo.MainMapActivity"
+			android:icon="@drawable/launcher_mapping"
+			android:label="Mapping"
+			android:launchMode="singleTask" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.geo.LayersActivity"
+			android:icon="@drawable/mapping"
+			android:label="Layers" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.geo.GpsStatus"
+			android:label="GPS Status" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.geo.EditPlacemarkActivity"
+			android:label="Edit Placemark" >
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Placemark" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.JournalListActivity"
+			android:icon="@drawable/launcher_logs"
+			android:label="Logs" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.TasksTabActivity"
+			android:icon="@drawable/tasks"
+			android:label="Tasks" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Tactic" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.ViewTasksMainActivity"
+			android:configChanges="orientation|keyboardHidden"
+			android:icon="@drawable/launcher_tasks"
+			android:label="Tasks" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Tactic" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.AddEditTaskActivity"
+			android:label="Add new Task"
+			android:configChanges="keyboardHidden|orientation" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.AddEditPriorityTaskActivity"
+			android:label="Add new Priority Task"
+			android:configChanges="keyboardHidden|orientation" >			
+		</activity>		
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.ViewPriorityTasksActivity"
+			android:icon="@drawable/tasks"
+			android:label="Tasks" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.ViewTasksActivity"
+			android:icon="@drawable/tasks"
+			android:label="Tasks" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.ViewPriorityTaskActivity"
+			android:icon="@drawable/objtact"
+			android:label="View Task" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.tasks.ViewTaskActivity"
+			android:icon="@drawable/objtact"
+			android:label="View Task" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Tactic" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.ViewTaskAssetsActivity"
+			android:icon="@drawable/objtact"
+			android:label="View Task Assets" >
+		</activity>
+		<activity android:name="com.futureconcepts.ax.trinity.collectives.CollectiveListActivity"
+			android:icon="@drawable/launcher_collectives"
+			android:label="Collectives" >		    
+		</activity>
+		<activity
+		    
+			android:name="com.futureconcepts.ax.trinity.collectives.ViewTaskCollectionsActivity"
+			android:label="View Task Collectives" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.collectives.ViewCollectionActivity"
+			android:label="View Collection" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Collection" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.EditJournalActivity"
+			android:icon="@drawable/incidentlog"
+			android:label="Edit Journal" >
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Journal" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Journal" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.EditJournalEntryActivity"
+			android:configChanges="orientation|keyboardHidden"
+			android:icon="@drawable/incidentlog"
+			android:label="Edit Journal Entry"
+			android:windowSoftInputMode="stateHidden|adjustPan" >
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.JournalEntry" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.JournalEntry" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.ViewJournalActivity"
+			android:label="View Journal" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Journal" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.ViewMasterJournalActivity"
+			android:label="View Master Journal" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Journal" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.ViewJournalEntryActivity"
+			android:label="View Journal Entry">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.JournalEntry" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.ViewIntelActivity"
+			android:enabled="true"
+			android:label="Intel" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Intelligence" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.IntelSummaryActivity"
+			android:enabled="false"
+			android:icon="@drawable/launcher_intel"
+			android:label="Intelligence" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Intelligence" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.logs.EditIntelActivity"
+			android:icon="@drawable/intel"
+			android:label="Edit Intelligence" >
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Intelligence" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Intelligence" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.main.IncidentSelectorActivity"
+			android:icon="@drawable/launcher_incident"
+			android:configChanges="keyboardHidden|orientation"
+			android:windowSoftInputMode="stateHidden"
+			android:label="Incident" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.main.AuthorizeIncidentActivity"
+			android:label="Authorize Incident"
+			android:windowSoftInputMode="stateVisible" />
+		<activity
+			android:name="com.futureconcepts.ax.trinity.main.OperationalPeriodSelectorActivity"
+			android:icon="@drawable/launcher_operationalperiod"
+			android:label="Operational Period" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.AssetTabActivity"
+			android:icon="@drawable/assets"
+			android:label="Assets" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.UserListActivity"
+			android:configChanges="orientation"
+			android:icon="@drawable/launcher_personnel"
+			android:label="Personnel" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.EquipmentListActivity"
+			android:icon="@drawable/launcher_equipment"
+			android:label="Equipment"			
+			android:configChanges="orientation"
+			android:launchMode="singleTop" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.ViewAssetActivity"
+			android:icon="@drawable/assets"
+			android:label="View Asset" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Asset" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Asset" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.ViewUserActivity"
+			android:icon="@drawable/personnel"
+			android:label="View User" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.User" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.User" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.person.ViewPersonActivity"
+			android:icon="@drawable/personnel"
+			android:label="View Person" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Person" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Person" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.ViewEquipmentActivity"
+			android:icon="@drawable/equipment"
+			android:label="View Equipment" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Equipment" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Equipment" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.assets.ViewComponentActivity"
+			android:label="View Equipment" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Component" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Component" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.triage.TriageMainActivity"
+			android:icon="@drawable/launcher_triage"
+			android:label="Triage" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.triage.CasualtyListActivity"
+			android:icon="@drawable/icon"
+			android:label="Casualty List" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.triage.EditCasualtyActivity"
+			android:icon="@drawable/icon"
+			android:label="Edit Casualty" >
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Triage" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.triage.QuickTriageActivity"
+			android:icon="@drawable/icon"
+			android:label="Edit Casualty" >
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Triage" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.triage.EnterTrackingIdActivity"
+			android:icon="@drawable/icon"
+			android:label="Enter Tracking ID" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.triage.ViewCasualtyActivity"
+			android:icon="@drawable/launcher_triage"
+			android:label="View Casualty" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="vnd.android.cursor.item/vnd.futureconcepts.Triage" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.futureconcepts.Triage" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.ar.TriageARDemoActivity"
+			android:configChanges="orientation"
+			android:icon="@drawable/launcher_augmented_reality"
+			android:label="Triage Goggles"
+			android:screenOrientation="landscape" >
+		</activity>
+		<!-- <activity android:name="com.futureconcepts.ax.trinity.logs.images.ScreenSlideActivity" -->
+		<!-- android:label="Image Viewer"> -->
+		<!-- </activity> -->
+		<activity
+			android:name="com.futureconcepts.cameraintent.TakePhoto"
+			android:configChanges="orientation" >
+		</activity>
+		
+		<activity
+			android:name="com.futureconcepts.ax.trinity.osm.MainMapOSMActivity"
+			android:icon="@drawable/launcher_mapping"
+			android:configChanges="orientation|keyboardHidden"
+			android:launchMode="singleTask" >
+		</activity>
+		<activity
+			android:name="com.futureconcepts.ax.trinity.osm.SelectFileActivity"
+			android:configChanges="orientation|keyboardHidden" >
+		</activity>
+		<activity 
+			android:name="com.futureconcepts.ax.trinity.osm.MapSettingsActivity"
+			android:theme="@android:style/Theme.Black.NoTitleBar"/>
+		<service android:name="com.futureconcepts.ax.trinity.logs.images.SendImageToServer" />
+		<service android:name="com.futureconcepts.ax.trinity.logs.images.DownloadImagesFromServer" />
+		
+		<receiver android:name=".UploadImageReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+			</intent-filter>
+		</receiver>
+		
+		<provider
+			android:name="com.futureconcepts.localmedia.database.DatabaseContentProvider"
+			android:authorities="com.futureconcepts.localmedia.database"
+			android:exported="false" >
+		</provider>
+
+	</application>
+
+</manifest>

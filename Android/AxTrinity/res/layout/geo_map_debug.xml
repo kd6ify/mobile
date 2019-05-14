@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent" >
+	<com.google.android.maps.MapView android:id="@+id/map"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:apiKey="0_Eix--j-tt-2FIg_9XEcbzyn12zg0VSMjEUWrQ" />
+</FrameLayout>

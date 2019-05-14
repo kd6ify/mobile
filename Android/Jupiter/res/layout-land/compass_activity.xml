@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!-- LANDSCAPE LAYOUT -->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="horizontal"
+	android:gravity="top" >
+	<com.futureconcepts.jupiter.compass.CompassRose
+		android:id="@+id/compass_activity_rose"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"/>
+	
+	<!--  ROW 1 -->
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:orientation="vertical">
+			
+		<!-- LOCATION LEFT VALUE -->
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:layout_weight="1"
+			android:orientation="vertical">
+			
+			<TextView android:id="@+id/compass_location_leftvalue_name"
+	    		android:layout_height="wrap_content"
+	    		android:layout_width="wrap_content"
+	    		android:text="Latitude" />
+	    	<TextView android:id="@+id/compass_location_leftvalue"
+	    		android:layout_height="wrap_content"
+	    		android:layout_width="wrap_content"
+	    		android:textAppearance="@style/DatumText"
+	    		android:text="34.100550" />
+	    </LinearLayout>
+			
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:layout_weight="1"
+			android:orientation="horizontal">
+			<!-- LOCATION RIGHT VALUE -->
+			<LinearLayout
+				android:gravity="center_horizontal"
+				android:layout_weight="1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+				
+				<TextView android:id="@+id/compass_location_rightvalue_name"
+				    android:gravity="center_horizontal"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:text="Longitude" />
+		    	<TextView android:id="@+id/compass_location_rightvalue"
+					android:gravity="center_horizontal"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:textAppearance="@style/DatumText"
+		    		android:text="-117.818151" />
+		    </LinearLayout>
+	    
+		     <!-- LOCATION ZONE VALUE -->
+			<LinearLayout
+				android:id="@+id/compass_location_extra_layout"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal"
+				android:layout_weight="1"
+				android:orientation="vertical">
+				
+				<TextView android:id="@+id/compass_location_extra_name"
+				    android:gravity="center_horizontal"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:text="Zone" />
+		    	<TextView android:id="@+id/compass_location_extra"
+					android:gravity="center_horizontal"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:textAppearance="@style/DatumText"
+		    		android:text="10T" />
+		    </LinearLayout>
+		</LinearLayout>  
+
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:layout_weight="1"
+			android:orientation="horizontal">
+		    <!--  LOCATION ERROR -->
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal"
+				android:layout_weight="1"
+				android:orientation="vertical">
+				
+				<TextView android:id="@+id/compass_location_error_name"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:text="Error" />
+		    	<TextView android:id="@+id/compass_location_error"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:textAppearance="@style/DatumText"
+		    		android:text="200m" />
+		    </LinearLayout>
+		    
+			<!--  LOCATION ALTITUDE VALUE -->
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal"
+				android:layout_weight="1"
+				android:orientation="vertical">
+				
+				<TextView android:id="@+id/compass_location_altitude_name"
+				    android:gravity="center_horizontal"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:text="Elevation" />
+		    	<TextView android:id="@+id/compass_location_altitude"
+					android:gravity="center_horizontal"
+		    		android:layout_height="wrap_content"
+		    		android:layout_width="wrap_content"
+		    		android:textAppearance="@style/DatumText"
+		    		android:text="255m" />
+		    </LinearLayout>    	
+	    </LinearLayout>
+  
+  		<!--  SPEED -->
+		<LinearLayout
+			android:gravity="center_horizontal"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			
+			<TextView android:id="@+id/compass_speed_name"
+			    android:gravity="center_horizontal"
+	    		android:layout_height="wrap_content"
+	    		android:layout_width="wrap_content"
+	    		android:text="Speed" />
+	    	<TextView android:id="@+id/compass_speed"
+				android:gravity="center_horizontal"
+	    		android:layout_height="wrap_content"
+	    		android:layout_width="wrap_content"
+	    		android:textAppearance="@style/DatumText"
+	    		android:text="0.0mph" />
+	    </LinearLayout>
+
+		<com.futureconcepts.jupiter.compass.GpsSatBarGraph
+			android:id="@+id/compass_activity_gpssats"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="bottom" />	
+	</LinearLayout>
+</LinearLayout>

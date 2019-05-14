@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <Button
+        style="@style/BigButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/victims"
+        android:onClick="onVictimsClick" />
+    <Button
+        style="@style/BigButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/no_victims"
+        tools:context=".StartActivity"
+        android:onClick="onNoVictimsClick" />
+    <Button
+        style="@style/BigButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/done"
+        tools:context=".StartActivity"
+        android:onClick="onDoneClick" />
+    
+</LinearLayout>

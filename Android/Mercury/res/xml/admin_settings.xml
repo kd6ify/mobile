@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="General">
+        <EditTextPreference android:key="web_service_address"
+        	android:enabled="true"
+        	android:title="Web Service Address"
+        	android:summary="The Web Service Address" 
+        	android:defaultValue="https://tracker.antaresx.net" />
+    		<EditTextPreference android:key="wsus_service_address"
+		  	android:enabled="true"
+        	android:title="WSUS Service Address"
+        	android:summary="The WSUS Service Address" 
+        	android:defaultValue="http://localhost:8529" />
+		<EditTextPreference android:key="phone_number"
+			android:enabled="true"
+			android:title="Phone Number"
+			android:defaultValue="1112222"
+			android:summary="The phone number - just digits" />
+    </PreferenceCategory>
+	<PreferenceCategory android:title="Camera">
+        <EditTextPreference android:key="camera_horizontal_angle"
+        	android:enabled="true"
+        	android:title="Camera Horizontal Angle"
+        	android:summary="Camera Horizonal Angle"
+        	android:defaultValue="62.1" />
+        <EditTextPreference android:key="camera_vertical_angle"
+        	android:enabled="true"
+        	android:title="Camera Vertical Angle"
+        	android:summary="Camera Vertical Angle" 
+        	android:defaultValue="48.2" />
+    </PreferenceCategory>
+	<PreferenceCategory android:title="Compass">
+        <EditTextPreference android:key="compass_offset"
+        	android:enabled="true"
+        	android:title="Compass Offset"
+        	android:summary="Compass Offset" 
+        	android:defaultValue="0" />
+    </PreferenceCategory>
+</PreferenceScreen>

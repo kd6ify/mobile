@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:orientation="vertical" >
+	 <com.futureconcepts.ax.trinity.widget.EditTextWithSearch 
+        android:id="@+id/task_search"
+        android:layout_height="wrap_content"
+        android:hint="Search Tasks..."
+        android:gravity="left"
+        android:layout_width="fill_parent"/>
+	 
+	<TextView android:id="@+id/empty_data"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/task_search"
+		android:gravity="center_horizontal"
+		android:text="No Task Found"
+		android:textSize="24sp" />
+	 
+	<ListView android:id="@android:id/list"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:scrollingCache="false"
+		android:divider="@null"
+		android:layout_below="@+id/task_search"
+		android:dividerHeight="0dp"/>
+</RelativeLayout>
+

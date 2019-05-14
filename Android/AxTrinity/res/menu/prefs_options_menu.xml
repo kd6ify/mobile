@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_select_alert_tone"
+          android:title="Select Alert Tone" />
+    <item android:id="@+id/menu_restart"
+          android:title="Restart services" />
+    <item android:id="@+id/menu_check_update"
+          android:title="Check For Updates" />
+</menu>

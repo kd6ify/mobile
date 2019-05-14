@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:padding="5dp">
+     <TextView
+            android:id="@+id/note_alert_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textColor="#ffffff"
+            android:padding="5dp"
+        	android:background="@drawable/dialogtextborder"
+        	android:textStyle="bold"
+        	android:textSize="17sp" />  
+
+    <ScrollView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".90"
+        android:padding="5dp">
+        <TextView
+            android:id="@+id/note_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="#ffffff"
+            android:padding="5dp"
+        	android:background="@drawable/dialogtextborder"
+        	android:textStyle="bold"
+        	android:textSize="17sp" />       	
+    </ScrollView>
+    <Button
+        android:id="@+id/note_alert_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".10"
+        android:text="Close"/>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+==== AxVideoViewer Change Log ====
+
+VersionCode=3
+	- first QA version
+	- Added Web Service address to new settings
+	
+VersionCode=4
+	- Moved settings into new Settings class
+	- XML format change
+	

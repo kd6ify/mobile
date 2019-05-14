@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="32"
+   height="32"
+   id="svg2">
+  <path
+     d="M 175.56238,221.82544 C 175.56238,263.09914 143.8295,296.55808 104.685,296.55808 C 65.540502,296.55808 33.807617,263.09914 33.807617,221.82544 C 33.807617,180.55174 65.540502,147.0928 104.685,147.0928 C 143.8295,147.0928 175.56238,180.55174 175.56238,221.82544 z"
+     transform="matrix(0.1433253,0,0,0.1433253,1.6807357,-14.567137)"
+     id="path2541"
+     style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:8.26789951;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="M 16.266113,2.0349146 L 13.6529,30.911074 L 16.929195,29.116775 L 20.083648,31.103779 L 17.135563,2.0835711 L 16.722947,1.5610833 L 16.266113,2.0349146 z"
+     id="path3341"
+     style="fill:#1969ff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <circle
+     cx="22.929701"
+     cy="61.0397"
+     r="0.092197903"
+     transform="matrix(3.3231536,0,0,4.0099943,-59.260714,-227.35379)"
+     id="anchor"
+     style="fill:#ff0000;fill-opacity:1;stroke:none" />
+</svg>

@@ -1,0 +1,256 @@
+==== AX Trinity Change Log ====
+
+VersionCode=201 (6.0.151)
+	* comment-out line 256-257 in ViewJournalActivity
+	//	startManagingCursor(_journalEntryMedia = JournalEntryMedia.queryJournalEntryMedia(getApplicationContext(), _journalEntry.getID()));
+	//  ((TextView)view.findViewById(R.id.num_images)).setText(""+_journalEntryMedia.getCount());
+	* comment-out line 164-173 in ViewJournalEntryActivity
+	// else if(vid.type == MY_ITEM_TYPE_IMAGE){
+	//			
+	//	if(!EntryImageObject.images.isEmpty()){
+	//		result = getImageView(vid,getApplicationContext(),EntryImageObject.images);					
+	//				
+	//	}else
+	//	{
+	//		result = getImageView(vid,getApplicationContext(),EntryImageObject.images);
+	//	}
+	//}
+	Mantis: 8624
+
+VersionCode=200 (6.0.150)
+	* Comment-out line 225 in JournalListActivity:
+			//get all media for the Journal
+			//	int total = getTotalMediaOfJournal(context);				
+			//    ((TextView)view.findViewById(R.id.num_images)).setText(""+total);
+			//  Log.d("ViewJournal","I get This value of media: "+ total);
+		
+VersionCode=199 (6.0.149)
+	* fix bug in syncprogressview in Launcher
+	Mantis: 8605
+	
+VersionCode=198 (6.0.148)
+	* Caesar's log images changes
+	
+VersionCode=197 (6.0.147)
+	* update android support library v4
+	* rebuilt with latest android platform tools
+	* fix query string
+	Mantis: 8334
+	 
+VersionCode=196 (6.0.146)
+	* MainMapActivity launchMode="singleTask"--this solves the issue of a chained activity stack
+		such as MainMapActivity->ViewAsset->MainMapActivity->ViewAsset
+	Mantis: 8361
+	* Update asset list header count when data changes
+	Mantis: 8339
+	
+VersionCode=195 (6.0.145)
+	* Show "ghost" assets in the Equipment or Personnel layers
+		- easy fix: just do an LEFT OUTER JOIN (instead of INNER JOIN) on Equipment (or User)
+		- was already doing a query on Asset.Status=UNKNOWN
+	* Update version #
+	Mantis: 8335
+	
+VersionCode=194 (6.0.144)
+	* Aligned Equipment and Personnel overlays on map with the desktop MIM
+		- assets are now considered using Asset.CheckInTime and Asset.CheckoutTime
+			relative to NOW.
+	Mantis: 8280
+	* Added total # of equipment to equipment list
+	Mantis: 7523
+			
+VersionCode=193 (6.0.143)
+	* CurrentIncidentID and CurrentOperationalPeriodID are now managed by Mercury
+	Mantis: 8321
+	
+VersionCode=192 (6.0.142)
+	* Restore Latitude/Longitude and zoom level in geo.MainMapActivity when orientation changes
+		- there was existing code to handle this, but there was a bug that prevent the code from working
+			correctly. 
+	Mantis: 7639
+	* Fix crash when tapping on priority in EditJournalEntryActivity
+	Mantis: 8308
+	
+VersionCode=191 (6.0.141)
+	* Moved "Reset Data" menu item in LauncherActivity to AxSync SyncLogActivity
+	Mantis: 8225
+	* Hide the Incident/Operational Period select buttons in Launcher while a sync operation is in progress.
+		- While trying to repro mantis 8173, I found that if I selected an incident while a sync operation
+			was in progress the sync service got in a bad state.  
+	Mantis: 8173
+	* Fix regular task query in MainMapActivity--regular tasks in the current operational period
+	Mantis: 7644
+	* Add Source when viewing log entries (ViewJournalEntryActivity)
+	Mantis: 8240
+	* Fix typo in ViewAssetActivity (Checkin to Check-in)
+	Mantis: 7675
+	* Change title of triage.ViewCasualtyActivity to "Triage Casualty Information"
+	Mantis: 7944
+	* Changed ViewCollectionActivity title to "Collective: <callsign>"
+	Mantis: 7678
+	* Changed title of ViewAddressActivity to "Address Details"
+	Mantis: 7677
+	* Add Personnel Type to ViewAssetActivity
+	Mantis: 6751
+	* Removed Address Type from ViewAddressActivity
+	Mantis: 5906
+	* Show Add/Edit title in EditJournalActivity
+	Mantis: 6204 
+	
+VersionCode=190 (6.0.140)
+	* Add priority to logs (JournalEntry)
+		- changes to ViewJournalEntryActivity, EditJournalEntryActivity, JournalEntryPriorityBinding
+			simple_list_item_3
+	Mantis: 8249
+	
+VersionCode=189 (6.0.139)
+	* Fix crash in ViewItemActivity.getAddressView()
+		- for some reason, an asset had a reference to an address that wasn't sync'd yet
+			in that case just don't crash, just return "None" as the address until the address
+			is synced.  Note: this situation should not occur.  I suspect there may be an issue
+			with the launcher that was allowing a user to view assets before the incident was 
+			completely synced.
+	Mantis: 7809
+	
+VersionCode=188 (6.0.138)
+	* Fix crash in AxTrinity when no incident selected, user taps Mapping, then taps "Home"
+		at "Please select Incident" dialog
+	Mantis: 7865
+	
+VersionCode=187 (6.0.137)
+	* Align main activity titles
+	Mantis: 7765
+	* Fix crash in TriageARDemoActivity when device has no camera support
+	* Fix handling of main activities when no incident has been selected
+	Mantis: 7865
+	* popups in activities are not cancelable.  Users can't tap outside dialog.
+	Mantis: 7864
+	* Significant UI changes to Trinity Launcher activity
+		- Added sync progress view that is displayed (activity icons hidden)
+			when a required sync operation is being performed.  Currently, the
+			only required sync operations are for initial static data sync (like after a fresh install)
+			and when an incident is changed.
+	* Added confirmation dialog when deleting log entry in ViewJournalEntryActivity
+	Mantis: 7839, 6029
+	* call startSyncing() in IncidentSelectorActivity.doSelectIncident
+	Mantis: 7809
+	* Removed "ON"/"OFF" text from ViewTasksMainActivity
+	Mantis: 7774
+	
+VersionCode=183 (6.0.133)
+	* Added auto-refresh to JournalListActivity & ViewJournalActivity
+	Mantis: 7756, 7757
+	* refresh menu on equipment assets
+	Mantis: 7754
+	* refresh menu on personnel assets
+	Mantis: 7753
+	
+VersionCode=182 (6.0.132)
+	* Catch exception caused by TriageObserver _deferredRunnable firing after the
+		TriageObserver was unregistered.
+	Mantis: 7745
+	
+VersionCode=181 (6.0.131)
+	* Catch exception caused by AssetObserver _deferredRunnable firing after the
+		AssetObserver was unregistered.
+	Mantis: 7718, 7720
+	* Added auto-refresh sync to UserListActivity
+	Mantis: 7725
+	* Added auto-refresh sync to EquipmentListActivity
+	Mantis: 7724
+	* Enabled Refresh menu item in EquipmentListActivity
+	Mantis: 7641
+	* Added auto-refresh sync to ViewTasksMainActivity
+	Mantis: 7723
+	
+VersionCode=180 (6.0.130)
+	* Remove syncing pop-up from Launcher, except for initial (StaticDataSet) synchronization.
+	Mantis: 7683, 7558
+	* Added synchronization auto-refresh to MainMapActivity on a 1-minute interval.
+	
+VersionCode=179 (6.0.129)
+	* Fix crash in MapMapActivity--IncidentObserver fired when _incident cursor was closed
+		- added code to prevent this from happening and added try/catch around IncidentObserver.defferedRunnable
+	Mantis: 7594
+	
+VersionCode=178 (6.0.128)
+	* Use new icons for toggling between priority tasks and regular tasks in ViewTaskMainActivity
+	Mantis: 6501
+	* Show new "No network connectivity." popup dialog during failed sync operations.  This
+		- will give users the ability to retry sync immediately or wait until it's rescheduled.
+	Mantis: 7496
+	
+VersionCode=177 (6.0.127)
+	* Don't filter equipment by operational period
+	Mantis: 7534
+	* attempt to fix glitchy zoom controls in mapping (uses joined queries)
+	Mantis: 7549
+	* ViewAddressActivity now has a "Show on Map" menu item
+	Mantis: 7548
+	* Don't cancel launcher activity when "syncing..." dialog is shown and user
+		taps outside the dialog box.
+	Mantis: 6840
+	
+VersionCode=176 (6.0.126)
+	* Fix exported/signed build problem manifesting as MainMapActivity not working.
+	- This is a known Android ADT problem that doesn't appear to be fixed yet, but there is a workaround.
+	http://code.google.com/p/android/issues/detail?id=27940
+	Mantis: 7524, 7526
+	
+VersionCode=175 (6.0.125)
+	* fix bug in new WKT to Point code had bug (reverse X/Y)
+	Mantis: 7524
+	* "syncing..." popup dialog remains when sync service is rescheduled to run later
+		(i.e. when the network is unreachable (lost connectivity))
+	Mantis: 7496
+	* initial configuration now syncs schemas for all incident tables.  This
+		should prevent, once and for all, the occasional "Table X not found" exception.
+	* use joined query in IncidentSelectorActivity--should improve performance
+	
+VersionCode=174 (6.0.124)
+	* Use new optimizations (joined query) in EquipmentListActivity
+	
+VersionCode=173 (6.0.123)
+	* draw highlight selector on top of log list item when user taps on it
+	Mantis: 7012
+	* layout changes to ViewMasterJournalActivity
+	Mantis: 6857
+	* Fix bug in AssetListActivity causing wrong Asset types to be shown:
+		- If asset has a Equipment or User reference, use Equipment.Type or User.Type
+			instead of Asset.EquipmentType or Asset.UserType
+	Mantis: 6834
+	
+VersionCode=172 (6.0.122)
+	* Fix normal tasks not showing
+	Mantis: 7497
+	* Restrict triage tracking id to a single line
+	Mantis: 7511
+	* Make clickable address items more readable (use Deanna's latest arrow graphic)
+	Mantis: 7482
+	* Fix Tracking ID not getting refreshed after edit
+	Mantis: 7498, 6987
+	* Prevent resync everytime you return to launcher activity
+	Mantis: 7495
+	* Use "Log Time" instead of "Journal Time"
+	Mantis: 6860
+	* Added Refresh menu option to ViewMasterJournalActivity
+	Mantis: 6858
+	
+VersionCode=171 (6.0.121)
+	* Fix crash in Heads-Up caused by a namespace change during refactoring.
+	Mantis: 7481
+	* Added "Messenger" icon to launcher--linked to DrakeUI
+	Mantis: 7480
+	* Fix orientation change problems with Tasks
+	Mantis: 7133
+	
+VersionCode=170 (6.0.121)
+	* Unfiltered Triage (COLOR not selected in CasualtyListActivity) now filter by Incident ID
+	Mantis: 7485
+	* Sort Triage casualties by Triage.COLOR (Guid ascending) consistently
+	Mantis: 7484
+	* Fix synchronizer issue caused by last sync version (change tracking) not getting reset
+		on incident changes
+
+VersionCode=169 (6.0.120)
+	* Forked from Trinity Version=168

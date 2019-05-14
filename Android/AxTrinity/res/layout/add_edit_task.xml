@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:id="@+id/spinnersText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >        
+     	<TextView
+       		android:id="@+id/textView1"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:text="Operational Period"
+        	android:textAppearance="?android:attr/textAppearanceMedium" />
+    	<TextView
+        	android:id="@+id/textView2"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+       		android:text="Type"
+         	android:layout_weight="1"
+        	android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/spinnersText"
+        android:id="@+id/spinnerContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/spinnerOperationalPeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/spinnerTaskType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+     	
+    </LinearLayout>
+    <com.futureconcepts.ax.trinity.widget.EditTextWithClearButton
+        android:id="@+id/taskName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinnerContainer"
+        android:layout_below="@+id/spinnerContainer"
+        android:paddingLeft="15dp"
+        android:hint="Task Name (Required Field)"
+        android:ems="10" />
+    
+<!--     <LinearLayout -->
+<!--         android:id="@+id/timesText" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:orientation="horizontal"  -->
+<!--         android:layout_below="@+id/editText1">         -->
+
+<!--      	<TextView -->
+<!--      	    android:layout_width="wrap_content" -->
+<!--      	    android:layout_height="wrap_content" -->
+<!--      	    android:layout_weight="1" -->
+<!--      	    android:text="Start Time" -->
+<!--      	    android:textAppearance="?android:attr/textAppearanceMedium" /> -->
+
+<!--     	<TextView -->
+<!--     	    android:layout_width="wrap_content" -->
+<!--     	    android:layout_height="wrap_content" -->
+<!--     	    android:layout_weight="1" -->
+<!--     	    android:text="End Time" -->
+<!--     	    android:textAppearance="?android:attr/textAppearanceMedium" /> -->
+<!--     </LinearLayout> -->
+    
+     <LinearLayout
+        android:id="@+id/timesContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:layout_below="@+id/taskName">
+
+         <com.futureconcepts.ax.trinity.widget.EditTextWithDateSelection
+             android:id="@+id/task_start_time"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:maxLength="16"
+             android:gravity="bottom|center_horizontal"
+             android:inputType="datetime"
+             android:hint="Start Time" />
+
+         <com.futureconcepts.ax.trinity.widget.EditTextWithDateSelection
+             android:id="@+id/task_end_time"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="bottom|center_horizontal"
+             android:inputType="datetime"
+             android:maxLength="16"
+             android:hint="End Time" />	
+    </LinearLayout>
+
+      <TextView
+         android:id="@+id/textView3"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/timesContainer"
+         android:layout_below="@+id/timesContainer"
+         android:text="Requires"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+     
+     <CheckBox
+         android:id="@+id/checkBoxRadio"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/timesContainer"
+         android:layout_below="@+id/textView3"
+         android:text="Radio" />
+
+      <LinearLayout
+        android:id="@+id/vehicleContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:layout_below="@+id/checkBoxRadio">
+     	<CheckBox
+         	android:id="@+id/checkBoxVehicle"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"         	
+         	android:text="Vehicle" />
+
+     	 <com.futureconcepts.ax.trinity.widget.EditTextWithClearButton
+     	    android:id="@+id/editTextVehicle"
+     	    android:layout_width="fill_parent"
+     	    android:layout_height="wrap_content"     	   
+     	    android:layout_marginLeft="5dp"
+     	    android:hint=""
+     	    android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/otherContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:layout_below="@+id/vehicleContainer">
+     	<CheckBox
+        	android:id="@+id/checkBoxOther"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:text="Other" />
+
+     	 <com.futureconcepts.ax.trinity.widget.EditTextWithClearButton
+     	    android:id="@+id/editTextOther"
+     	    android:layout_marginLeft="5dp"
+     	    android:layout_width="fill_parent"
+     	    android:visibility="gone"
+     	    android:hint=""
+     	    android:layout_height="wrap_content"/>
+
+     </LinearLayout>
+     
+    <LinearLayout
+        android:id="@+id/addressContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:layout_below="@+id/otherContainer">
+         <TextView
+             android:id="@+id/task_address_text"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Address (Acquiring Your Current Location)"
+             android:textAppearance="?android:attr/textAppearanceLarge" />
+         
+    	 <LinearLayout
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="horizontal" 
+        	android:layout_below="@+id/timesContainer">
+        	<TextView
+             android:id="@+id/task_lat"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:text="Lat: none"/>
+        	<TextView
+             android:id="@+id/task_long"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+              android:layout_weight="1"
+             android:text="Long: none" />
+        </LinearLayout>
+         
+     </LinearLayout>
+
+    <com.futureconcepts.ax.trinity.widget.EditTextWithClearButton
+         android:id="@+id/task_notes"
+         android:hint="Description"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/addressContainer"
+         android:inputType="textMultiLine" 
+         android:maxLength="60"/> 
+     
+<!--      <LinearLayout -->
+<!-- 		android:orientation="horizontal" -->
+<!-- 	    android:layout_width="fill_parent"  -->
+<!-- 	    android:layout_height="40sp" -->
+<!-- 	    android:gravity="center"  -->
+<!-- 	    android:layout_alignParentBottom="true"> -->
+<!-- 		<ImageButton android:id="@+id/menu_bar" -->
+<!-- 			android:layout_width="wrap_content" -->
+<!-- 			android:layout_height="fill_parent" -->
+<!-- 			android:scaleType="fitCenter" -->
+<!-- 			android:background="@android:color/transparent" -->
+<!-- 			android:src="@drawable/menu_bar" /> -->
+<!-- 		<ImageButton android:id="@+id/back_bar" -->
+<!-- 			android:layout_width="wrap_content" -->
+<!-- 			android:layout_height="fill_parent" -->
+<!-- 			android:scaleType="fitCenter" -->
+<!-- 			android:background="@android:color/transparent" -->
+<!-- 			android:src="@drawable/back_bar" -->
+<!-- 			android:onClick="goBack" /> -->
+<!-- 	</LinearLayout> -->
+    
+</RelativeLayout>

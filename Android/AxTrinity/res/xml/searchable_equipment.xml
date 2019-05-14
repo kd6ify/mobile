@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<searchable xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:label="@string/equipment_search_label"
+	android:hint="@string/equipment_search_hint" 
+	android:searchSettingsDescription="@string/equipment_search_description"
+	android:searchSuggestAuthority="com.futureconcepts.provider.equipment" 
+	android:searchSuggestIntentAction="android.intent.action.VIEW"
+	android:includeInGlobalSearch="true" >
+</searchable>

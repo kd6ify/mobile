@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <ListPreference android:key="distance_format"
+            android:title="Distance Format"
+            android:summary="Specify the unit when showing distances"
+            android:entries="@array/distance_format"
+            android:entryValues="@array/distance_format_values"
+            android:defaultValue="meters"
+            android:dialogTitle="Distance Format" />
+        <ListPreference android:key="velocity_format"
+            android:title="Velocity Format"
+            android:summary="Specify the unit when showing speed"
+            android:entries="@array/velocity_format"
+            android:entryValues="@array/velocity_format_values"
+            android:defaultValue="mph"
+            android:dialogTitle="Velocity Format" />
+        <ListPreference android:key="location_format"
+            android:title="Location Format"
+            android:summary="Specify the coordinate format to use when showing location"
+            android:entries="@array/location_format"
+            android:entryValues="@array/location_format_values"
+            android:defaultValue="degrees"
+            android:dialogTitle="Location Format" />
+        <CheckBoxPreference android:key="follow_me"
+        	android:title="Follow Me"
+        	android:summaryOff="Don't auto center map on my Location"
+        	android:summaryOn="Center map on my location"
+        	android:defaultValue="false" />
+     <CheckBoxPreference android:key="true_north" android:title="Use True North" android:summaryOn="Compass points to Geographic North" android:summaryOff="Compass points to Magnetic North" android:defaultValue="true"></CheckBoxPreference>
+</PreferenceCategory>
+</PreferenceScreen>

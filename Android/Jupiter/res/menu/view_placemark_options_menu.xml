@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_edit"
+		android:title="Edit" 
+		android:icon="@android:drawable/ic_menu_edit" />
+	<item android:id="@+id/menu_delete"
+		android:title="Delete"
+		android:icon="@android:drawable/ic_menu_delete" />
+	<item android:id="@+id/menu_goto_using_compass"
+		android:title="Goto Using Compass" />
+    <item android:id="@+id/menu_location_format" android:title="Location Format">
+    	<menu>
+		    <group android:checkableBehavior="single" android:menuCategory="container">
+			    <item android:id="@+id/menu_location_format_degrees"
+			          android:title="Degrees" />
+			    <item android:id="@+id/menu_location_format_minutes"
+			          android:title="Minutes" />
+			    <item android:id="@+id/menu_location_format_seconds"
+			          android:title="Seconds" />
+			    <item android:id="@+id/menu_location_format_utm_nad27_conus"
+			          android:title="UTM NAD27 CONUS" />
+			</group>
+		</menu>
+    </item>
+	<item android:id="@+id/menu_goto_location"></item>
+</menu>

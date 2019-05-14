@@ -1,0 +1,27 @@
+==== AX Rex Change Log ====
+
+VersionCode=6
+	* Added ViewIncidentRequestActivity, which is launched when you tap on a request item in MainActivity
+	Mantis: 7531
+	
+VersionCode=5
+	* Replaced VerifyLocationActivity with MainMapActivity
+		- this gives the user the ability to attach a location to the
+		- incident request by tapping on a map
+		
+VersionCode=4 (0.0.4)
+	* new ic_launcher (Home Screen) icons
+	Mantis: 7493
+	* Show "Syncing..." pop when data is being synced.
+		If AxRex is launched for the first time, it would appear blank
+	Mantis: 7492
+	* Added "Refresh" menu item
+	
+VersionCode=3 (0.0.3)
+	* Fix crash - Use permission READ_PHONE_STATE
+	* Hide the "Create Incident Request" button until all basic tables have been synced.
+	
+VersionCode=2 (0.0.2)
+	* First version
+	
+	

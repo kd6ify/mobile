@@ -1,0 +1,63 @@
+==== DrakeUI (AntaresX Global Messenger (Chat) for Android) Change Log ====
+
+VersionCode=12 (0.12)
+	* Update UserPresenceView when server connection state changes.
+	Mantis: 7685
+	
+VersionCode=11 (0.11)
+	* remove signout menu item from ContactListActivity
+		- this is a hangover from the gibberbot fork and DrakeUI should not
+			signout from the chat service because other FC application
+			may need to use the service.
+	Mantis: 8056, 7945
+			
+VersionCode=10 (0.10)
+	* re-export build.  Corrupted?
+	
+VersionCode=9 (0.9)
+	* fixes to UI when connection to server goes up/down
+	
+VersionCode=8 (0.8)
+	* NewChatActivity was not detecting when connection to service is lost and losing pending messages.
+		- added BroadcastReceiver to NewChatActivity to receive DrakeIntent.EVENT_CONNECTION_SUSPENDED and
+			DrakeIntent.EVENT_CONNECTION_LOGGED_IN intents.
+	Mantis: 7694, 7693, 7668, 7557
+	* Update user state in NewChatActivity when returning from ContactPresenceActivity
+	Mantis: 7823
+	* Removed delivery icon status (we currently aren't support message receipts)
+	Mantis: 7536
+	
+VersionCode=7 (0.7)
+	* Disabled file tranfer for now.  Recent changes are almost complete, just need fine tuning and
+		developer testing.
+		
+VersionCode=6 (0.6)
+	* Remove option to delete contact
+	Mantis: 7539
+	
+VersionCode=5 (0.5)
+	* Fix confusing/broken incoming file transfer request message
+	Mantis: 7370
+	* Fix text color of incoming file transfer status messages
+	Mantis: 7371
+	
+VersionCode=4 (0.4)
+	* Fix crash when a remote user invites user running DrakeUI to a chat room
+	Mantis: 7369, 7363
+	
+VersionCode=3 (0.3)
+	* MessengerServiceConnection stability improvements
+	
+VersionCode=2 (0.2)
+	* bug fixes to service binder stuff
+	Mantis: 7302
+	* Fix typo in Manifest -- added SettingActivity back
+	Mantis: 7300
+	* Fix crash when starting chat group chat
+	Mantis: 7301
+	
+VersionCode=1 (0.1)
+	* Split Drake into two applications: Drake and DrakeUI
+		- Drake is the XMPP service component
+		- DrakeUI is the UI component
+	darnold

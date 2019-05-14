@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<states>
+	<record ID="97d956a8-ec39-4076-b8fc-10ab4d3edbaa" Name="Alabama"/>
+	<record ID="caceb509-f427-4a09-83f7-6a2040690a26" Name="Alaska"/>
+	<record ID="83d9139b-b1ea-4b8a-8d44-313e5412af55" Name="Arizona"/>
+	<record ID="1d5eb0b7-2d3a-4878-b570-5a78d9f9eaab" Name="Arkansas"/>
+	<record ID="df7caa6b-d08d-4fda-9d31-7640391ce85e" Name="California(Northern)"/>
+	<record ID="140bbe98-d8be-4895-948c-8cdf00453f74" Name="California(Southern)"/>
+	<record ID="079a3103-8584-4260-9344-fe184f786b90" Name="Colorado"/>
+	<record ID="fa43ccaf-2c71-4270-8ea9-b95b8364a055" Name="Connecticut"/>
+	<record ID="6069cabd-e1cf-4253-9a06-36746f8d8c11" Name="Delaware"/>
+	<record ID="8f5f285c-6a79-446e-8e17-8b3690206866" Name="District of Columbia"/>
+	<record ID="0a31fa5a-9fb9-4946-ab18-30991cb81c59" Name="Florida"/>
+	<record ID="18fafacc-38ca-4933-8e47-955200e162ad" Name="Georgia"/>
+	<record ID="789669b6-5146-4dc7-aed0-5eae1cb5c09f" Name="Hawaii"/>
+	<record ID="263e44c1-e77c-417d-8704-28ce4ae39f29" Name="Idaho"/>
+	<record ID="f2a35489-1d14-465d-9315-6ec8cf97ba09" Name="Illinois"/>
+	<record ID="b93990d7-d2bf-46a4-8ea6-08e95943ab63" Name="Indiana"/>
+	<record ID="3cb4b9b6-7189-4e73-b20a-409bce53c7ab" Name="Iowa"/>
+	<record ID="85be3355-d8f8-4222-94af-e185376e9a3a" Name="Kansas"/>
+	<record ID="a663e0f3-8612-41af-b7f3-c0e6d46707e8" Name="Kentucky"/>
+	<record ID="a3e4be28-d128-4f33-9d3b-edc5f7327caa" Name="Louisiana"/>
+	<record ID="8785fa25-5c99-4422-b9fc-89af449d389d" Name="Maine"/>
+	<record ID="605e598e-6e1e-472e-ba39-b1284dbb7f95" Name="Maryland"/>
+	<record ID="e4c56a1c-ad28-4c0c-ab0c-668dd20929ca" Name="Massachusetts"/>
+	<record ID="0b4d761c-ad14-44f9-8bfe-059608ae20fa" Name="Michigan"/>
+	<record ID="4ded6a14-19d6-46c8-8010-4c9e928e1ce2" Name="Minnesota"/>
+	<record ID="106e1e42-3a35-42cc-93ad-bd018dcb5670" Name="Mississippi"/>
+	<record ID="926609fc-f9d1-4a2c-847e-c85d1108bf00" Name="Missouri"/>
+	<record ID="84346d65-5fe3-4862-8fff-3ba56adfce6a" Name="Montana"/>
+	<record ID="4d27da18-36e6-4f8c-a5f4-16867a7f307e" Name="Nebraska"/>
+	<record ID="993ab720-debf-4fa0-9ced-9dd0c5e94d43" Name="Nevada"/>
+	<record ID="f8fd7226-aeb9-43b7-b496-6f086f20fb1d" Name="New Hampshire"/>
+	<record ID="239f773f-1f72-4a92-a82a-1252ba32ffcc" Name="New Jersey"/>
+	<record ID="789291bb-aa39-4b0b-a036-ea33216870b5" Name="New Mexico"/>
+	<record ID="463f8cc4-4afe-44f7-adc5-9e992377f847" Name="New York"/>
+	<record ID="9ccba9b2-8aa2-4ae0-844e-1bb4745cf275" Name="North Carolina"/>
+	<record ID="2d8acddd-eb59-4fb2-aaf4-d66c709500ff" Name="North Dakota"/>
+	<record ID="7f75db2e-1285-4185-816e-ffc0213b605e" Name="Ohio"/>
+	<record ID="cf131184-1ee7-496a-98ab-ebbdfa01a6cd" Name="Oklahoma"/>
+	<record ID="5b8fb69a-f3ed-4ec2-b981-ab20ca3fb21c" Name="Oregon"/>
+	<record ID="746879ed-8d3e-47bd-b828-e6146a7ac568" Name="Pennsylvania"/>
+	<record ID="f97f9244-6cc6-4fe5-b40c-ed70568957e1" Name="Rhode Island"/>
+	<record ID="b3f9dbbe-88c9-4036-94ea-6c88b6f77a82" Name="South Carolina"/>
+	<record ID="d4dfefdc-0c79-4375-b7f6-91e91bdb6026" Name="South Dakota"/>
+	<record ID="60d9ac55-b9fd-4c16-a44c-123b40462558" Name="Tennessee"/>
+	<record ID="7b4771eb-18e5-44b5-81b0-aaddc5bbaf7d" Name="Texas"/>
+	<record ID="a946af77-bd4e-4f22-a724-398a978ae3b8" Name="Utah"/>
+	<record ID="c96d6182-58e1-4d4c-a557-697081d4a6c5" Name="Vermont"/>
+	<record ID="6b2b095e-edb2-43c2-8545-1664e5629718" Name="Virginia"/>
+	<record ID="63375b79-c3fd-4509-bde5-b5ed3cd00d7a" Name="Washington"/>
+	<record ID="12ba7f73-9a1b-40b2-8846-8954f0e7348c" Name="West Virginia"/>
+	<record ID="ae1a862c-223b-493a-a7af-b5fd0060df9b" Name="Wisconsin"/>
+	<record ID="8b80b382-16be-4ff8-a755-587ebd9ce1c5" Name="Wyoming"/>
+</states>

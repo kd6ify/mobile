@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent" >
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Tracking ID:" />
+		<EditText android:id="@+id/text1"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:gravity="left" />
+	</LinearLayout>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Color:" />
+	     <Spinner android:id="@+id/color"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:prompt="@string/select_triage_color" />
+	</LinearLayout>
+        <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Status:" />
+	     <Spinner android:id="@+id/status"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:prompt="@string/select_triage_status" />
+	</LinearLayout>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+    <LinearLayout
+        android:orientation="vertical"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:padding="5sp" >
+		<TextView
+		  	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		  	android:text="Gender:" />
+		<Spinner android:id="@+id/gender"
+		  	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		  	android:prompt="@string/select_gender" />
+	</LinearLayout>
+</LinearLayout>

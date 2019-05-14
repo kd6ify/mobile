@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.futureconcepts.mercury"
+      android:versionCode="54"
+      android:versionName="0.0.54">
+      
+    <uses-sdk android:targetSdkVersion="8" android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<!--     <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM" /> -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />    
+    <uses-permission android:name="com.googlecode.asmack.intent.XMPP.STANZA.RECEIVE" />
+    <uses-permission android:name="com.googlecode.asmack.intent.XMPP.STANZA.SEND" />
+      
+    <application android:icon="@drawable/icon" android:label="@string/app_name" >
+		<activity android:name=".main.SettingsActivity" android:label="AX Settings" android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity android:name=".main.AdminSettings" android:label="Admin Settings">
+        </activity>
+		<activity android:name=".main.DownloadConfigurationActivity" android:label="Download Configuration">
+        </activity>
+		<activity android:name=".main.SetPasswordActivity" android:label="Set Password">
+        </activity>
+		<activity android:name=".main.SetXmppPasswordActivity" android:label="Set XMPP Password">
+        </activity>
+         <activity android:name="com.futureconcepts.mercury.maps.DownloadMapFileActivity"
+         	 android:label="Download map files" 
+         	 android:configChanges="orientation"/>
+		<service android:name="com.futureconcepts.mercury.maps.DownloadMapFileService" />
+		<activity android:name=".update.CheckUpdateActivity" android:label="Check Update">
+        </activity>
+        <receiver android:name=".update.DownloadCompleteReceiver" android:label="Update Download Receiver" >
+            <intent-filter>
+				<action android:name="com.futureconcepts.mercury.intent.action.DOWNLOAD_COMPLETED" />
+            </intent-filter>
+        </receiver>
+		<activity android:name=".update.ViewDownloadStateActivity" android:label="View Download State">
+        </activity>
+        <provider android:name="com.futureconcepts.mercury.download.DownloadProvider"  android:authorities="com.futureconcepts.downloads" />
+        <provider android:name="com.futureconcepts.mercury.provider.SettingsProvider" android:authorities="com.futureconcepts.settings" />
+        
+        <service android:name=".download.DownloadService" />
+        <receiver android:name=".download.DownloadReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".sync.ShowQueueErrorActivity" android:label="Queue Error" >
+        </activity>
+        
+        <activity android:name=".sync.ShowSyncUpdateActivity" android:label="Show Sync Update" >
+        </activity>
+        		
+        <activity android:name=".main.StatusWidgetDispatchActivity" android:label="Status Dispatch" >
+        </activity>
+  		<receiver android:name=".main.StatusWidget" android:label="AntaresX Status" >
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data android:name="android.appwidget.provider"
+				android:resource="@xml/status_widget_info" />
+		</receiver>
+        <service android:name=".main.StatusWidget$UpdateService" />
+        <receiver android:name=".main.StatusWidget$UpdateService$Receiver" android:label="Status Widget Update Receiver" >
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+				<action android:name="com.futureconcepts.action.STATE_CHANGED" />
+			</intent-filter>
+		</receiver>        
+
+		<receiver android:name=".main.PhoneNumberWidget" android:label="AntaresX Phone Number" >
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data android:name="android.appwidget.provider"
+				android:resource="@xml/phone_number_widget_info" />
+		</receiver>
+        <service android:name=".main.PhoneNumberWidget$UpdateService" />
+        <receiver android:name=".main.PhoneNumberWidget$UpdateService$Receiver" android:label="Phone Number Widget Update Receiver" >
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+				<action android:name="com.futureconcepts.action.STATE_CHANGED" />
+			</intent-filter>
+		</receiver>
+		
+        <service android:name=".tracker.TrackerService" android:label="Tracker Service"	/>
+        <receiver android:name=".tracker.TrackerService$Receiver" >
+	      	<intent-filter>
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+        <service android:name=".tracker.TrackerQueueService" android:label="Tracker Queue Service"	>
+  			<meta-data android:name="QueueUri" android:value="content://com.futureconcepts.provider.gqueue/queue/tracker_outbound">
+  			</meta-data>
+		</service>
+        <receiver android:name="com.futureconcepts.mercury.tracker.TrackerQueueService$Receiver" >
+	      	<intent-filter>
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+
+        <activity android:name=".tracker.ToggleActivity" android:label="Change Tracker State"
+        	android:taskAffinity=""
+        	android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity android:name=".main.LegalInfoActivity" android:label="Legal Information"
+        	android:configChanges="orientation|keyboardHidden" >
+        </activity>
+      
+        
+		<receiver android:name="com.futureconcepts.mercury.tracker.ControlReceiver" android:label="Tracker Control Receiver" >
+			<intent-filter>
+				<action android:name="com.futureconcepts.action.tracker.START" />
+				<action android:name="com.futureconcepts.action.tracker.STOP" />
+				<action android:name="com.futureconcepts.action.tracker.SET_MODE" />
+			</intent-filter>
+		</receiver>        
+        <provider android:name="com.futureconcepts.mercury.provider.GQueueProvider" 
+        	android:authorities="com.futureconcepts.provider.gqueue" />
+    </application>
+
+</manifest> 

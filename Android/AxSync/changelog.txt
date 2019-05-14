@@ -1,0 +1,196 @@
+==== AX Sync Change Log ====
+Version Code =33 (0.0.33)//This change happends on Branch 
+	-Added string name="query_distinct_user_tactic_list".
+	-Added Package com.futureconcepts.ax.sync.tablevalidators
+	-Added ITableValidate.java, TableData.java, TableValidatorJournalEntryMedia.java
+	-SyncTransaction.java updated:
+		-Create ITableValidator inside setTable method.
+		-Added createValidator method.
+		-Save queries inside handleSync method.
+		-Added method  validateContent();
+		-validateContent is called inside handleInserts method.
+	
+
+Version Code =32 (0.0.32)
+	-Added AddressExtraInfo table to AxModel.
+	-Added IncidentJournalEntryAddress to IncindetJournalDataSet on AxModel.
+
+Version Code =31 (0.0.31)
+	-Added Drawing, IncidentDrawing,DrawingAddress Tables to AxModel.
+	
+Version Code =30 (0.0.30)
+	-removed  android:debuggable="true" property from manifest.
+	JIRA:TKTRIN-58:
+		-removed call to abort and clearQueue methods in SyncManager.java deleteDataset Method
+		-removed call to clearQueue method in SyncManager.java  setCurrentIncidentId method
+
+Version code=29 (0.0.29)
+	2/3/2013
+	* Fixed bug where tables LastSyncVersion was getting set on an abort transaction
+		Added if (_aborted == false) to SyncTransaction.java:533
+	darnold
+	Mantis: 8805
+	
+Version code=28 (0.0.28)
+	1/13/2014
+	* When SyncManager.deleteDataSet() is invoked, first clear the sync queue and abort any current SyncTransaction
+		- When a new Incident is selected via IncidentSelectorActivity, SyncManager.deleteDataSet() is invoked
+			before the new IncidentDataSet is synced.
+		- This change should fix the missing sync progress view described in Mantis 8969
+	Mantis: 8969
+	darnold
+
+VersionCode=27 (0.0.27)
+	* Modify String resource querys for UserList and equipment list.. change Outer Join with Inner Join.
+
+VersionCode=26 (0.0.26)
+	* Add dropTable to sync service and ResetData now calls dropTable instead of deleteTable
+		- the ICDBProvider only drops the table if drop=true is passed in on the where clause
+		- dropping the table during resetdata events will help ensure
+			that schema state stays in sync when schema changes are made on the backend.
+			It will also provide a means for recovery when the database or database schema
+			become corrupted for whatever reason.
+			
+VersionCode=25 (0.0.25)
+	* fix bug in SyncLocActivity where it was using the "AllTablesDataSet" to delete tables instead of
+		StaticDataSet.  AllTablesDataSet is deprecated and does not contain all tables.
+
+VersionCode=24 (0.0.24)
+	* removed code in IncidentDataSet AxModel
+		addItem(new IncidentDataSetTable("IncidentJournalEntry", Address.CONTENT_URI));
+		addItem(new IncidentDataSetTable("Media", Address.CONTENT_URI));
+	Mantis:8763,8800
+
+VersionCode=23 (0.0.23)
+	* removed code in ICDBProvider.delete(whereClause.equals("Media="))
+	Mantis: 8623
+	
+VersionCode=22 (0.0.22)
+	* Fix imcomplete incident data bug
+		- handle IOException during HTTP transaction during sync operation, such as connection timeout
+			this was causing incomplete incident data, i.e. not all personnel were showing in the roster
+		- exceptions were handled at two low of a level in SyncTransaction and SyncService
+	* Added new queue service to handle download sync errors (SqlDownloadErrorQueueService)
+	* Created new activity (SqlDownloadErrorActivity) for user to handle fatal download errors
+		(such as a server database in an unknown state)
+	* Modified SyncLogActivity to listen to sync events even when the activity is paused (this will
+		keep the UI up-to-date with sync activity
+	* AxSync now depends on Android sdk 8 (version 2.2)
+	* Commented-out Media and IncidentJournalEntryMedia from IncidentJournalDataSet--these
+		datasets have not been deployed yet
+	* Added new exception type (MobileServerException) which is thrown when 
+		mobileserver returns an exception to AxSync
+	* Added notifyDownloadError to (StatusBarNotifier)
+	 
+VersionCode=21 (0.0.21)
+	* removed check on ExceptionType from onMenuRetryAllUploadErrors() in SqlUploadErrorActivity
+	
+VersionCode=20 (0.0.20)
+	* added a "retry" menu option to the SqlUploadErrorActivity.  When the user
+		selects this option, all exceptiontypes in the upload error queue matching the exceptiontype
+		that the user was notified for will get moved to the upload queue (essentially causing all of them
+		to get retried)
+		A User alert is shown for both "retry" and "ignore" and the user must confirm (yes/no) to either
+			retry the failed upload transaction or ignore the transactions.
+	* UnknownHostException is handled similar to a NoRouteToHostException, except the
+		UnknownHostException is retried in 5 minutes instead of 1 minute
+	
+VersionCode=19 (0.0.19)
+	* Get latest android support library
+	* rebuilt with latest android platform tools
+	* Fixes to equipment query
+	Mantis: 8334
+	
+VersionCode=18 (0.0.18)
+	* Changed text when connected to AxSync service to "Synchronizer Service is running"
+	Mantis: 8314
+	* Removed "Sync Static" from SyncLogActivity--redundant option (Reset Data does the
+		same thing and more).
+	
+VersionCode=17 (0.0.17)
+	* Changed query_mappable query strings to use LEFT OUTER JOIN on Equipment and User
+	
+VersionCode=16 (0.0.16)
+	* CurrentIncidentPeriodID and CurrentOperationalPeriodID managed by Mercury
+	Mantis: 8321
+	
+VersionCode=15 (0.0.15)
+	* Fix apparent hang in SyncLogActivity.  Synchronizer was actually still running, but the
+		progress view wasn't updating correctly.
+	Mantis: 8313
+	
+VersionCode=14 (0.0.14)
+	* moved "Reset Data" from AxTrinity Launcher to here in SyncLogActivity
+		- SyncLogActivity will display a warning if the user selects "Reset Data"
+	Mantis: 8225
+	* Removed ticker text from syncing notification..it was annoying
+	
+VersionCode=13 (0.0.13)
+	* major bug fixes and enhancements to synchronizer so that:
+		1) User has better feedback as to synchronizer progress (running, rescheduled, failed, etc.)
+		- Added abort() method to ISyncTransaction and added _aborted boolean to SyncTransaction
+			when _aborted=true the transaction will be discarded after HTTP call completes
+		- Added more useful debug info to track down sync errors
+		- fixed bug in StatusBarNotifier that was causing sync rescheduled
+			notifications to get cleared so user didn't know sync failed
+			and will be rescheduled.
+		- AIDL interfaces were not being used correctly in some cases
+			i.e. SyncManager needed to pass interfaces to client
+			using SyncTransaction.asInterface(_currentTransaction)
+		- Added KEY_LAST_SYNC_ERROR_MESSAGE to AxSync.Config
+		Mantis: 7862, 7859, 7863, 7772
+	* fix issue where rescheduled sync notification was not showing.
+	
+VersionCode=11 (0.0.11)
+	* stop current transaction and clean sync queue when new incident
+		is selected (SyncManager.setCurrentIncidentID())
+	Mantis: 7809
+	
+VersionCode=10 (0.0.10)
+	* Version 9 didn't have manifest set correctly
+	
+VersionCode=9 (0.0.9)
+	* Show new "No network connectivity." popup dialog during failed sync operations.  This
+		- will give users the ability to retry sync immediately or wait until it's rescheduled.
+	Mantis: 7496
+	
+VersionCode=8 (0.0.8)
+	* Fixed background color for sync rescheduled notification message
+	Mantis: 7533
+	* Fix bug causing reschedule sync notification from never going away
+	Mantis: 7530
+	
+VersionCode=7 (0.0.7)
+	* "syncing..." popup dialog remains when sync service is rescheduled to run later
+		(i.e. when the network is unreachable (lost connectivity))
+	Mantis: 7496
+	* Added query_incident_selector_list to improve performance of ax.trinity.IncidentSelectorActivity
+	
+VersionCode=6 (0.0.6)
+	* fix corrupted build (5 was corrupted)
+	Mantis: 7517
+	
+VersionCode=5 (0.0.5)
+	* optimizations
+		- Added query_distinct_equipment_list (see strings.xml) to optimize EquipmentListActivity
+			(joined query)
+		- removed sleep(5) from HttpQueueListener (this will reduce the amount of time the
+			"Syncing..." popup is shown during sync operations.
+			
+VersionCode=4 (0.0.4)
+	* Fix causing crashes when synchronizer is scheduled to re-run.
+		- If the synchronizer is scheduled to re-run (i.e. lost network connectivity),
+			listeners will not receive ISyncListener.onStop() message
+			until the scheduled sync runs to completion.
+	Mantis: 7510, 7512, 7494, 7496
+			
+VersionCode=3 (0.0.3)
+	* Fix synchronizer issue caused by last sync version (change tracking) not getting reset
+		on incident changes
+	
+VersionCode=2 (0.0.2)
+	* Changes for AxRex (AxRex 2 depends on AxSync 2)
+
+VersionCode=1 (0.0.1)
+	* New version after splitting/refactoring from original Trinity app
+	

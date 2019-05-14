@@ -1,0 +1,295 @@
+==== Drake (AntaresX XMPP Messenger Service for Android) Change Log ====
+
+VersionCode=45 (0.45)
+	* Fixed version # in manifest
+	Mants: 8312
+	
+VersionCode=44 (0.44)
+	* Show notification for authentication errors
+		- Based on the recent attached logcats,
+			the login issue was caused by an authentication error.
+			Bad username/password.
+			DrakeService 44 has a fix that will now show a notification on authentication errors.
+			If the DrakeService cannot connect to the chat server for whatever reason and the
+			"offline" notification is shown a new error notification is also shown giving
+			details (description) of why the connection to the server failed.
+	Mantis: 8045
+	
+VersionCode=43 (0.43)
+	* Send "gone" chat state when user closes chat session from NewChatActivity
+	Mantis: 7664
+	
+VersionCode=42 (0.42)
+	* re-export build--corrupted build?
+	
+VersionCode=41 (0.41)
+	* queue postponed messages when server connection state is anything other than "LOGGED_IN".
+		Previously, queueing was only done when state was "SUSPENDED", which is not always the
+		case when disconnected or in the middle of connect attempt.
+		darnold
+		3/19/2013
+		
+VersionCode=40 (0.40)
+	* removed DeliveryReceipt handling to Drake--we are currently not supporting this.
+	Mantis: 7536
+	
+VersionCode=39 (0.39)
+	* incoming file transfer requests are automatically rejected until file transfer work is completed.
+		Work is almost done, just needs tweaking and developer testing.
+		
+VersionCode=38 (0.38)
+	* Fix crash in RemoteImService.onStart() when Drake service restarted by
+		Android.  NOTE: Intent may be NULL in onStart()
+	Mantis: 7543
+	
+VersionCode=37 (0.37)
+	* Fix: launch DrakeUI when Drake service "Online" notification is tapped.
+	Mantis:  7387
+
+VersionCode=36 (0.36)
+	* Implemented new MessengerServiceConnection to assist
+		in maintaining a connection between Messenger Service Clients
+		and the messenger service.  Should improve stability.
+		
+VersionCode=35 (0.35)
+	* Start the AntaresX Messenger Service (DrakeService) after device
+		boot completes (android.intent.action.BOOT_COMPLETED)
+		
+VersionCode=34 (0.34)
+	* Bug fixes to service binder stuff 
+		- created new ServiceBinder class in DrakeClient project
+	Mantis: 7302
+	
+VersionCode=33 (0.33)
+	* Split Drake into two applications: Drake and DrakeUI
+		- Drake is the XMPP service component
+		- DrakeUI is the UI component
+	darnold
+		
+VersionCode=32 (0.32)
+	* fix crash in XmppConnection.leaveAsync() when user attempts to sign-out of Drake when
+		the connection to the server has been lost.
+	Mantis: 7230
+	* Make "Hide Offline Contacts" default=true
+	Mantis: 6999
+	
+VersionCode=31 (0.31)
+	* Files received by Drake in a chat session can now be viewed by tapping
+		on the file transfer progress message or by opening the notification.
+		(when the message says "Viewable" you can tap on it)
+	Mantis: 7128
+	* Incoming file transfer now show a progress message (shown as a percentage)
+	Mantis: 6993
+	* Drake nows uses the Android Media.Storage subsystem for storing incoming file
+		transfers.  Files are browsable/viewable using the Gallery app.
+	Mantis: 7034
+	* Drake now recognizes JPG, PNG and BMP mime types.
+	Mantis: 6974 
+	
+	
+VersionCode=30 (0.30)
+	* Started work on XEP-0184 implementation
+		- Added delivery icon to each outgoing message in MessageView
+			(icon will show an undelivered state (red x) until it is delivered (green check)
+			Delivery just means the client has received the message.  It doesn't necessarily mean
+			the client application has actually presented the message in the UI yet or that the user
+			has read it. 
+		- All outgoing messages have a XEP-0184 receipt tag
+		- All incoming messages with a XEP-0184 extension are processed and the associated message
+			in the database is marked delivered.  This will cause the UI to update (from red X to green CHECK)
+		- Outgoing messages sent from the UI are queued if there is no network connectivity
+		- TODO: Every undelivered message has an associated retransmit timer and these are retransmitted when
+			the timer fires.
+	
+VersionCode=29 (0.29)
+	* make password-protected chat group errors friendlier
+	Mantis: 7219
+	* Fix confusing layout in JoinChatGroupActivity
+	Mantis: 7217
+	* Removed "Add Contact" menu item from ContactListActivity.  Contacts are fetched from the
+		server's roster.
+	Mantis: 7011
+	* Changes to DrakeSigningInActivity: autoRetryLogin=true.  Using false caused a strange state.
+	Mantis: 6669
+	* Fix confusing notification when incoming messages are received from a chat room.
+	Mantis: 7181
+	* Toggle between menu name "Grouped" and "Filtered" in ContactListView
+	Mantis: 6809
+	* Remove nickname from Contact.LAST_MESSAGE
+	Mantis: 6823
+	
+VersionCode=28 (0.28)
+	* Removed TabbedContainer (Activity), ActiveChatListActivity ("Conversations")
+	* Fully implemented Chat Room invitations, including invites to password-protected chat rooms.
+		- chat room invitations are sent as Android notifications (in the notification panel)
+	Mantis: 7216, 7125, 6888, 6965, 6966
+	
+VersionCode=27 (0.27)
+	* Fix join chat room in ContactListView (group view).  It wasn't launching JoinChatGroupActivity
+		if the selected contact was a chat room.
+	Mantis: 7215, 7214
+	* Chat rooms and chatting contacts are always shown even if "Hide Offline Contacts" is checked
+	Mantis: 6902, 7166, 7168, 6892
+	* Selecting menu->End Chat from NewChatActivity for a chat room causes other users to see
+		"user has left" messages.
+	Mantis: 6812
+	
+VersionCode=26 (0.26)
+	* Rejoin password-protected rooms during XMPP connection reconnect
+	
+VersionCode=25 (0.25)
+	* Added chat group support (other than just the LARCOPP/AntaresX room)
+		- chat rooms (Chat groups) are shown in the contact list along with other contacts
+		- tapping on a chat room will launch JoinChatGroupActivity
+		- JoinChatGroupActivity will:
+			- attempt to join the chat room and if successful, start a NewChatActivity session
+			- if the join fails, an alert is presented to the user.  The user can dismiss the
+				alert and try again by clicking "Join Chat Group".  This will give the user
+				the opportunity to enter a password if the alert was "room is password-protected"
+				or a previously entered password was incorrect.
+				
+VersionCode=24 (0.24)
+	* Disable auto-joining the AntaresX (LARCOPP) chat room
+	darnold
+	
+VersionCode=23 (0.23)
+	* Fix crash when sending video, but JPG selected/sent instead.
+	Mantis: 7172
+	* Eliminate the possibility of duplicate contact records getting added.  This will probably fix the 
+		bug where some contacts show as offline when they really are not.
+	Mantis: 7171
+	* Removed the "Send File" menu option from NewChatActivity.
+	Mantis: 6806
+	* Make the "Online"/"Offline" notification ONGOING so it doesn't disappear when you tap it.
+	Mantis: 6822
+	
+VersionCode=22 (0.22)
+	* Fix bug when attempting to send video files
+	Mantis: 7127
+	
+VersionCode=21 (0.21)
+	* many bug fixes for file transfer and group chat
+	Mantis: 7033
+	* disable send video, send image and send file for group chat
+	Mantis: 7053
+	* Support settings menu in ChatListActivity
+	Mantis: 6777
+	
+VersionCode=20 (0.20)
+	* Support Socks5 bytestreams so Tobias can test Corvus
+	
+VersionCode=19 (0.19)
+	* Chat Groups (rooms) are shown in ContactListView when offline contacts are hidden
+	Mantis: 6902
+	
+VersionCode=18 (0.18)
+	* Refresh ContactListFilterView when pref_hide_offline_contacts changes.
+	Mantis: 6905
+	
+VersionCode=17 (0.17)
+	* Added support for showing only online contacts.  Settings in the UI had this setting, but
+		the underlying framework didn't support it.  This fixes the crash reported in:
+	Mantis: 6885, 6901
+	
+VersionCode=16 (0.16)
+	* Fix bug causing "postponed" messages (messages queued when connection to server is lost)
+		to be discarded.  Now, when the Drake user sees the "Connection to server lost." in
+		NewChatActivity and continues to send messages those messages will be sent when the
+		connection is restored.
+	Mantis: 6889
+	
+VersionCode=15 (0.15)
+	* Added crude chat room list ChatRoomListActivity.  It doesn't do much right now, but it's invoked 
+		through the ContactListActivity menu.  This required a lot of plumbing to hook up to new services.
+		Once we figure out how chat rooms will be negotiated we can improve it.
+	* Removed unnecessary auto-join to LARCOPP when you finish the main activity and relaunch.
+	* Close custom status EditText when the user taps "Done".
+		I had to use this ugly code to get this to work--googling revealed we might need to do this a lot
+                InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+    Mantis: 6825
+	 
+VersionCode=14 (0.14)
+	* Added "Show Participants" menu item to NewChatActivity for group chats
+		- this menu option will show the active/online participants to a chat room
+
+VersionCode=13 (0.13)
+	* Don't call IChatSession.closeSession() in NewChatActivity
+		on menu_end_conversation when IChatSession.isGroupSession() == true.
+	Mantis: 6811
+	* Change "Quit" to "Sign Out" in the ChatListActivity as well
+	Mantis: 6805
+	
+VersionCode=12 (0.12)
+	* Added incoming file transfer UI acceptance/rejection. Previously, when a remote user sent a file to
+		a Drake user, Drake would just happily store the file on the device, regardless of whether the user
+		actually wanted it.  Now, Drake prompts the user to either accept the file or reject it.  This actually
+		was a difficult change requiring new methods in several interfaces and classes.
+	* Messages sent in a chat room now only appear once
+	Mantis: 6796
+	* Added "Send Image" and "Send Video" menu items, which launch the corresponding photo/video pickers.
+	Mantis: 6806
+	* When users join/leave chat rooms, show nickname instead of fully qualified XMPP resource jid
+	Mantis: 6797
+	* Changed menu from "Quit" to "Sign Out"
+	Mantis: 6805
+	* Changed menu from "Verify" to "View Profile"
+	Mantis: 6803
+	* Remove OTR menu functions from chat rooms.  Off-The-Record (OTR) encryption features are
+		not support for chat rooms.  This should fix the crash too.
+	Mantis: 6800, 6801
+	
+VersionCode=11 (0.11)
+	* Fix crash during QUIT (handleQuit in ContactListActivity)
+	Mantis: 6778
+	* Fix broken Settings
+	Mantis: 6777
+	
+VersionCode=10 (0.10)
+	* first pass at send file
+		- to invoke send-file, start a peer-to-peer chat with someone (not chat room), and tap Menu->Send File
+		- Send file requires/depends on the File Manager application (install FileManager.apk)
+	Mantis: 6742
+	
+VersionCode=9 (0.9)
+	* first pass at chat groups (Rooms) - currently auto joins the "LARCOPP" room
+	Mantis: 6699
+	
+VersionCode=8 (0.8)
+	* Fix "Signing in..." hang when run for the first time
+		- actually a null pointer exception in DrakeSigningInActivity.onResume() caused in connectService()
+		- problem caused by trying to reference Provider info before provider info was created
+	Mantis:  6672
+	
+VersionCode=7 (0.7)
+	* Add stack trace to "bad things" in DrakeSigningInActivity.onResume()
+	
+VersionCode=6 (0.6)
+	* First pass at implementation of file transfer reception
+		(users of Drake can receive files)
+		
+VersionCode=5 (0.5)
+	* fix bug in DrakeSingingInActivity causing hang in first activity
+	Mantis: 6591
+	
+VersionCode=4 (0.4)
+	* Added new home screen icon
+	Mantis: 6579
+	
+VersionCode=3 (0.3)
+	* Defined XMPP Config profile.
+		- Mercury defines xmpp_config_profile, xmpp_username, xmpp_password.
+		- Drake XMPPConfigFactory instantiatates a specific XMPP configuration based
+			on the mercury setting xmpp_config_profile.
+		- Currently, only the xmpp_config_profile "google-talk" is defined.
+			When there is a publicly available XMPP server, a XMPP configuration
+			profile will be defined for it.
+			
+VersionCode=2 (0.2)
+	* In AccountActivity, modified to accept username/domain without root domain.  For example,
+		it will accept "user@doc1" without requiring a ".com" domain.
+		
+VersionCode=1 (0.1)
+	* Fork of Gibberbot 0.0.8
+	* Initial branding work
+	

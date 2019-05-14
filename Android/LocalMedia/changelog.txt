@@ -1,0 +1,14 @@
+==== LocalMedia Change Log ====
+VersionCode=4 (1.0.4)
+	*Added LocalMediaChunksTable
+	-DatabaseHelper and ContentProvider modified to handle new Table
+	-MediaHandler modified to handle update and insert in new Table.
+
+VersionCode=3 (1.0.3)
+	*Added getOneMedia method.
+	*Added create ImageObject Method.
+VersionCode=2 (1.0.2)
+	*Added method updateMediaWithContentValues.
+VersionCode=1 (1.0.1)
+	*Added localPathForDownloadedImage method it returns a TEMP file path.
+	*Added method updateMediaFilePath() to remove the TEMP form the file path.

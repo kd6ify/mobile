@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent" >
+    <SlidingDrawer android:id="@+id/drawer"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:handle="@+id/info_handle"
+    	android:content="@+id/info_content"
+    	android:orientation="horizontal"
+    	android:animateOnClick="true" >
+    	<ImageView android:id="@id/info_handle"
+    		android:layout_height="60dip"
+    		android:layout_width="10dip"
+    		android:src="@drawable/scrollbar_handle_vertical" />
+    	<LinearLayout android:id="@id/info_content"
+	         android:layout_width="fill_parent" 
+	         android:layout_height="fill_parent"
+	         android:orientation="vertical"
+	    	android:background="@color/geo_map_drawer_background" >
+		    <LinearLayout android:id="@+id/location_cell"
+				android:layout_width="wrap_content"
+				android:minWidth="150sp"
+				android:background="@drawable/border1"
+				android:layout_height="wrap_content"
+				android:orientation="vertical" >
+				<RelativeLayout
+				        android:layout_width="fill_parent" 
+				        android:layout_height="fill_parent" >
+					<TextView android:id="@+id/header"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Location" />
+					<TextView android:id="@+id/accuracy"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true" />
+				</RelativeLayout>
+				<TextView android:id="@+id/location"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="---.----- ---.-----" />
+			</LinearLayout>
+		    <LinearLayout android:id="@+id/altitude_cell"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/border1"
+				android:orientation="vertical" >
+				<TextView android:id="@+id/header"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Altitude" />
+				<TextView android:id="@+id/altitude"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+		    <LinearLayout android:id="@+id/bearing_cell"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:minWidth="150sp"
+				android:background="@drawable/border1"
+				android:orientation="vertical" >
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Bearing" />
+				<TextView android:id="@+id/bearing"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+		    <LinearLayout android:id="@+id/speed_cell"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/border1"
+				android:orientation="vertical" >
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Speed" />
+				<TextView android:id="@+id/speed"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+		</LinearLayout>
+   	</SlidingDrawer>
+</FrameLayout>

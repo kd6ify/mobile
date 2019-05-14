@@ -1,0 +1,685 @@
+package com.futureconcepts.ax.trinity.main;
+
+import java.util.ArrayList;
+
+import com.futureconcepts.ax.model.dataset.IncidentDataSet;
+import com.futureconcepts.ax.model.dataset.StaticDataSet;
+import com.futureconcepts.ax.sync.client.ISyncListener;
+import com.futureconcepts.ax.sync.client.ISyncTransaction;
+import com.futureconcepts.ax.sync.client.ISyncTransactionListener;
+import com.futureconcepts.ax.sync.client.SyncError;
+import com.futureconcepts.ax.sync.client.SyncServiceConnection;
+import com.futureconcepts.ax.sync.client.SyncServiceConnection.Client;
+import com.futureconcepts.ax.trinity.Config;
+import com.futureconcepts.ax.trinity.ModelActivity;
+import com.futureconcepts.ax.trinity.R;
+import com.futureconcepts.ax.trinity.ar.TriageARDemoActivity;
+import com.futureconcepts.ax.trinity.assets.EquipmentListActivity;
+import com.futureconcepts.ax.trinity.assets.UserListActivity;
+import com.futureconcepts.ax.trinity.geo.MainMapActivity;
+import com.futureconcepts.ax.trinity.logs.IntelSummaryActivity;
+import com.futureconcepts.ax.trinity.logs.JournalListActivity;
+import com.futureconcepts.ax.trinity.logs.images.EntryImageObject;
+import com.futureconcepts.ax.trinity.tasks.ViewTasksMainActivity;
+import com.futureconcepts.ax.trinity.triage.TriageMainActivity;
+import com.futureconcepts.ax.trinity.widget.SyncProgressView;
+import com.futureconcepts.gqueue.MercurySettings;
+
+import android.app.AlertDialog;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+
+public class Launcher extends ModelActivity implements OnItemClickListener, Client
+{
+	private static final String TAG = Launcher.class.getSimpleName();
+	
+	private static final String ACTIVITY_PACKAGE_MESSENGER = "com.futureconcepts.drake.ui";
+	
+	private static final String ACTIVITY_CLASS_MESSENGER = "com.futureconcepts.drake.ui.app.ContactListActivity";
+
+	// actions
+	
+	public static final String ACTION_START_SERVICES = "com.futureconcepts.action.START_SERVICES";
+	public static final String ACTION_RESTART = "com.futureconcepts.action.RESTART";
+	public static final String ACTION_STATE_CHANGED = "com.futureconcepts.action.STATE_CHANGED";
+
+	private PackageManager _pm;
+	
+	private MyAdapter _adapter;
+	
+	private ArrayList<ActivityInfo> _activities;
+	private OnSharedPreferenceChangeListener _sharedPreferenceChangeListener;
+	private Handler _handler = new Handler();
+//	private ProgressDialog _syncDialog;
+	private AlertDialog _rescheduledDialog;
+	private SyncServiceConnection _syncServiceConnection;
+	private Bundle _savedInstanceState;
+	private MySyncListener _syncListener;
+	private MyTransactionListener _syncTransactionListener;
+	private ISyncTransaction _syncTransaction;
+	private ViewGroup _headerGroupView;
+	private GridView _gridView;
+	private SyncProgressView _progressView;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.launcher_main);
+		_gridView = (GridView)findViewById(R.id.grid);
+		_headerGroupView = (ViewGroup)findViewById(R.id.header_group);
+		_progressView = (SyncProgressView)findViewById(R.id.progress_view);
+		hideSyncProgressView();
+		_savedInstanceState = savedInstanceState;
+		_pm = getPackageManager();
+        _activities = new ArrayList<ActivityInfo>();
+        addActivity(UserListActivity.class);
+        addActivity(EquipmentListActivity.class);
+        addActivity(ViewTasksMainActivity.class);
+        addActivity(IntelSummaryActivity.class);
+        addActivity(TriageMainActivity.class);
+        addActivity(JournalListActivity.class);
+        addActivity(MainMapActivity.class);
+
+        addActivity(TriageARDemoActivity.class);
+        addActivity(ACTIVITY_PACKAGE_MESSENGER, ACTIVITY_CLASS_MESSENGER);
+     //   addActivity(Prefs.class);
+        
+        _adapter = new MyAdapter();
+        _gridView.setAdapter(_adapter);
+        _gridView.setOnItemClickListener(this);
+        
+        setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
+        
+    	setIncidentPeriod();
+        findViewById(R.id.incident_bar).setOnClickListener(new OnClickListener()
+        {
+			@Override
+			public void onClick(View v)
+			{
+				final Animation animation = new AlphaAnimation(1.0f, 0.0f);
+				animation.setDuration(2000);
+				v.startAnimation(animation);
+				onIncidentBarClick();
+			}
+        });
+        findViewById(R.id.operationalperiod_bar).setOnClickListener(new OnClickListener()
+        {
+			@Override
+			public void onClick(View v)
+			{
+				onOperationalPeriodBarClick();
+			}
+        });
+        findViewById(R.id.menu_bar).setOnClickListener(new OnClickListener()
+        {
+			@Override
+			public void onClick(View v)
+			{
+				openOptionsMenu();
+			}
+        });
+        findViewById(R.id.back_bar).setOnClickListener(new OnClickListener()
+        {
+			@Override
+			public void onClick(View v)
+			{
+				finish();
+			}
+        });
+        _syncServiceConnection = new SyncServiceConnection(this, this);
+        _syncServiceConnection.connect();
+	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		setIncidentPeriod();
+		Config.getPreferences(this).registerOnSharedPreferenceChangeListener(_sharedPreferenceChangeListener);
+	}
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		Config.getPreferences(this).unregisterOnSharedPreferenceChangeListener(_sharedPreferenceChangeListener);
+		hideSyncProgressView();
+		if (_rescheduledDialog != null)
+		{
+			_rescheduledDialog.dismiss();
+			_rescheduledDialog = null;
+		}
+	}
+		
+	@Override
+	public void onDestroy()
+	{
+		clearSyncTransaction();
+		_syncServiceConnection.unregisterSyncListener(_syncListener);
+		_syncListener = null;
+		_syncServiceConnection.disconnect();
+		super.onDestroy();
+	}
+	
+	private void clearSyncTransaction()
+	{
+		if (_syncTransaction != null)
+		{
+			if (_syncTransactionListener != null)
+			{
+				try
+				{
+					_syncTransaction.unregisterListener(_syncTransactionListener);
+					_syncTransactionListener = null;
+				}
+				catch (RemoteException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			_syncTransaction = null;
+		}
+	}
+	
+	private void setIncidentPeriod()
+	{
+		if (MercurySettings.getCurrentIncidentId(this) != null)
+		{
+			String incidentName = Config.getCurrentIncidentName(this);
+			if (incidentName != null)
+			{
+				setIncidentPeriod(incidentName+" - "+Config.getCurrentOperationalPeriodName(this));
+			}
+			else
+			{
+				setIncidentPeriod("PLEASE SELECT INCIDENT");
+			}
+		}
+		else
+		{
+			setIncidentPeriod("PLEASE SELECT INCIDENT");
+		}
+	}
+
+	private void setIncidentPeriod(String title)
+	{
+		TextView view = (TextView)findViewById(R.id.incident_period);
+		view.setText(title);
+		view.setSelected(true);
+	}
+
+	private void onIncidentBarClick()
+	{
+		Intent intent = new Intent(this, IncidentSelectorActivity.class);
+		startActivity(intent);
+	}
+	
+	private void onOperationalPeriodBarClick()
+	{
+		Intent intent = new Intent(this, OperationalPeriodSelectorActivity.class);
+		startActivity(intent);
+	}
+
+	private void addActivity(Class<?> theClass)
+	{
+		try
+		{
+			ActivityInfo activityInfo = _pm.getActivityInfo(new ComponentName(getPackageName(), theClass.getCanonicalName()), 0);
+			_activities.add(activityInfo);
+		}
+		catch (Exception e)
+		{
+		}
+	}
+	
+	private void addActivity(String packageName, String className)
+	{
+		try
+		{
+			ActivityInfo activityInfo = _pm.getActivityInfo(new ComponentName(packageName, className), 0);
+			_activities.add(activityInfo);
+		}
+		catch (Exception e) {}
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.launcher_options_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+		case R.id.menu_about:
+			viewAbout();
+			break;
+		}
+		return false;
+	}
+
+	private void performInitialConfiguration()
+	{
+        Toast.makeText(this, "performing initial configuration--please relaunch later", Toast.LENGTH_LONG).show();
+        if (_syncServiceConnection.isConnected())
+        {
+        	_syncServiceConnection.syncDataset(StaticDataSet.class.getName());
+        }
+	}
+	
+	public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
+	{
+		ActivityInfo activityInfo = _activities.get(position);
+		Intent intent = new Intent();
+		intent.setClassName(activityInfo.packageName, activityInfo.name);
+		startActivity(intent);
+	}
+	
+	public static void checkInToIncident(Context context)
+	{
+	//	GQueue.insertServerMessage(context, null, Intent.ACTION_INSERT, "server://Incident/" +  config.getCurrentIncidentId() + "/CheckIn");
+//		Toast.makeText(context, "Check In queued", Toast.LENGTH_LONG);
+	}
+
+	public static void checkOutFromIncident(Context context)
+	{
+	//	GQueue.insertServerMessage(context, null, Intent.ACTION_INSERT, "server://Incident/" +  config.getCurrentIncidentId() + "/CheckOut");
+//		Toast.makeText(context, "Check Out queued", Toast.LENGTH_LONG);
+	}
+	
+	private void viewAbout()
+	{
+		startActivity(new Intent(this, AboutActivity.class));
+	}
+	
+	private class MyAdapter extends BaseAdapter
+	{
+		public int getCount() 
+		{
+			return _activities.size();
+		}
+
+		public Object getItem(int position)
+		{
+			return position;
+		}
+
+		public long getItemId(int position)
+		{
+			return position;
+		}
+
+		@Override
+		public boolean areAllItemsEnabled()
+		{
+//			return false;
+			return true;
+		}
+		
+		@Override
+		public boolean isEnabled(int position)
+		{
+			ActivityInfo activityInfo = _activities.get(position);
+			return activityInfo.enabled;
+		}
+		
+		public View getView(int position, View convertView, ViewGroup parent)
+		{
+			convertView = getLayoutInflater().inflate(R.layout.launcher_list_item, null);
+			ImageView imageView = (ImageView)convertView.findViewById(R.id.icon);
+			try
+			{
+				ActivityInfo activityInfo = _activities.get(position);
+				ActivityInfo Logs = _pm.getActivityInfo(new ComponentName(getPackageName(), JournalListActivity.class.getCanonicalName()), 0);
+				if(EntryImageObject.isLiteVersion && !activityInfo.name.equals(Logs.name))
+				{						
+					activityInfo.enabled=false;						
+				}
+				if (activityInfo.enabled == false)
+				{
+					imageView.setAlpha(75); imageView.setBackgroundColor(Color.GRAY);					
+				}
+				if (activityInfo.icon != 0)
+				{
+					imageView.setImageResource(activityInfo.icon);
+				}
+				else
+				{
+					if (activityInfo.name.equals(ACTIVITY_CLASS_MESSENGER))
+					{
+						imageView.setImageResource(R.drawable.launcher_messenger);
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			return convertView;
+		}
+	}
+
+	private void hideSyncProgressView()
+	{
+		_progressView.hide();
+		_gridView.setVisibility(View.VISIBLE);
+		_headerGroupView.setVisibility(View.VISIBLE);
+	}
+	
+	private void showSyncProgressView()
+	{
+		_progressView.show();
+		_gridView.setVisibility(View.GONE);
+		_headerGroupView.setVisibility(View.GONE);
+	}
+	
+	@Override
+	public void onSyncServiceConnected()
+	{
+		Log.d(TAG, "onSyncServiceConnected");
+		if (_syncListener == null)
+		{
+			_syncListener = new MySyncListener();
+			_syncServiceConnection.registerSyncListener(_syncListener);
+		}
+		ISyncTransaction currentTransaction = _syncServiceConnection.getCurrentTransaction();
+		if (currentTransaction != null)
+		{
+			try
+			{
+				_syncListener.onTransaction(currentTransaction);
+			}
+			catch (RemoteException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		sendBroadcast(new Intent(ACTION_START_SERVICES));
+        if (Config.isFirstApplicationLaunch(this))
+        {
+        	performInitialConfiguration();
+        }
+	}
+
+	@Override
+	public void onSyncServiceDisconnected()
+	{
+		Log.d(TAG, "onSyncServiceDisconnected");
+	}
+	
+	private class MySyncListener extends ISyncListener.Stub
+	{
+		@Override
+		public IBinder asBinder()
+		{
+			return this;
+		}
+
+		@Override
+		public void onStart() throws RemoteException
+		{
+			showSyncProgressView();
+		}
+
+		@Override
+		public void onRescheduled() throws RemoteException
+		{
+        	_handler.post(new Runnable() {
+				@Override
+				public void run()
+				{
+					try
+					{
+			            AlertDialog.Builder b = new AlertDialog.Builder(Launcher.this);
+			            b.setTitle("Sync Rescheduled");
+			            b.setCancelable(true);
+			            b.setMessage("There is no network connectivity.  Syncing is rescheduled to run later.  Would you like to try again now?");
+			            b.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+			            {
+							@Override
+							public void onClick(DialogInterface dialog, int which)
+							{
+								_syncServiceConnection.startSyncing();
+								dialog.dismiss();
+							}
+			            });
+			            b.setNegativeButton("No", new DialogInterface.OnClickListener()
+			            {
+			                public void onClick(DialogInterface dialog, int which)
+			                {
+			                    dialog.dismiss();
+			                }
+			            });
+			            _rescheduledDialog = b.show();
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+					}
+				}
+        	});
+		}
+		
+		@Override
+		public void onStop() throws RemoteException
+		{
+			hideSyncProgressView();
+		}
+
+		@Override
+		public void onTransaction(final ISyncTransaction transaction) throws RemoteException
+		{
+			try
+			{
+				clearSyncTransaction();
+				String dataset = transaction.getDataset();
+				Log.d(TAG, "onTransaction dataset=" + dataset);
+				if (dataset.equals(StaticDataSet.class.getName()) || dataset.equals(IncidentDataSet.class.getName()))
+				{
+					_syncTransaction = transaction;
+					_syncTransactionListener = new MyTransactionListener();
+					transaction.registerListener(_syncTransactionListener);
+					_handler.post(new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							try
+							{
+								showSyncProgressView();
+							}
+							catch (Exception e)
+							{
+								e.printStackTrace();
+							}
+						}
+					});
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		@Override
+		public void onTransactionComplete(final ISyncTransaction transaction) throws RemoteException
+		{
+			try
+			{
+				String dataset = transaction.getDataset();
+				Log.d(TAG, "onTransactionComplete dataset=" + dataset);
+				if (dataset.equals(StaticDataSet.class.getName()) || dataset.equals(IncidentDataSet.class.getName()))
+				{
+					_syncTransaction = null;
+					if (_syncTransactionListener != null)
+					{
+						transaction.unregisterListener(_syncTransactionListener);
+						_syncTransactionListener = null;
+					}
+					_handler.post(new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							try
+							{
+								hideSyncProgressView();
+							}
+							catch (Exception e)
+							{
+								e.printStackTrace();
+							}
+						}
+					});
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private class MyTransactionListener extends ISyncTransactionListener.Stub
+	{
+		@Override
+		public void onActionChanged(final String action) throws RemoteException
+		{
+			_handler.post(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					_progressView.setAction(action);
+				}
+			});
+		}
+				
+		@Override
+		public void onDatasetChanged(final String dataset) throws RemoteException
+		{
+			_handler.post(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					_progressView.setDataset(dataset);
+				}
+			});
+		}
+
+		@Override
+		public void onTableChanged(final String table) throws RemoteException
+		{
+			_handler.post(new Runnable()
+			{
+
+				@Override
+				public void run()
+				{
+					_progressView.setTable(table);
+				}
+			});
+		}
+
+		@Override
+		public void onServerFetch() throws RemoteException
+		{
+			_handler.post(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					_progressView.setDownloading(true);
+				}
+			});
+		}
+
+		@Override
+		public void onServerFetchDone() throws RemoteException
+		{
+			_handler.post(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					_progressView.setDownloading(false);
+				}
+			});
+		}
+
+		@Override
+		public void onError(final SyncError syncError) throws RemoteException
+		{
+//			_handler.post(new Runnable()
+//			{
+//				@Override
+//				public void run()
+//				{
+//					_errorTitle.setText("fixme"); // TODO
+//					_errorMessage.setText("fixme"); // TODO
+//				}
+//			});
+		}
+
+		@Override
+		public void onStatusChanged(final String status) throws RemoteException
+		{
+			_handler.post(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+//					_transactionStatusView.setText(status);
+				}
+			});
+		}
+
+		@Override
+		public void onProgress(final int position, final int count) throws RemoteException
+		{
+			_handler.post(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					_progressView.setProgress(position, count);
+				}
+			});
+		}
+	}
+}

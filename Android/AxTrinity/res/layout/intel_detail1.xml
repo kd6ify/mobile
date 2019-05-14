@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" >
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:orientation="vertical" >
+	<TextView
+		style="@style/HeaderText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Title" />
+	<TextView android:id="@+id/title"
+		style="@style/TitleText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+	<RelativeLayout
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" >
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_alignParentLeft="true" >
+		    <TextView
+		    	style="@style/HeaderText"
+		         android:layout_width="wrap_content"
+		         android:layout_height="wrap_content"
+		         android:layout_alignParentLeft="true"
+		         android:text="Status" />
+		    <TextView android:id="@+id/status"
+		    	style="@style/StateText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" />
+		</LinearLayout>
+	    <ImageView android:id="@+id/status_icon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:padding="10sp"
+	        android:adjustViewBounds="true" />
+	</RelativeLayout>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+	<TextView
+		style="@style/HeaderText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Details" />
+	<TextView android:id="@+id/details"
+		style="@style/DetailText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+	<TextView
+		style="@style/HeaderText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Comments" />
+	<TextView android:id="@+id/comments"
+		style="@style/DetailText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+    <RelativeLayout
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" >
+	    <TextView
+	    	style="@style/HeaderText"
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:layout_alignParentLeft="true"
+	     	android:text="Private" />
+		<CheckBox android:id="@+id/isprivate"
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:layout_alignParentRight="true"
+	     	android:enabled="false" />
+	</RelativeLayout>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+	<TextView 
+		style="@style/HeaderText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Entry Time"	/>
+	<TextView android:id="@+id/entry_time"
+		style="@style/DateTimeText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+	<TextView 
+		style="@style/HeaderText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Update Time" />
+	<TextView android:id="@+id/update_time"
+		style="@style/DateTimeText"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+</LinearLayout>
+</ScrollView>
+

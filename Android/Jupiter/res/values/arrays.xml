@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="record_method">
+        <item>Auto</item>
+        <item>Distance</item>
+        <item>Time</item>
+    </string-array>
+    <string-array name="interval">
+        <item>Normal</item>
+        <item>Most Often</item>
+        <item>More Often</item>
+        <item>Less Often</item>
+        <item>Least Often</item>
+    </string-array>
+    <string-array name="distance_format">
+        <item>Meters</item>
+        <item>Feet</item>
+        <item>Miles</item>
+    </string-array>
+    <string-array name="distance_format_values">
+        <item>meters</item>
+        <item>feet</item>
+        <item>miles</item>
+    </string-array>
+    <string-array name="velocity_format">
+        <item>kph</item>
+        <item>mph</item>
+        <item>m/sec</item>
+    </string-array>
+    <string-array name="velocity_format_values">
+        <item>kph</item>
+        <item>mph</item>
+        <item>mps</item>
+    </string-array>
+    <string-array name="location_format">
+        <item>Degrees</item>
+        <item>Minutes</item>
+        <item>Seconds</item>
+        <item>UTM NAD27 CONUS</item>
+    </string-array>
+    <string-array name="location_format_values">
+        <item>degrees</item>
+        <item>minutes</item>
+        <item>seconds</item>
+        <item>nad27</item>
+    </string-array>
+</resources>

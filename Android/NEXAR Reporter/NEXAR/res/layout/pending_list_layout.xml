@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"         >
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical" 
+             android:background="@drawable/listbackground4"      		
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/notice"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="3sp"
+                android:textColor="#ffff"
+                android:textSize="26sp"
+                android:text="dadasdasd"
+                android:textStyle="bold"               
+                android:ellipsize="end" 
+                android:lines="1"/>
+            
+            <TextView
+                android:id="@+id/detailsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="3sp"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:textStyle="bold" />
+<!--             android:textColor="#CDCDCD" -->
+            
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent" >
+         
+	<TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+                
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Status:" />
+
+	    <TextView android:id="@+id/status"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+         
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+                
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Latitude:" />
+
+	    <TextView android:id="@+id/latitude"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+
+
+	    <TextView android:id="@+id/latitude"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Longitude:" />
+	
+	    <TextView android:id="@+id/longitude"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Provider:" />
+	
+	    <TextView android:id="@+id/provider"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Accuracy:" />
+	
+	    <TextView android:id="@+id/accuracy"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Altitude:" />
+	
+	    <TextView android:id="@+id/altitude"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Bearing:" />
+	
+	    <TextView android:id="@+id/bearing"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Speed:" />
+	
+	    <TextView android:id="@+id/speed"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Status Changes:" />
+	
+	    <TextView android:id="@+id/status_changes"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <TextView
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="Location Changes:" />
+	
+	    <TextView android:id="@+id/location_changes"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:padding="8sp"
+	    	android:text="---------" />
+	    	
+	</TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" >
+
+	    <ImageView 
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:src="@drawable/redswoosh64" />
+
+	    	
+	</TableRow>
+    
+</TableLayout>

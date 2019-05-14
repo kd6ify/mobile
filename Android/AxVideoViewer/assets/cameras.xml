@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SourceGroups>
+  <SourceGroup Name="Dave's Group" Version="1" >
+    <StreamSourceInfo Name="camera" SourceType="RTSP" Description="Dave's Source" ClientURL="rtsp://192.168.1.143:555/camera/Stream.LBL" />
+    <StreamSourceInfo Name="aircam" SourceType="RTSP" Description="Dave's test MW" ClientURL="rtsp://192.168.1.102/live/ch01_0" />
+  </SourceGroup>
+</SourceGroups>

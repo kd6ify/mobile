@@ -1,0 +1,141 @@
+﻿<Application x:Class="AdminConsoleMain.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:linq="clr-namespace:FutureConcepts.Mobile.DataModel;assembly=MobileDataModel"
+    xmlns:contract="clr-namespace:FutureConcepts.Mobile.DataContract;assembly=MobileDataContract"
+    xmlns:bind="clr-namespace:FutureConcepts.UI.Utilities.BindingConverters;assembly=UI"
+    StartupUri="Container.xaml">
+    <Application.Resources>
+        
+        <Geometry x:Key="path_editPencilData">M8.8336926,42.633011 L24.500004,60.299671 L0.5,68.300003 z M55.489006,27.250212 L53.666935,29.300011 L53.617191,29.24921 z M47.166668,26.966669 L22.833008,53.633312 L25.333338,56.799995 L50.5,30.299711 z M42.166363,20.966991 L17.500002,47.299984 L20.499708,50.966972 L44.832993,24.299999 z M37.16642,15.966995 L12.500002,41.466671 L14.833901,43.966976 L39.833336,18.300003 z M41.626469,9.2381172 L38.000004,13.299755 L53.617191,29.24921 L25.166561,59.632992 L9.5000038,42.299934 z M42.166744,8.6330109 L42.190441,8.6577282 L41.626469,9.2381172 z M43.83334,6.9669967 L59.500011,22.966669 L55.489006,27.250212 L57.667004,24.800003 L42.190441,8.6577282 z M54.151035,0.50027221 C63.526806,0.56886137 71.911034,13.581184 60.161217,22.638 L44.493996,6.3057642 C47.238834,2.144068 50.759796,0.47546616 54.151035,0.50027221 z</Geometry>
+               
+        <bind:BoolVisibility x:Key="boolviz"/>
+        <bind:PhoneFormatter x:Key="phone"/>
+        
+        <DataTemplate DataType="{x:Type linq:Equipment}">
+            <Grid Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="Tag" Width="auto"/>
+                    <ColumnDefinition SharedSizeGroup="Name" Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="{Binding Tag}" Margin="0,1,2,1"/>
+                <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="2,1,0,1"/>
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type linq:MobileDevice}">
+            <Grid Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="DataLabel"/>
+                    <ColumnDefinition Width="auto" MinWidth="200" SharedSizeGroup="DataValue"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Name</Label>
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding UserName}" />
+
+                <Label Grid.Row="1" Grid.Column="0">Device ID</Label>
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding DeviceId}" />
+
+                <Label Grid.Row="2" Grid.Column="0">Phone Number</Label>
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding PhoneNumber}" />
+
+                <Label Grid.Row="3" Grid.Column="0">AntaresX Equipment</Label>
+                <Label Grid.Row="3" Grid.Column="1" Content="{Binding EquipmentId}" />
+               
+                <Label Grid.Row="5" Grid.Column="0">Push Incident ID</Label>
+                <Label Grid.Row="5" Grid.Column="1" Content="{Binding IncidentId}" />
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type contract:Location}">
+            <Grid Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="DataLabel"/>
+                    <ColumnDefinition Width="auto" MinWidth="200" SharedSizeGroup="DataValue"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Location Latitude</Label>
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Latitude}" />
+
+                <Label Grid.Row="1" Grid.Column="0">Location Longitude</Label>
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Longitude}" />
+
+                <Label Grid.Row="2" Grid.Column="0">Location Accuracy</Label>
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                    <Label Content="{Binding Accuracy}" />
+                    <Label Content=" meters" />
+                </StackPanel>
+
+                <Label Grid.Row="3" Grid.Column="0">Location Altitude</Label>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                    <Label Content="{Binding Altitude}" />
+                    <Label Content=" meters" />
+                </StackPanel>
+
+                <Label Grid.Row="4" Grid.Column="0">Compass Bearing</Label>
+                <Label Grid.Row="4" Grid.Column="1" Content="{Binding Bearing}" />
+
+                <Label Grid.Row="5" Grid.Column="0">Speed</Label>
+                <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                    <Label Content="{Binding Speed}" />
+                    <Label Content=" meters per second" />
+                </StackPanel>
+
+                <Label Grid.Row="6" Grid.Column="0">Location Time</Label>
+                <Label Grid.Row="6" Grid.Column="1" Content="{Binding TimeAsLocalTime}" />
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="ButtonLinkStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <TextBlock>
+                            <ContentPresenter VerticalAlignment="Bottom" Margin="0,0,0,-2"/>
+                        </TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Foreground" Value="CornflowerBlue" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <TextBlock TextDecorations="Underline">
+                                    <ContentPresenter VerticalAlignment="Bottom" Margin="0,0,0,-2"/>
+                                </TextBlock>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Application.Resources>
+</Application>

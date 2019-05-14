@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2007-2008 Esmertec AG.
+ * Copyright (C) 2007-2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- The application label. This appears in the application launcher on the
+    Home screen. This is a noun. -->
+    <string name="app_name">AntaresX Messenger Service</string>
+    <string name="im_label">AX Messenger Service</string>
+    
+    <string name="ro_perm_label">read instant messages</string>
+    <string name="ro_perm_desc">
+        Allows applications to read data from the IM content provider.
+    </string>
+
+    <string name="wo_perm_label">write instant messages</string>
+    <string name="wo_perm_desc">
+        Allows applications to write data to the IM content provider.
+    </string>
+    
+	<!-- provider plugin names -->
+	<string name="provider_full_name_xmpp">Jabber/XMPP</string>
+	
+    <!-- IM service permission -->
+    <string name="perm_label">start IM service</string>
+    <string name="perm_desc">Allows applications to start IM service via intent.</string>
+
+    <!-- Errors-->
+    <!-- The title of the error dialog -->
+    <string name="error">Attention</string>
+    <!-- Error message for sign in failed.-->
+    <string name="login_service_failed">Unable to sign in to the <xliff:g id="service">%1$s</xliff:g> service. Please try again later.\n(Detail: <xliff:g id="description">%2$s</xliff:g>)</string>
+    <!-- The "OK" button label for the error message dialog. -->
+    <string name="ok">OK</string>
+    <!-- The "Cancel" button label for the confirm dialogs. -->
+    <string name="cancel">Cancel</string>
+    <!-- The "OK" button label for the confirm dialogs. -->
+    <string name="yes">OK</string>
+    <!-- The "Cancel" button label for the confirm dialogs. -->
+    <string name="no">Cancel</string>
+    
+    <!-- Error message for when the IM service has died.-->
+    <string name="service_error">Service error!</string>
+    
+    <!-- Toast when a contact is added into a list.-->
+    <string name="add_contact_success">Contact \"<xliff:g id="user">%1$s</xliff:g>\" added.</string>
+    <!-- Toast when a contact is deleted from the list.-->
+    <string name="delete_contact_success">Contact \"<xliff:g id="user">%1$s</xliff:g>\" deleted.</string>
+    <!-- Toast when a contact is blocked.-->
+    <string name="block_contact_success">Contact \"<xliff:g id="user">%1$s</xliff:g>\" blocked.</string>
+    <!-- Toast when a contact is unblocked.-->
+    <string name="unblock_contact_success">Contact \"<xliff:g id="user">%1$s</xliff:g>\" unblocked.</string>
+    
+    <!-- Friend subscription screen -->
+    <string name="subscription_prompt"><xliff:g id="user">%1$s</xliff:g> has invited you to be on their Contact list.</string>
+    <!-- The button for approving a subscription request.-->
+    <string name="approve_subscription">Accept</string>
+    <!-- The button for delecling a subscription request.-->
+    <string name="decline_subscription">Decline</string>
+    <!-- Toast when approve a subscription request failed.-->
+    <string name="approve_subscription_error">Unable to approve subscription from <xliff:g id="user">%1$s</xliff:g>. Please try again later.</string>
+    <!-- Toast when decline a subscription request failed.-->
+    <string name="decline_subscription_error">Unable to decline subscription from <xliff:g id="user">%1$s</xliff:g>. Please try again later.</string>
+    <!-- Notification bar messages -->
+    <!-- This is the notification bar message when a new IM arrives. -->
+    <string name="newMessages_label">New AntaresX messages</string>
+    <!-- This is the notification bar message when new IMs comes from more than one contact. -->
+    <string name="num_unread_chats">unread messages</string>
+ 
+	<string name="otr_session_status_plaintext">Warning: This chat is NOT encrypted</string>
+	<string name="otr_session_status_encrypted">This chat is secure but the identities of the participants have NOT been verified</string>
+	<string name="otr_session_status_finished">Warning: chat encryption has been stopped.</string>
+	<string name="otr_session_status_verified">This chat is secured and verified</string>
+	
+	<string name="new_messages_notify">New message(s) from</string>
+    <!-- This is the notification bar message when an invitation from someone arrived. -->
+    <string name="subscription_notify_text">
+        New friend invitation from <xliff:g id="user">%s</xliff:g>
+    </string>
+    <!-- This is the notification bar message when an invitation to join a group chat from someone arrived. Currently not used. -->
+    <string name="notify_groupchat_label">Group chat invitation</string>
+    <!-- This is the text label of the group chat invitation message in the notification. Currently not used. -->
+    <string name="group_chat_invite_notify_text">
+        New group chat invitation from <xliff:g id="user">%s</xliff:g>
+    </string>
+    
+    <!-- This is the notification bar message when a file transfer request arrived. -->
+    <string name="notify_file_transfer_request_label">File Transfer Request</string>
+    <!-- This is the text label of the file transfer request message in the notification. -->
+    <string name="file_transfer_request_notify_text">
+        File transfer request from <xliff:g id="user">%s</xliff:g>
+    </string>
+    
+    <!-- The contact presence status. May be overrided by the plugin. -->
+    <!-- This is an adjective describing the "online" status for the user. It appears in the
+    drop-down status menu on the Contact List screen -->
+    <string name="presence_available">Online</string>
+    <!-- This is an adjective describing the "busy" status for the user. It appears in the
+    drop-down status menu on the Contact List screen -->
+    <string name="presence_busy">Busy</string>
+    <!-- This is an adjective describing the "away" status for the user. It appears in the
+    drop-down status menu on the Contact List screen -->
+    <string name="presence_away">Away</string>
+    <!-- This is an adjective describing the "idle" status for the user. It appears in the
+    drop-down status menu on the Contact List screen -->
+    <string name="presence_idle">Idle</string>
+    <!-- This is an adjective describing the "offline" status for the user. It appears in the
+    drop-down status menu on the Contact List screen -->
+    <string name="presence_offline">Offline</string>
+    <!-- This is an adjective describing the "invisible" status for the user. It appears in the
+    drop-down status menu on the Contact List screen -->
+    <string name="presence_invisible">Appear offline</string>
+	
+	<string name="file_transfer_complete">File transfer completed successfully</string>
+	<string name="file_transfer_failed">File transfer failed</string>
+	<string name="file_transfer_complete_name">The file transfer of %s completed successfully</string>
+	<string name="file_transfer_error_name">The file transfer of %s failed</string>
+    		
+</resources>

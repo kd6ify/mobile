@@ -1,0 +1,194 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/brushed_metal_background_dark"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/headerbackground"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/homeheader7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingRight="3sp"
+            android:text="@string/version"
+            android:textColor="#FFFFFF"
+            android:textStyle="italic"
+             >
+        </TextView>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/background_overlay_dark"
+        android:duplicateParentState="false"
+        android:fadingEdge="horizontal"
+        android:paddingBottom="9dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="10dp"
+        android:paddingTop="7dp" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="true"
+            android:scrollbarDefaultDelayBeforeFade="50000"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+            android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="3dp"
+                android:weightSum="1" >
+			
+			<TextView
+                    android:id="@+id/labelPending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="Pending Information"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic"
+                    android:layout_marginBottom="20dp"  />
+			
+			<TextView
+                    android:id="@+id/labelCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="Category:"
+                    android:textColor="@android:color/white"
+                    android:textSize="23sp"
+                    android:textStyle="bold|italic"
+                    android:layout_marginBottom="5dp"  />
+
+                <Button
+                    android:id="@+id/pendingReportsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector_long"
+                    android:includeFontPadding="true"
+                    android:maxLines="1"
+                    android:onClick="pendingReports"
+                    android:padding="10dp"
+                    android:scaleType="center"
+                    android:singleLine="true"
+                    android:text="@string/pending_data"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"  
+                    android:layout_marginBottom="40dp"  />
+
+                <Button
+                    android:id="@+id/pendingImagesButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector_long"
+                    android:includeFontPadding="true"
+                    android:maxLines="1"
+                    android:onClick="pendingImages"
+                    android:padding="10dp"
+                    android:scaleType="center"
+                    android:singleLine="true"
+                    android:text="@string/pending_images"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"  
+                    android:layout_marginBottom="10dp"  />
+                <TextView
+                    android:id="@+id/labelPending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="In this section you will only see the remaining data of reports you have submitted."
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic"
+                    android:layout_marginBottom="40dp"  />
+               
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+    <LinearLayout
+    	android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/submitPendingButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_selector"
+                        android:drawableLeft="@drawable/play"
+                        android:gravity="center"
+                        android:onClick="sendPendingData"
+                        android:paddingLeft="10dp"
+                        android:scaleType="center"
+                        android:text="Submit"
+                        android:textColor="#ffffff"
+                        android:textSize="29dp"
+                        android:textStyle="bold|italic" />
+
+                    <Button
+                        android:id="@+id/deletePendingButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_selector"
+                        android:drawableLeft="@drawable/x"
+                        android:gravity="center"
+                        android:onClick="deletePendingData"
+                        android:paddingLeft="10dp"
+                        android:scaleType="center"
+                        android:text="Delete"
+                        android:textColor="#ffffff"
+                        android:textSize="30sp"
+                        android:textStyle="bold|italic" />
+	</LinearLayout>
+</LinearLayout>

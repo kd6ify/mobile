@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <EditTextPreference android:key="device_name"
+            android:title="Device Name"
+            android:enabled="true"
+            android:summary="Friendly name used to identify device" />
+        <com.futureconcepts.mercury.ClickPreference android:key="antaresx_updates"
+        	android:title="AntaresX Updates"
+        	android:enabled="true"
+        	android:summary="Check for AntaresX updates" />  
+        <com.futureconcepts.mercury.ClickPreference android:key="antaresx_set_password"
+        	android:title="Login"
+        	android:enabled="true"
+        	android:summary="Authenticate with AntaresX network" />  
+        <com.futureconcepts.mercury.ClickPreference android:key="antaresx_download_configuration"
+        	android:title="Download Configuration"
+        	android:enabled="true"
+        	android:summary="Download initial configuration" />  
+        <com.futureconcepts.mercury.ClickPreference android:key="device_id"
+        	android:title="Device ID"
+        	android:enabled="true"
+        	android:summary="Device ID" />  
+        <com.futureconcepts.mercury.ClickPreference android:key="web_service_address_readonly"
+        	android:title="Web Service Address"
+        	android:enabled="true"
+        	android:summary="Web Service Address" />  
+        <com.futureconcepts.mercury.ClickPreference android:key="wsus_service_address_readonly"
+        	android:title="Update Service Address"
+        	android:enabled="true"
+        	android:summary="Update Service Address" />  
+        </PreferenceCategory>
+    <PreferenceCategory android:title="Tracker">
+    <CheckBoxPreference android:key="tracker_enabled"
+            android:title="Tracker Service Enabled"
+            android:summaryOff="Tracker is not currently running"
+            android:summaryOn="Tracker is currently running" />
+    <ListPreference android:key="tracker_mode"
+                android:title="Tracker Mode"
+                android:summary="Specify the frequency of location updates"
+                android:entries="@array/tracker_modes_preference"
+                android:entryValues="@array/tracker_modes_values_preference"
+                android:defaultValue="casual"
+                android:dialogTitle="Tracker Mode" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Messenger">
+	    <ListPreference android:key="xmpp_config_profile"
+	                android:title="XMPP Config Profile"
+	                android:summary="Select which XMPP profile to use"
+	                android:entries="@array/xmpp_profiles_preference"
+	                android:entryValues="@array/xmpp_profiles_values_preference"
+	                android:defaultValue="google-talk"
+	                android:dialogTitle="XMPP Profile" />
+        <EditTextPreference android:key="xmpp_username"
+            android:title="User Name"
+            android:enabled="true"
+            android:summary="User Name" />
+        <com.futureconcepts.mercury.ClickPreference android:key="set_xmpp_password"
+            android:title="XMPP Password"
+            android:enabled="true"
+            android:summary="Click to set XMPP Password" />
+	</PreferenceCategory>
+	 <PreferenceCategory android:title="Mapping">
+    	 <com.futureconcepts.mercury.ClickPreference android:key="download_map_file"
+            android:title="Map files"
+            android:enabled="true"
+            android:summary="Download map files" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Legal">
+    	 <com.futureconcepts.mercury.ClickPreference android:key="view_legal_info"
+            android:title="Legal Info"
+            android:enabled="true"/>
+    </PreferenceCategory>
+</PreferenceScreen>

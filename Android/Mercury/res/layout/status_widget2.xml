@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+		android:background="@drawable/widget_4by1_bg"
+        android:orientation="horizontal"
+        android:padding="25sp"
+        android:layout_width="320sp" 
+        android:layout_height="100sp" >
+    <LinearLayout
+		android:id="@+id/status_widget_main"
+		android:background="@drawable/border1"
+		android:clickable="true"
+    	android:orientation="vertical"
+    	android:layout_width="210sp"
+    	android:layout_height="wrap_content"
+    	android:gravity="center" >
+	    <TextView 
+	    	android:id="@+id/username"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:padding="2sp"
+	    	android:gravity="center_vertical"
+	    	android:textSize="22sp"
+	    	android:text="...initializing..." />
+    </LinearLayout>
+    <LinearLayout
+		android:clickable="true"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:gravity="right" >
+		<RelativeLayout
+		   	android:layout_width="wrap_content"
+		   	android:layout_height="wrap_content" > 
+		   	<LinearLayout android:id="@+id/tracker_icon_panel"
+		   		android:layout_width="wrap_content"
+		   		android:layout_height="wrap_content"
+		   		android:orientation="horizontal"
+		   		android:layout_alignParentRight="true" >
+			    <ImageView
+			    	android:id="@+id/tracker_status_icon"
+			    	android:paddingLeft="15sp"
+			    	android:src="@drawable/tracking_icon_lit"
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content" />
+	    	</LinearLayout>
+	   	</RelativeLayout>
+   	</LinearLayout>
+</LinearLayout>

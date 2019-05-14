@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" >
+    <TextView android:id="@+id/message"
+     	android:layout_width="fill_parent"
+     	android:layout_height="wrap_content"
+     	android:padding="10sp"
+     	android:textSize="20sp" />
+    <TextView
+	   	android:layout_width="fill_parent"
+	   	android:layout_height="wrap_content"
+	   	android:text="@string/incident_password_prompt"
+	   	android:textSize="30sp" />
+  	<EditText android:id="@+id/password"
+	   	android:layout_width="fill_parent"
+	   	android:layout_height="wrap_content"
+	   	android:textSize="30sp"
+	   	android:inputType="textPassword" >
+  	</EditText>
+	<LinearLayout
+		android:orientation="horizontal"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" >
+	    <Button android:id="@+id/authorize"
+	     	android:layout_width="0dp"
+	     	android:layout_height="wrap_content"
+	     	android:layout_weight="1"
+	     	android:text="@string/authorize" 
+	     	android:textSize="30sp"/>
+	    <Button android:id="@+id/cancel"
+	     	android:layout_width="0dp"
+	     	android:layout_height="wrap_content"
+	     	android:layout_weight="1"
+	     	android:text="@string/cancel"
+	     	android:textSize="30sp" />
+    </LinearLayout>
+</LinearLayout>

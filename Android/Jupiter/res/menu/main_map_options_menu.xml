@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_layers"
+    	android:icon="@drawable/ic_menu_layers"
+		android:title="Layers" />
+	<item android:title="Tools" android:icon="@android:drawable/ic_menu_manage" >
+		<menu>
+			<item android:id="@+id/menu_compass" android:title="Compass" />
+			<item android:id="@+id/menu_utm_grid" android:title="UTM Grid" />
+			<item android:id="@+id/menu_distance_ruler"	android:title="Distance Ruler" />
+		</menu>
+	</item>
+    <item android:id="@+id/menu_mylocation"
+    	android:icon="@android:drawable/ic_menu_mylocation"
+		android:title="My Location" />
+    <item android:id="@+id/menu_mark_waypoint"
+    	android:icon="@drawable/ic_menu_see_map"
+		android:title="Mark Placemark" />
+	<item android:id="@+id/menu_trips" android:title="Trips" />
+    <item android:id="@+id/menu_folders"
+		android:title="Folders" android:icon="@android:drawable/ic_menu_info_details" />
+
+    <item android:id="@+id/menu_record" android:title="Record Tracks" />
+	<item android:id="@+id/menu_preferences" android:title="Preferences" />
+	<item android:id="@+id/menu_about" android:icon="@android:drawable/ic_menu_help"
+		android:title="About Jupiter" />
+</menu>

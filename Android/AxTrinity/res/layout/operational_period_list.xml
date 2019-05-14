@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent"
+         android:padding="5dp" >
+     <com.futureconcepts.ax.trinity.widget.EditTextWithSearch 
+        android:id="@+id/period_search"
+        android:layout_height="wrap_content"
+        android:hint="Search Operational Periods..."
+        android:gravity="left"
+        android:layout_width="fill_parent"/>
+    
+	<ListView android:id="@android:id/list"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:divider="@null"
+		android:scrollingCache="false"
+		android:dividerHeight="0dp"
+		android:layout_below="@+id/period_search"
+		android:layout_above="@+id/menu"/>
+	<LinearLayout 
+		android:id="@+id/menu"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_alignParentBottom="true" >
+		<ImageButton android:id="@+id/menu_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/refresh_bar"
+			android:onClick="refresh" />
+		<ImageButton android:id="@+id/back_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/back_bar"
+			android:onClick="goBack" />
+	</LinearLayout>	 
+	<TextView
+	    android:id="@android:id/empty"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/period_search"
+	    android:text="No Operational Period Found"
+	    android:gravity="center"
+	    android:textStyle="bold" 
+	    android:textSize="20sp"/>
+</RelativeLayout>

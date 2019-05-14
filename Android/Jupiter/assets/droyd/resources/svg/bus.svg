@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="25.578487"
+   height="31.335985"
+   id="svg26253"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:docname="bus.svg">
+  <metadata
+     id="metadata29653">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="667"
+     inkscape:window-width="640"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="14.5"
+     inkscape:cx="16"
+     inkscape:cy="16"
+     inkscape:window-x="0"
+     inkscape:window-y="318"
+     inkscape:current-layer="svg26253" />
+  <defs
+     id="defs26255">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 16 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="32 : 16 : 1"
+       inkscape:persp3d-origin="16 : 10.666667 : 1"
+       id="perspective29655" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-3.2849234,-0.4159756)">
+    <path
+       d="M 27.618066,5.0370945 C 27.271149,3.3114027 26.16813,2.6220154 24.509153,1.9326283 C 22.850176,1.2432411 18.967369,0.41597651 16.076391,0.41597651 C 13.176517,0.41597651 9.2937109,1.2432411 7.6347341,1.9326283 C 5.9757571,2.6220154 4.8727377,3.3158504 4.5258203,5.0370945 L 3.2849234,14.608458 L 3.2849234,27.795767 L 5.428695,27.795767 L 5.428695,29.863929 C 5.428695,32.381304 9.1202522,32.381304 9.1202522,29.863929 L 9.1202522,27.795767 L 23.036978,27.795767 L 23.036978,29.863929 C 23.036978,32.381304 26.719639,32.381304 26.719639,29.863929 L 26.719639,27.795767 L 28.863411,27.795767 L 28.863411,14.608458 L 27.618066,5.0370945 z"
+       id="path6807" />
+    <path
+       d="M 25.63441,15.618077 L 6.5228193,15.618077 C 5.9668618,15.618077 5.5043052,15.15552 5.5043052,14.599563 C 5.5043052,14.506162 5.5220959,14.417209 5.5398865,14.328256 L 6.5584006,6.7805768 C 6.6473538,6.3135726 7.0609861,5.9444169 7.5591239,5.9444169 L 24.602554,5.9444169 C 25.096244,5.9444169 25.514324,6.309125 25.603277,6.7805768 L 26.621791,14.328256 C 26.639581,14.417209 26.657372,14.501714 26.657372,14.599563 C 26.652924,15.15552 26.190368,15.618077 25.63441,15.618077 z"
+       id="path10465"
+       style="fill:#ffffff" />
+    <path
+       d="M 24.869413,23.837351 C 23.79308,23.837351 22.921338,22.970057 22.921338,21.889276 C 22.921338,20.81739 23.79308,19.945649 24.869413,19.945649 C 25.936851,19.945649 26.81304,20.81739 26.81304,21.889276 C 26.81304,22.970057 25.941299,23.837351 24.869413,23.837351 z"
+       id="path10463"
+       style="fill:#ffffff" />
+    <path
+       d="M 7.2611307,23.837351 C 6.1936924,23.837351 5.3175036,22.970057 5.3175036,21.889276 C 5.3175036,20.81739 6.1892447,19.945649 7.2611307,19.945649 C 8.3374642,19.945649 9.2092054,20.81739 9.2092054,21.889276 C 9.213653,22.970057 8.3419119,23.837351 7.2611307,23.837351 z"
+       id="path10461"
+       style="fill:#ffffff" />
+    <path
+       d="M 10.281091,2.5330622 L 21.8539,2.5330622 C 22.992501,2.5330622 22.992501,4.6857294 21.8539,4.6857294 L 10.281091,4.6857294 C 9.1424905,4.6857294 9.1424905,2.5330622 10.281091,2.5330622 z"
+       id="path10459"
+       style="fill:#ffffff" />
+  </g>
+</svg>

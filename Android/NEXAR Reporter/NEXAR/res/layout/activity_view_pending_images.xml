@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brushed_metal_background_dark" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"        
+        android:orientation="vertical" >
+ 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/headerbackground"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:scaleType="center"
+                android:src="@drawable/homeheader7" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:paddingRight="3sp"
+                android:text="@string/version"
+                android:textColor="#FFFFFF"
+                android:textStyle="italic" >
+            </TextView>
+
+        </LinearLayout>
+		
+            <TextView
+                    android:id="@+id/selectedImagesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="2dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="Pending Images"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic" />
+				 <ImageView
+        			android:layout_width="fill_parent"
+        			android:layout_height="wrap_content"
+        			android:paddingBottom="3dp"
+        			android:paddingTop="3dp"
+        			android:scaleType="fitXY"
+        			android:src="@drawable/divider" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                    <GridView
+                        android:id="@+id/grid_view_pending"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_horizontal"
+                        android:columnWidth="110dp"
+                        android:numColumns="auto_fit"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp"
+                        android:horizontalSpacing="5px"
+                        android:scrollbarDefaultDelayBeforeFade="50000"
+            			android:scrollbarStyle="outsideInset"
+            			android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+            			android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track"  />       	</LinearLayout> 
+    </LinearLayout>              
+</RelativeLayout>

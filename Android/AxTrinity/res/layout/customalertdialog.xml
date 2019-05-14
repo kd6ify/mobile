@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+ 
+    <ImageView
+        android:id="@+id/dialogImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp" />
+ 
+    <ScrollView 
+    	android:layout_toRightOf="@+id/dialogImage"
+    	android:id="@+id/f"
+    	android:layout_width="fill_parent"
+    	android:layout_height="100dp"
+    	android:layout_marginRight="5dp">
+    <TextView
+        android:id="@+id/dialogText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#fff" 
+        android:padding="5dp"
+        android:background="@drawable/dialogtextborder"
+        android:textStyle="bold"
+        android:textSize="17sp"/>
+    </ScrollView>
+ 	<LinearLayout   
+ 		android:id="@+id/diloagButtonsContainer"
+ 		android:layout_below="@+id/f"
+ 		android:layout_width="fill_parent"
+ 		android:layout_height="wrap_content"
+ 		android:orientation="horizontal">
+ 	</LinearLayout>
+</RelativeLayout>

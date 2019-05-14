@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent"
+         android:background="@color/layer_background" >
+	<LinearLayout android:id="@+id/header"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true" >
+		<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" >
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/border1"
+				android:src="@android:drawable/ic_menu_revert" />
+		    <TextView
+		  	     style="@style/TitleText"
+		         android:layout_width="wrap_content"
+		         android:layout_height="wrap_content"
+		         android:layout_centerInParent="true"
+		         android:layout_gravity="center_vertical"
+		         android:textSize="22sp"
+		         android:text="Layers" />
+			<ImageView android:id="@+id/select_clear_all"
+				android:layout_width="48sp"
+				android:layout_height="48sp"
+				android:layout_alignParentRight="true"
+			    android:scaleType="fitXY"
+			    android:background="@android:drawable/checkbox_off_background" />
+         </RelativeLayout>
+	    <View
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="2dip"
+	     	android:background="?android:attr/listDivider" />
+	</LinearLayout>
+	<ListView android:id="@+id/layer_list"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/header" />
+	<LinearLayout android:id="@+id/buttons"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerInParent="true" >
+		<Button android:id="@+id/clear"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Clear" />
+		<Button android:id="@+id/all"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=" All  " />
+	</LinearLayout>
+</RelativeLayout>

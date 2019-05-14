@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" >
+<LinearLayout 
+	android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" >
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Name" />
+		<EditText android:id="@+id/name"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content" />
+   	</LinearLayout>
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Description" />
+		<EditText android:id="@+id/description"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content" />
+   	</LinearLayout>
+    <LinearLayout
+         android:orientation="horizontal"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <Button android:id="@+id/select"
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:minWidth="100sp"
+	     	android:text="Select" />
+	    <Button android:id="@+id/save"
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:minWidth="100sp"
+	     	android:text="Save" />
+	    <Button android:id="@+id/delete"
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:minWidth="100sp"
+	     	android:text="Delete" />
+	</LinearLayout>
+</LinearLayout>
+</ScrollView>

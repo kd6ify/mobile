@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <com.futureconcepts.ax.video.viewer.ClickPreference android:key="device_id"
+        	android:title="Device ID"
+        	android:enabled="true"
+        	android:summary="Device ID" />  
+        <EditTextPreference android:key="web_service_address"
+            android:title="Web Service Address"
+            android:enabled="true"
+            android:summary="Web Service Address" />
+	</PreferenceCategory>
+</PreferenceScreen>

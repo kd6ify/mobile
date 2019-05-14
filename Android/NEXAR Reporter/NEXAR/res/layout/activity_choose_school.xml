@@ -1,0 +1,267 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/brushed_metal_background_dark"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/headerbackground"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/homeheader7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingRight="3sp"
+            android:text="@string/version"
+            android:textColor="#FFFFFF"
+            android:textStyle="italic" >
+        </TextView>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/background_overlay_dark"
+        android:duplicateParentState="false"
+        android:fadingEdge="horizontal"
+        android:paddingBottom="9dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="10dp"
+        android:paddingTop="7dp" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="true"
+            android:scrollbarDefaultDelayBeforeFade="50000"
+            android:padding="10dp"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+            android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="3dp"
+                android:weightSum="1" >
+
+                <Button
+                    android:id="@+id/stateButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector"
+                    android:drawableRight="@drawable/spinner_arrow_down"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:includeFontPadding="true"
+                    android:maxLines="1"
+                    android:onClick="currentList"
+                    android:padding="10dp"
+                    android:scaleType="center"
+                    android:singleLine="true"
+                    android:text="@string/select_state"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone" />
+                    <!--  android:textAlignment="viewStart"-->
+
+
+
+                <TextView
+                    android:id="@+id/selectType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="(Required)"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    android:textStyle="bold|italic" />
+
+                <Button
+                    android:id="@+id/schoolTypeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector"
+                    android:drawableRight="@drawable/spinner_arrow_down"
+                    android:ellipsize="end"
+                   android:gravity="center"
+                    android:includeFontPadding="true"
+                    android:maxLines="1"
+                    android:onClick="currentList"
+                    android:padding="10dp"
+                    android:scaleType="center"
+                    android:singleLine="true"
+                    android:text="@string/select_school_type"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone" />
+                  <!--  android:textAlignment="viewStart"-->
+
+                <TextView
+                    android:id="@+id/selectSchool"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="(Required)"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" 
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/schoolNameButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:includeFontPadding="true"
+                    android:maxLines="1"
+                    android:onClick="currentList"
+                    android:padding="10dp"
+                    android:scaleType="center"
+                    android:singleLine="true"
+                    android:text="@string/select_school_name"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic" />
+                  <!--  android:textAlignment="viewStart"-->
+
+
+                <TextView
+                    android:id="@+id/selectRegion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="(Required)"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+                  <Button
+                    android:id="@+id/user_key"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector"
+                    android:gravity="center"
+                    android:includeFontPadding="true"
+                    android:onClick="studentID"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:scaleType="center"
+                    android:text="Enter Key"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"
+                    android:paddingRight="10dp"
+                    android:enabled="false" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="(Required)"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+
+                <Button
+                    android:id="@+id/contactInfoButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector"
+                    android:gravity="center"
+                    android:includeFontPadding="true"
+                    android:onClick="studentID"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:scaleType="center"
+                    android:text="Student ID"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"
+                    android:paddingRight="10dp" />
+
+                <TextView
+                    android:id="@+id/contactInfoTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="3"
+                    android:text="(Not Required)"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+               
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:onClick="saveSelection"
+
+        android:scaleType="center"
+        android:text="Done"
+        android:textColor="#ffffff"
+        android:textSize="40sp"
+        android:textStyle="bold|italic" 
+        android:drawableLeft="@drawable/ok"
+        android:paddingLeft="10dp"/>
+
+</LinearLayout>

@@ -1,0 +1,158 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.futureconcepts.drake.ui" 
+    android:sharedUserLabel="@string/perm_label"
+     android:versionName="0.12"
+     android:versionCode="12" >     
+    <supports-screens
+		android:smallScreens="true"
+		android:normalScreens="true"
+		android:largeScreens="true"
+		android:anyDensity="true" />
+
+	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8"></uses-sdk>
+
+    <uses-permission android:name="info.guardianproject.otr.app.providers.imps.permission.READ_ONLY" />
+    <uses-permission android:name="info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY" />
+	<uses-permission android:name="info.guardianproject.otr.app.im.permission.IM_SERVICE" />    
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="info.guardianproject.otr.app.im.permission.IM_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    
+    <permission android:name="info.guardianproject.otr.app.providers.imps.permission.READ_ONLY"
+        android:permissionGroup="android.permission-group.MESSAGES"
+        android:protectionLevel="dangerous"
+        android:label="@string/ro_perm_label"
+        android:description="@string/ro_perm_desc" />
+
+    <permission android:name="info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY"
+        android:permissionGroup="android.permission-group.MESSAGES"
+        android:protectionLevel="dangerous"
+        android:label="@string/wo_perm_label"
+        android:description="@string/wo_perm_desc" />
+
+	<application
+	    android:icon="@drawable/icon"
+		android:label="@string/im_label"
+        android:taskAffinity="com.futureconcepts.drake.ui" 
+        android:debuggable="true"
+        android:configChanges="locale" >
+
+		<activity android:name="com.futureconcepts.drake.ui.app.SettingActivity" android:configChanges="locale" />
+        
+        <activity android:name="com.futureconcepts.drake.ui.app.SignoutActivity" android:configChanges="locale" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.futureconcepts.drake.ui.app.ContactListActivity"
+            android:launchMode="singleTop"
+            android:configChanges="locale" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="info.guardianproject.otr.app.im.IMPS_CATEGORY" />
+                <data android:mimeType="vnd.android.cursor.dir/imps-contacts"/>
+            </intent-filter>
+            <intent-filter android:icon="@drawable/signin_icon" >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+           <intent-filter android:icon="@drawable/signin_icon" >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                   android:resource="@xml/searchable"/>
+        </activity>
+
+        <activity android:name="com.futureconcepts.drake.ui.app.NewChatActivity"
+            android:configChanges="orientation|keyboardHidden|locale"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="info.guardianproject.otr.app.im.IMPS_CATEGORY" />
+                <data android:mimeType="vnd.android.cursor.item/imps-chats" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.IM_MANAGE_SUBSCRIPTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.item/imps-contacts"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.futureconcepts.drake.ui.app.ViewInvitationActivity"
+            android:configChanges="orientation|keyboardHidden|locale"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/imps-invitations" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.futureconcepts.drake.ui.app.ViewFileTransferActivity"
+            android:configChanges="orientation|keyboardHidden|locale"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/imps-file-transfer" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.futureconcepts.drake.ui.app.ContactsPickerActivity" android:label="@string/contacts_picker_title"
+            android:configChanges="locale" >
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.dir/imps-contacts" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.futureconcepts.drake.ui.app.ParticipantListActivity" android:label="@string/contacts_picker_title" >
+        </activity>
+        
+        <activity android:name="com.futureconcepts.drake.ui.app.JoinChatGroupActivity"
+            android:label="Join Chat Group"
+            android:configChanges="locale" >
+        </activity>
+        
+        <activity android:name="com.futureconcepts.drake.ui.app.ContactPresenceActivity" 
+            android:configChanges="locale">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/imps-contacts" />
+            </intent-filter>
+        </activity>
+
+          <activity android:name="com.futureconcepts.drake.ui.app.CertDisplayActivity"
+            android:configChanges="locale"
+         	android:theme="@android:style/Theme.Dialog"
+         	 android:taskAffinity="" />
+          
+          <activity android:name="com.futureconcepts.drake.ui.app.WarningDialogActivity"
+            android:configChanges="locale"
+         	android:theme="@android:style/Theme.Dialog"
+         	 android:taskAffinity="" />
+        
+    </application>
+</manifest>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" >
+	<com.futureconcepts.jupiter.map.MapView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:id="@+id/map_view" />
+	<ImageButton android:id="@+id/ruler"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentRight="true" 
+		android:background="@color/transparent"
+		android:src="@drawable/btn_measure"
+		android:onClick="buttonDistanceRulerOnClick"
+		android:visibility="gone" />
+	<com.futureconcepts.jupiter.DefaultZoomControl android:id="@+id/zoom_control"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:visibility="gone" />
+</RelativeLayout>

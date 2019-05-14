@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_assets"
+		android:title="Assets" />
+	<item android:id="@+id/menu_collectives"
+		android:title="Collectives" />
+    <item android:id="@+id/menu_show_on_map"
+		android:title="Show on Map" />
+</menu>

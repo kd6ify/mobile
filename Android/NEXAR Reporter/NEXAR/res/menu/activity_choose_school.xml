@@ -1,0 +1,53 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+     <item
+        android:id="@+id/menu_1"
+        android:orderInCategory="100"
+        android:title="AnonymousCategoryTable"/>
+    
+     <item
+        android:id="@+id/menu_2"
+        android:orderInCategory="100"
+        android:title="AnonymousInfoTable"/>
+     <item
+        android:id="@+id/schools"
+        android:orderInCategory="100"
+        android:title="SchoolsTable"/>
+    <!--  <item
+        android:id="@+id/schooltype"
+        android:orderInCategory="100"
+        android:title="SchoolTypeTable"/>
+     <item
+        android:id="@+id/states"
+        android:orderInCategory="100"
+        android:title="StatesTable"/>
+        --> 
+     <item
+        android:id="@+id/media"
+        android:orderInCategory="100"
+        android:title="MediaTable"/>
+     <item
+        android:id="@+id/mediaType"
+        android:orderInCategory="100"
+        android:title="MediaTypeTable"/>
+         
+     <item
+        android:id="@+id/anonymousInfoMedia"
+        android:orderInCategory="100"
+        android:title="AnonymousInfoMedia"/>
+
+     
+     <item
+        android:id="@+id/schoolFeedMenu"
+        android:orderInCategory="100"
+        android:title="SchoolFeedTable"/>
+     
+       <item
+        android:id="@+id/tableStatusMenu"
+        android:orderInCategory="100"
+        android:title="TableStatus"/>
+    
+  
+
+</menu>

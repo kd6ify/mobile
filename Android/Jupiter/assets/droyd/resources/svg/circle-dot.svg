@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="1000"
+   height="1000"
+   id="svg2478">
+  <defs
+     id="defs2480" />
+  <circle
+     cx="-1"
+     cy="-1"
+     r="1"
+     transform="matrix(500,0,0,500,1000,1000)"
+     id="circle3585"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <circle
+     cx="-1"
+     cy="-1"
+     r="1"
+     transform="matrix(200,0,0,200,700,700)"
+     id="circle3551"
+     style="fill:#000000;fill-opacity:1" />
+</svg>

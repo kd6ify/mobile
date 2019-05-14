@@ -1,0 +1,20 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="294dp"
+    android:minHeight="72dp"
+    android:updatePeriodMillis="660000"
+    android:initialLayout="@layout/phone_number_widget" >
+    
+    <!-- 
+    minWidth=294dp minHeight=72dp ?
+    
+    Because the Home screen's layout orientation
+    (and thus, the cell sizes) can change, as a rule of thumb,
+    you should assume the worst-case cell size of 74 pixels for
+    the height and width of a cell. However, you must subtract 2
+    from the final dimension to account for any integer rounding
+    errors that occur in the pixel count.
+    To find your minimum width and height in density-independent pixels (dp),
+    use this formula:
+		(number of cells * 74) - 2
+	Following this formula, you should use 72 dp for a height of one cell, 294 dp and for a width of four cells. -->
+</appwidget-provider>

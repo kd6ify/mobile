@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="horizontal" >
+	<Button android:id="@+id/btn_mark_here"
+		style="@style/BigButtonStyle"
+		android:layout_width="0dp"
+		android:layout_weight="1"
+		android:layout_height="wrap_content"
+		android:text="Mark Here"
+		android:onClick="onClick_MarkHere"
+		android:visibility="invisible" />"
+	<Button android:id="@+id/btn_use_marked"
+		style="@style/BigButtonStyle"
+		android:layout_width="0dp"
+		android:layout_weight="1"
+		android:layout_height="wrap_content"
+		android:text="Use Mark"
+		android:onClick="onClick_UseMarked"
+		android:visibility="invisible" />
+	<Button android:id="@+id/btn_skip"
+		style="@style/BigButtonStyle"
+		android:layout_width="0dp"
+		android:layout_weight="1"
+		android:layout_height="wrap_content"
+		android:text="Skip"
+		android:onClick="onClick_Skip" />
+ </LinearLayout>

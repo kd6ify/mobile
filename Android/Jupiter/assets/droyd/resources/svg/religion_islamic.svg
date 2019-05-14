@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="12.351268"
+   height="12.351267"
+   id="svg17504"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   version="1.0"
+   sodipodi:docname="religion_islamic.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs17506">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective17512" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="37.566995"
+     inkscape:cx="6.1756317"
+     inkscape:cy="6.1756312"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="640"
+     inkscape:window-height="667"
+     inkscape:window-x="0"
+     inkscape:window-y="318" />
+  <metadata
+     id="metadata17509">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-310.96723,-377.61512)">
+    <g
+       style="fill-rule:evenodd"
+       id="g2912"
+       transform="matrix(8.2341782e-2,0,0,8.2341782e-2,291.2052,367.81645)">
+      <path
+         style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:10;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path2898"
+         transform="translate(5.878546,0)"
+         d="M 295.526,201.70344 L 283.05479,183.33016 L 261.49276,188.6393 L 275.11297,171.10082 L 263.40064,152.23473 L 284.2896,159.76863 L 298.61302,142.7996 L 297.9029,164.99428 L 318.46758,173.37294 L 297.13974,179.55611 L 295.526,201.70344 z" />
+      <path
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.01315784;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1"
+         id="path2903"
+         d="M 240,188.37499 C 240,236.82958 272.048,269 314,269 C 355.952,269 390.00001,234.952 390.00001,193 C 390.00001,151.048 359.1131,119 309.37499,119 C 330.89379,119 367.49998,149.11199 367.49998,183.74999 C 367.49998,218.38798 339.38798,246.49998 304.74998,246.49998 C 270.11199,246.49998 240,220.01694 240,188.37499 z" />
+    </g>
+  </g>
+</svg>

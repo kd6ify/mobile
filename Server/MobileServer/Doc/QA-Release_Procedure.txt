@@ -1,0 +1,25 @@
+﻿- Verify all bugs fixed
+
+- Verify Changelog mentions all bugs
+
+- Verify AssemblyInfo version info matches changelog
+
+- Verify Setup Project version info matches changelog
+
+- change ConnectionStringSuffix appropriately in AppSettings in App.Config
+
+- correct the PublicPushServiceAddress in App.Config
+	Debug: tcp://seattle.futurec.net:8282
+	Live: tcp://trinity.antaresx.net:8282
+	TestDoc: tcp://64.70.85.230:8282
+	
+- Create Test Builds folder on \\orion\AntaresInstalls\Test Builds yyyy-mm-dd
+
+- Create folder under test builds "Mobile Server <version>"
+
+- Copy MobileServer.msi to "Mobile Server <version>"
+
+Test devices:
+	Dave's ADP1 : 358279013707813 (909)267-0077
+	Dave's Droid: A0000015D648A8 (909) 253-6430
+	

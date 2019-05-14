@@ -1,0 +1,1561 @@
+==== AX Trinity Change Log ====
+Version Code 292 (6.0.242)
+	-EditModelActivity now send the journal data in this order: media, journalEntry, journalEntryMedia
+	-EntryImageObjectManager: added insertJournalEntryMedia method and insertMedia returns all the medias id to insert
+	-ViewJournalEntryActivity replaced all getAplicationContext() calls with Activity context.
+	-Launcher: scheduleImagesUploaderService() is called only on create.
+
+	
+Version Code 291 (6.0.241)
+	*****IMPORTANT****** This build only fixed the upload Images piece.
+		All other new features implemented on 288 do not exist in this version.
+	android.intent.action.MEDIA_MOUNTED is protected now. Android 4.4 and up
+     - Changed android.intent.action.MEDIA_MOUNTED to Intent.ACTION_MEDIA_SCANNER_SCAN_FILE on
+     	 DownloadImagesFromServer.java(ln 440)
+
+
+Version Code 290 (6.0.240)
+	*****IMPORTANT****** This build only fixed the upload Images piece.
+		All other new features implemented on 288 do not exist in this version.
+	JIRA TKTRIN-263
+		-Replaced startManagingCursormethod from ViewJournalEntryActivity.java( ln 135) 
+			with cursor.close(); startManagingCursor cannot handle null cursors.
+			
+
+Version Code 289 (6.0.239)
+	*****IMPORTANT****** This build only fixed the upload Images piece.
+		All other new features implemented on 288 do not exist in this version.
+	JIRA TKTRIN-251:
+		-Added UloadImageReceiver.java.
+		-Added scheduleImagesUploaderService method to Launcher.java.
+		
+	JIRA TKTRIN-252
+		-All notifications are dismissed when the Upload Image service starts.
+
+
+
+Version Code 288 (6.0.238)
+	-Added missing start time, end time and priority fields on Priority Task details.
+	-Removed gps listener on activity destroy method in AddEditTaskActivity.java and AddEditPriorityTaskActivity.java and
+	
+	JIRA TKTRIN-41:
+		-Added text fields to display current location in edit_log_entry.xml 
+		-Added  removeListener() method to GPS.java
+		-EditJournalEntryActivity.java updated:
+			-Implements GpsOnLocationChangeNotifier
+			-Added lastLocation, updateLocationValues and gpsLocationChange methods.
+			-Removed gps listener in onDestroy method.
+		
+	
+	JIRA TKTRIN-38:
+		-Replaced gallery icon with logs icon in:
+		 	1.-log_list_item.xml
+		 	2.-ImageAdapter.java
+		 	3.-EditJournalEntry.java
+		 	4.-ViewItemActicity.java
+		-JournalListActivity updated:
+			1.-Instead of display the amount of images it now display number of Log entries.
+		-ViewJournalActivity.java updated:
+			1.-Replaced log_list_item.xml with log_entry_list_item.xml in MyAdapterClass.		
+		-Added log_entry_list_item.xml
+		-Added image_icon.png and logbook_icon.png
+		
+	
+	JIRA TKTRIN-185:
+		-Replaced setTextViewUnderlined with setTextView method in ViewMasterJournal.java(ln 219);
+	
+	JIRA TKTRIN-186:
+		-master_log_list_item.xml updated:
+			-Replaced orange with white color in category date time text.
+			-Removed extra padding and space in all text details.
+			-Added style="@style/StateText" property to all TextViews.
+			
+	
+	JIRA TKTRIN-221:
+		-ViewAssetActivity.java updated:
+			-Added MY_USER_EMPLOYEENO item type.
+			-Added  getEmployeeNo() method.
+			-Added case MY_USER_EMPLOYEENO.
+	
+	JIRA TKTRIN-184:
+		-Added end time for operational periods.
+		-DateTime text  replaced for Start Time and End Time.
+		-Updated style and colors.
+	
+	JIRA TKTRIN-117:
+		-Added "No Logs Found" text to MasterLog view.
+
+	JIRA TKTRIN-209:
+		-ModelListActivity.java updated:
+			1.-Added CheckIncidentNull.isIncidentNull call on resume.
+			2.-removed isIncidentNull method.
+		-CheckIncidentNotNull.java updated:
+			1.-replaced private with public in isIncidentNull method.
+			2.-Verify that incident name is not null and not = "Please reset Data"
+			
+			
+	JIRA TKTRIN-224:
+		-add_edit_priority_task.xml updated:
+			1.-Added properties inputType= dateTime and gravity="bottom|center_horizontal" to all
+				datetime fields.
+		
+		-add_edit_task.xml updated:
+			1.-Added properties inputType= dateTime and gravity="bottom|center_horizontal" to all
+				datetime fields.
+				
+		-AddEditPriorityTaskActivity.java updated:
+			1.-setTitle("Editing PriorityTask: "+_tactic.getName());
+         	2.-Added method displayTacticValues();
+         	3.-Added code to handle wrong format for start and end date-time fields.
+         	4.-Added error indicator for start and end date-time fields
+        
+        -AddEditTaskActivity.java updated:
+			1.-setTitle("Editing Task: "+_tactic.getName());
+         	2.-Added method displayTacticValues();
+         	3.-Added code to handle wrong format for start and end date-time fields.
+         	4.-Added error indicator for start and end date-time fields
+         
+         -AddEditTaskBaseActicity.java updated:
+         	1.-Added variables startTimeError = "Invalid Start Time value", 
+         	  endTimeError = "Invalid End Time value", simpleFormat, taskName, startTimeField,
+         	  endTimeField and _tactic;
+         	2.-Added getFormattedLocalTime, isValidDateTimeString and getGeoPointFromWKT methods.
+        
+         -ViewTaskActivity.java and ViewPriorityTaskActivity.java updated:
+         	1.-Added new Menu item: "Edit Task" and "Edit Priority Task"
+         	2.-Added code to handle new menu Item.
+         	
+         -EditTextWithDateSelection.jav aupdate:
+         	1.-Changed calendar icon position to left.
+         	2.-Updated code that handles click on icon to look for left clicks.
+         
+
+	JIRA TKTRIN-223:
+		-Added AddEditTaskBaseActivity.java
+		-add_edit_priority_task.xml updated:
+			1.-Added all fields related to address
+		
+		-add_edit_task.xml updated:
+			1.-Added all fields related to address
+		
+		-Gps.java updated:
+			-removed all code related to Google GeoPoints.
+			-Changed distance value from 100 to 30.
+		
+		-AddEditPriorityTaskActivity.java updated:
+			-Extends AddEditTaskBaseActivity.java instead of EditModelActivity.java
+			-Added all code related to handle location
+			
+		-AddEditTaskActivity.java updated:
+			-Extends AddEditTaskBaseActivity.java instead of EditModelActivity.java
+			-Added all code related to handle location
+		
+ 
+	JIRA TKTRIN-183:
+		-Added EditTextWithSearch.java
+		-Added search field to new_incident_list_activity.xml
+		-Added "No Incidents Found"  Text to new_incident_list_activity.xml
+		-Updated IncidentSelectorListActivity.java
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-Added getIncidentsFromSearch() and querySearch() methods to private MyCursor class.
+			4.-Added filter to MyAdapter to display only items that match with the search.
+			5.-Removed startManaging Model from doInBackground method of Private class LoadAsyncTask.
+		
+		-Added Search icon to the left of the input search field.
+		-Added "No Operational Periods Found" Text to operational_period_list.xml
+		-Added search field to operational_period_list.xml
+		-Updated OperationalPeriodSelectorActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-Added filter to MyAdapter to display only items that match with the search.
+			4.-Added getContext() method.
+			5.-Removed startManaging Model from OnCreate method.
+			6.-Added filter to MyAdapter to display only items that match with the search.
+		-Added queryWhere Method to OperationalPeriod.java in AxModel project
+		
+		-Added "No Personnel Data Found" Text to operational_period_list.xml
+		-Added search field to user_list.xml
+		-Updated UserListActivity.java:
+			1.-Added querySearch method to private class MyCursor.
+			2.-Implements EditTextWithSearchInterface.
+			3.-Added addSearchListener(); and removeSearchListener(); methods
+			4.-Removed startManagingCursor from doInBackground method of Private class LoadAsyncTask.
+			5.-Added getContext() method.
+			6.-MyCursor is closed in onDestroy Method
+			7.-Added filter to MyAdapter to display only items that match with the search.
+			
+		-Added "No Equipment Data Found" Text to equipment_list.xml
+		-Added search field to equipment_list.xml
+		-Updated EquipmentListActivoty.java:
+			1.-Added querySearch method to private class MyCursor.
+			2.-Implements EditTextWithSearchInterface.
+			3.-Added addSearchListener(); and removeSearchListener(); methods
+			4.-Removed startManagingCursor from doInBackground method of Private class LoadAsyncTask.
+			5.-Added getContext() method.
+			6.-MyCursor is closed in onDestroy Method
+			7.-Added filter to MyAdapter to display only items that match with the search.
+		
+		-Added "No Tasks Found" Text to view_tactics.xml
+		-Added search field to view_tactics.xml
+		-Updated TaskFragment.java:
+			1.-Added new methods addFilter(), initSearchField(root) and  addSearchListener();
+			2.- Set Search filed hint = "Search Tasks.."
+		-Updated TaskFragment.java:
+			1.-Added new methods addFilter(), initSearchField(root) and  addSearchListener();
+			2.- Set Search filed hint = "Search Tasks.."
+			3.- Set empty data text = "No Tasks Found"
+			
+		-Updated PriorityTaskFragment.java:
+			1.-Added new methods addFilter(), initSearchField(root) and  addSearchListener();
+			2.- Set Search filed hint = "Search Priority Tasks.."
+			3.- Set empty data text = "No Priority Tasks Found"
+			
+		-Updated TaskFragmentBase.java:
+			1.-Added querySearch method.
+			2.-Implements EditTextWithSearchInterface.
+			3.-Added addSearchListener(); and removeSearchListener(); methods
+			4.-MyCursor is closed in onDestroy Method
+			5.-Added filter to MyAdapter to display only items that match with the search.
+			6.-Added protected methods addFilter(), initSearchField(root) and  	addSearchListener(); 
+	
+		-Added "No Logs Found" Text to journal_list.xml
+		-Added search field to journal_list.xml
+		-Updated JournalListActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-Journal is closed in onDestroy Method
+			4.-Added filter to MyAdapter to display only items that match with the search.
+		
+		-Added "No Log Entries Found" Text to view_journal.xml
+		-Added search field to view_journal.xml
+		-Updated ViewJournalActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-JournalEntry cursor is closed in onDestroy Method.
+			4.-Added filter to MyAdapter to display only items that match with the search.
+			5.-startManagingModel removed from JournalEntry Cursor.			
+			
+		-Added "No Log Entries Found" Text to view_master_log.xml
+		-Added search field to view_master_log.xml
+		-Updated ViewMasterJournalActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-JournalEntry cursor is closed in onDestroy Method.
+			4.-Added filter to MyAdapter to display only items that match with the search.
+			5.-startManagingModel removed from JournalEntry Cursor.
+		
+		-Added "No Triage Found" Text to view_casualties.xml
+		-Added search field to view_casualties.xml
+		-Updated CasualtyListActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-Triage cursor is closed in onDestroy Method.
+			4.-Added updateSearchFieldProperties to update search field hint and no data text to the actual
+				triage type.
+		
+		-Added "No Collectives Found" Text to view_task_collectives.xml
+		-Added search field to view_task_collectives.xml
+		-Updated ViewTaskCollectionsActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-Tactic and Custom Collection Cursor are closed in onDestroy Method.
+			4.-Added Private class MyCursor that handles collections query's
+			5.-Removed startManagingModel form Tactic cursor.
+			6.-Added getContext method.
+			7.-Set descendants = true on contetObserver for CollectionAttributeTactic table.
+			8.-Removed all code related to CollectionAttributeTactic cursor 
+			9.-Removed displayMenuOptions method and menu button.
+        	10.-Added refresh method and refresh button.   
+        	
+		-Updated ViewTaskAssetActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			4.-Added Private class MyCursor that handles Assets query's
+			5.-Removed startManagingModel form Tactic cursor.
+			6.-Added getContext method.
+			7.-Removed call to AssetListBinder in MyAdapter.bindView method.
+			8.-Added filter to MyAdapter to display only items that match with the search.
+			9.-Search is based on Equipment and Personnel Name.
+			10.- Added Observer MyAssetAttributeTacticObserver and TacticObserver;
+			11.-Added query_distinct_user_tactic_list query to AxSync project
+			12.-Added query_distinct_collection_tactic_list query to AxSync project
+			13.-Set descendants = true on contetObserver for AssetAttributeTactic table.
+			14.-Removed all code related to AssetAtributte cursor
+			15.-Removed displayMenuOptions method and menu button.
+       		16.-Added refresh method and refresh button.  
+       		17.-Removed call to AssetListBinder.   
+			
+		
+		
+				
+	
+	JIRA TKTRIN-181:
+		-Added NotesLayer.java
+		-Added NotesMarker.java
+		-Added notes.png image.
+		-Added note_details_alert_layout.xml
+
+	JIRA TKTRIN-211:
+		-Added CollectiveListActivity.java
+		-Added CollectiveListActivity.java to Manifest
+		-Added collective_list_activity.xml
+		-CollectiveListActivity now handles item list click.
+		-Added refresh and back buttons to collectives_list_xml.
+		-Added refresh and goBack methods to CollectiveListActivity.java
+		-Removed extra Icon query from CollectionlistBinder.java to improve list scrolling and rendering time.
+		-Added CollectionObserver private class to add new collectives to the list when Collection cursor 
+			has new data.
+		-Added "No Collectives Found" Text to collective_list_activity.xml
+		-Added search field to  collective_list_activity.xml
+		-Updated CollectiveListActivity.java:
+			1.-Implements EditTextWithSearchInterface.
+			2.-Added addSearchListener(); and removeSearchListener(); methods
+			3.-Collectives cursor is closed in onDestroy Method.
+			4.-Added filter to MyAdapter to display only items that match with the search.
+			5.-Added getContext method.
+
+	JIRA TKTRIN-197:
+    	-Added DangerZone.java
+    	-Added MyLocationNotifier.java
+    	-Added MyLocationObserver.java
+    	-Updated MyLocationOverlay.java
+    		1.-Removed all local interface code related to MyLocationNotifier.
+    		2.- Implements MyLocationNotifier
+    		3.- Added new methods: registerListener, unRegisterListener and
+    		notifyMyLocationHasChange.
+
+    	-Updated MainMapOSMActivity.java:
+    		1.- Implements MyLocationObserver and DangerZone interfaces
+    		2.- Removed MyLocationNotifier interface.
+
+    	-Updated BombLayer.java
+    		1.-Implements MyLocationObserver and DangerZoneNotifier interfaces.
+    		2.-Added new method toPixels(LatLong).
+    		
+    		-Added danger_zone.wav to raw folder.
+			-Sound Is played when the location of the user is in a danger zone in MainMapOSMActivity.java(ln 1266).
+			-Added Your are un a DANGER ZONE!!! textview to geo_map_osm_main.xml
+			-Updated ChemicallSpillLayer.java
+				1.-Implements MyLocationObserver and DangerZoneNotifier interfaces.
+				2.-Added new method toPixels(LatLong).
+		-Added class CustomLatLong.java
+		-Added class TappablePolygon.java
+		-ChemicalSpillLayer.java  when the user location changed,
+			 looks if its in the danger zone or in the shelter zone.		
+
+	JIRA TKTRIN-176:
+		-Added add_edit_task.xml 
+		-Added AddEditTaskActivity.java
+		-Added EditTextWithDateSeleccion.java
+		-Added displayMenuOptions method to ViewTasksMainActivity.java
+		-Added menu button to view_tasks.xml
+		-EditTextWithDateSeleccion.java implements OnTouchListener
+		-Added add_edit_priority_task.xml
+    	-Added AddEditPriorityTask.java
+    	-Added EditTextWithClearButton.java
+    	-Updated EditTextWithDateSelection.java: custom view now prevent keyboard pop up when the Select Date dialog appears on screen after the user press the calendar button.
+    	-Added custom edit text with clear button to all fields in Add/Edit Task view.
+    	-Operational period spinner is now filled with database in Add/Edit Task view.
+    	-Set as default: type= patrol in Add/Edit Task view.
+    	-Added onBack method and back button to Add/Edit Priority Task view.
+    	-Set as default: priority= normal, status =pending. in Add/Edit Priority Task view.
+		
+		-add_edit_priority_task updated:
+			1.-Added inputType="datetime" property to EditTextWithDateSelection fields.
+			2.-Added "(mm/dd/yyyy hh:mm)" text to EditTextWithDateSelection fields hint.
+			
+		-AddEditPriorityTaskActivity.java updated:
+			1.-Now extends EditModelActivity.java
+			2.-Added DateTime context
+			3.-All fields are filled with current tactic data.
+			4.-Added setTitle("Add New PriorityTask"); if action = insert.
+			5.-Added  setUpTextFields(); method
+			6.-Called listenForChanges(); in onCreate.
+			7.-Added getPriorityPosition, getPriorityIdByPosition, getStatusPosition and getStatusIdByPosition methods.
+			8.-Added DefaultTextWatcher to all fields
+			9.-Added code to handle required fields.
+		
+		-Updated EditTextWithDateSelection.java:
+			1.-Added the 0 to the month if needed.
+		 
+		-Tactic.java of AxModel Updated:
+			1.-Added beginEdit,setName,
+			setCallsign,setReportBy,setTypeID,
+			setStatusID,setOperationalPeriod,
+			setIncident,setPriority, setNotes,
+			setStart,setEnd,setRequiresRadio,
+			setRequiresVehicle,setRequiresOther
+			and createDefaultPriorityTask methods.
+			2.-Added getOperationalPeriodId , setSpecialEquipment  and  setRequirementsDescription methods.
+			
+		-TacticType.java of AxModel Updated:
+			1.-Set order by name in query method.
+			
+		-AddEditTaskActivity.java updated:
+			1.-Added handleRequiredFields(), hasText, setUpTextFields(),movePeriodToPosition() and createAdapter methods
+			2.-Added item selected listeners to all spinners.
+			3.-Added code to handle required fields.
+			
+			4.-Added textWatchers to all input fields.
+			5.-Added onCheckChange lister to all checkBoxs
+			6.-Added setTitle("Add New Task"); if action = insert.
+			
+		-add_edit_task.xml updated:
+			1.-Changed all EditText fields with EditTextWithClearButton.
+			2.-Added proper ids to all fields.						
+		
+	JIRA TKTRIN-205:
+   		-Added IncidentAndPeriodUpdater class to Launcher.java.
+    	-Added MyCustomCursor class to Launcher.java.
+    	-Added MyObserver to IncidentAndPeriotUpdater class.
+    	-Added Timer that will check if the incident Name has changed or the operational period (every 2 min) in Launcher.java(ln 109)
+		-Added methods initializateUpdater, createResyncTimer and cancelResyncTimer to IncidentAndPeriodUpdater class (ln 907)
+		
+	JIRA TKTRIN-167:
+		-Removed   android:paddingRight="5dp" property for tracking mode text in
+			geo_map_osm_main.xml.
+	JIRA TKTRIN-160:
+		-Updated geo_map_osm_main.xml
+			*Added property android:clickable="false" to current location icon(ln 23).
+			*Added new ImageButton that's handles back to main activity(ln 47).
+		-Updated MainMapOSMActivity.java
+			*Added goBack method ln(244)
+			*Removed back option from General Option pop up.(ln 84)
+
+Version Code 287 (6.0.237)
+	JIRA TKTRIN-232:
+		-Replaced "Trinity is unable to determine the location of your phone. Would you like you like to wait until it finds your location?"
+			with "Trinity is unable to determine the location of your device. Would you like to wait until it finds your location?"
+			in EditJournalEntryActivity.jaca (ln 356).
+
+Version Code 286 (6.0.236)
+	JIRA TKTRIN-215
+		-Check if dialog still showing before dismiss it to prevent a window manager crash on
+			IncidentSelectorActivity.java(ln 304)
+		-Check if the ImageManagerGetImageListener is not null before get the image from the Activity caller
+			in ImageManager.java(ln 185)
+
+
+Version Code 285 (6.0.235)
+	JIRA TKTRIN-206
+		-ViewJournalEntryActivity.java updated:
+			-DownloadImagesFromServer.setDownloadImageNotifierListener(this); removed from onCreate Method
+			-Download Image listener is now assigned on when the activity is resumed and removed when the activity
+			is paused. 
+
+Version Code 284 (6.0.234)
+	JIRA TKTRIN-208
+		-Added disabled Operational period button image.
+		-Operational period button is now disabled if incident is = null.
+		-Added null check before calling _syncServiceConnection.disconnect(); in ViewTaskCollectionActivity.java(ln 131)
+		-Added CheckIncidentNotNull.java
+		-If incident is null the activity will call finish() on resume method in:
+			-TriageARDemoActivity.java
+			-EditModelActivity.java
+			-IncidentSelectorActivity.java
+			-ModelListActivity.java
+			-ModelOSMMapActivity.java
+			-ViewTasksMainActivity.java
+			-CasualtyListActivity.java
+			-TriageMainActivity.java
+		
+
+Version Code 283 (6.0.233)
+	JIRA TKTRIN-207
+		-Changed onStop method to onPause() in OperationalPeriodSelectorActivity.java(ln 68)
+		-Added isFinishing() check before set the first operational period(default) when the user avoid choosing one in OperationalPeriodSelectorActivity.java(ln 71).
+		-Removed code to call OperationalPeriodSelectorActivity expecting a result
+			in IncidentSelectorActivity.java(ln 186).
+		
+Version Code 282 (6.0.232)
+	JIRA TKTRIN-206
+		-Verify if image is not null before save it in to cache because the
+			activity was destroyed in ViewJournalEntryActivity.java(ln 342).
+
+Version Code 281 (6.0.231)
+	JIRA TKTRIN-204
+		-Set size for map icons cache based on current available memory. LruOSMIconsCache.java(ln 16)
+		-Added method  getCacheSize() to LruOSMIconsCache.java
+		-Replace Bitmap with AndroidBitmap in:
+		 -EquipmentOverlay.java
+		 -PersonnelOverlay.java
+		 -TriageOverlay.java
+
+	JIRA TKTRIN-200:
+		-"Traking Mode (Fast: 10sec/10m)" text replaced with "Tracking Mode (Fast: 10sec/10m)"
+
+Version Code 280 (6.0.230)
+	-JIRA TKTRIN-201:
+		-Added currentMapMode=MapSettings.MAP_OFFLINE; in MainMapOSMActivity.java(ln 137).
+		-Added in MainMapOSMActivity.java(ln 236):
+		   if(currentMapMode ==MapSettings.MAP_OFFLINE)
+			{				
+				mapModeOnline();
+			}
+			This will allow the online map to be shown if the off-line map file was deleted, renamed or the
+			SD card is not available.
+
+Version Code 279 (6.0.229)
+	-Removed _syncServiceConnection.dropDataset(StaticDataSet.class.getName()); on Launcher.java(ln 375).
+
+	JIRA TKTRIN-196:
+	-Check if the size of the array is =< of the position requested in ViewJournalEntryActivity.java(ln 343)
+
+Version Code 278 (6.0.228)
+	Map: Pinch Zoom improved.
+	No longer waits until the user release the fingers to apply the zoom level to the map.
+	 Now the zoom level is applied when the user zoom in or zoom out with the pinch zoom feature.
+
+Version Code 277 (6.0.227)
+	-Map -> pinch zoom: User is no longer returned to same zoom level when the pinch distance was not enough to reach the next zoom level.
+	-Removed all the .jar files related to MapsForge. 
+	-Added MapsForge projects to trinity. With this we can modify anything we want on the new map API.
+	JIRA TKTRIN-102:
+		-Added method displayZoomControls() To MapZoomControls.java
+		-Called displayZoomControls() method after create the mapView in BaseMapActivity.java(ln142)
+	JIRA TKTRIN-100:
+		-Added TextView to equipment_list.xml with text = "No Equipment data"
+		-Added TextView to user_list.xml with text = "No Personnel data"
+	JIRA TKTRIN 161:
+		-Added TextView to view_task_collective.xml.
+		-ViewTaskAssetsActivity.java(ln 81) change text of TextView to="No Assets currently assigned" 
+		-ViewTaskCollectionsActivity.java(ln 86) change text of TextView to="No Collectives currently assigned" 
+	JIRA TKTRIN-180:
+		-Updated methods and values to use South as 0 Degrees clockwise in ChemicalSpillLayer.java.
+
+Version Code 276 (6.0.226)
+	JIRA TKTRIN-180:
+		-Added ChemicalSpillLayer.java
+    	-Update IncindetOverlay.java:
+    		1.- Call ChemicalSpillLayer.displayChemicalLayer if the details of the incident have chemical data.
+		-Added ChemicalSpillData.java
+		-Added BomData.java
+		-Updated ChemicalSpillLayer.java:
+			1.-Added Class ChemicalLayer.java
+			2.-Added generateProtectiveAtionDistance() method.		
+	
+	JIRA TKTRIN-189
+		-comment-out finish() finish call on IncindetSelectorActivity.java(ln219).
+	JIRA TKTRIN-193:
+		-Added android:layout_below="@+id/resendImages" property to TextView this will prevent text overlaps.				
+
+Version Code 275 (6.0.225)
+	-Removed all code related to CustomMapView to enable pinch zoom again.
+		-I talk with ryan and he agree with me about this.
+	JIRA TKTRIN-179:
+		-Added parseIncidentDetails method to IncidentOverlay.java.
+		-Updated IncidentOverlay.
+		-Added BombData.java class.
+		-Updated MainMapOsmActivity.java(ln 766) now call IncidentOverlay.creteIncidentItem.
+		-Added BombLayer.java
+		- Bomb Layer is added if the Incident details are != null.
+	JIRA TKTRIN-154:
+		-comment-out hideSyncProgressView() in Launcher.java(ln 225).
+
+Version Code 274 (6.0.224)
+	JIRA TKTRIN-TKTRIN-158:
+		-Added CustomMapView.java.
+		-Updated to implement CustomMapView:
+			-geo_map_osm.xml
+			-BaseMapActivity.java.
+	JIRA TKTRIN-80:
+		-Modified view_indexed_type.xml to prevent text go behind image.
+	JIRA TKTRIN-149
+		-Replaced the green selection highlight with the standard
+		    yellow that we use in all the lists.
+
+Version Code 273 (6.0.223)
+	JIRA TKTRIN-168:
+		-Added setAlphaToMenuButtons method in MainMapOSMActivity.
+		-Set 70% transparency to map menu buttons in MainMapOSMActivity.java
+	JIRA TKTRIN-162:
+		-Added view_collective.xml
+		-Set as layout view_collective.xml in ViewCollectionActivity.java
+	JIRA TKTRIN-166:
+		-Added transparency to Tracking Mode.
+	JIRA TKTRIN-145:
+		-Added CustomActivityInfo.java
+		-Added disabled launcher icons for all Trinity features.
+		-Updated Launcher.java.
+			
+
+Version Code 272 (6.0.222)
+	JIRA TKTRIN-152:
+		-Removed android:configChanges="orientation|keyboardHidden" property from
+		 activity definition on AxTrinityManifest.xml(ln 278).
+	JIRA TKTRIN-155:
+		-Gps Status option will be removed, There is not use for this option in the new map, at least for now
+	JIRA TKTRIN-148:
+		-Added isIncidentNull method to Launcher.java(402)
+		-All features are disabled if the incident is null. This will prevent adding data to null incidents.
+	JIRA TKTRIN-146:
+		-Added removeTopButtonsListeners() method to Launcher.java(168)
+		-Added click listeners for Incident selector and operational period selector buttons.
+		-Set the Incident and operational period listeners in onResume method.
+	JIRA TKTRIN-125:
+		-Current Tracking Mode is now displayed on screen.
+		-Added TextView to geo_map_osm_main.xml
+	
+Version Code 271 (6.0.221)
+	JIRA TKTRIN-147:
+		-Replaced View.post with Handler.post
+
+Version Code 270 (6.0.220)
+	JIRA TKTRIN-143:
+		-Removed "No" word from the CheckBox
+	
+	JIRA TKTRIN-141:
+		-Added ((TextView)view.findViewById(R.id.text1)).setTextColor(JournalEntryPriorityBinding.getPriorityColor(null,journalEntry.getPriority()));
+			 in ViewMasterJournal.java bindView method to set the color of the text base on priority.
+
+Version Code 269 (6.0.219)
+	JIRA TKTRIN-140:
+		--verified if the map file used in Offline mode exists before used in MainMapOSMActivity.java(ln 117) 
+
+
+Version Code 268 (6.0.218)
+	JIRA TKTRIN-138:
+		-Updated text to "Getting your current location; please wait." in MainMapOSMActivity.java(ln 907)
+
+Version Code 267 (6.0.217)
+	JIRA TKTRIN-138:
+		-Updated text to "No location found for this Casualty" in ViewCasualtyActivity.java(ln 144)
+		
+	JIRA TKTRIN-139:
+		-Updated text to  "Unable to download image. No internet connection found." in DownloadImagesFromServer.java(ln 100)
+
+
+Version Code 266 (6.0.216)
+	JIRA TKTRIN-126:
+		-Added refresh button and removed(if it was necessary) menu button:
+			-Updated IncidentSelectorActivity.java
+			-Updated OperationalPeriodSelectorActivity.java
+			-UserListActivity.java
+			-EquipmentListActivity.java
+			-ViewTasksMainActivity.java
+			-CasualtyListActivity.java
+			-JournalListActivity.java
+			-ViewMasterJournalActivity.java
+			-ViewJournalActivity.java
+	JIRA TKSYNC-1:
+		-Added _syncServiceConnection.dropDataset(StaticDataSet.class.getName()); on Launcher.java(ln 375).		
+	JIRA TKTRIN-132:
+		-Updated text to "Failed to send Image. No internet connection found." in SendImageToServer.java(ln 70)
+		
+Version Code 265 (6.0.215)
+	JIRA TKTRIN-103:
+		-Added MapScale setting to MapSettings.java and methods to handle new setting.
+		-Updated MainMapOSMActivity.java:
+			-Added Scale Map option to menu dialog.
+			-Added method DisplayScaleMode method.
+		-Added changeDisplayScale method to BaseMapActivity.java
+		-Remove tile fixed tile Size in createMapViews method of BaseMapActivity.java
+	JIRA TKTRIN-119:
+		-Updated text to "Failed to send Image."
+	JIRA TKTRIN-128:
+		-Added margin Bottom to Toast in Launcher.java(ln 553);
+
+Version Code 264 (6.0.214)
+	JIRA TKTRIN-121:
+		-Updated text to "Tracking Mode" in MainMapOSMActivity.java(ln 313)
+	JIRA TKTRIN-120:
+		-Updated text to "Tracker Mode: Normal" in MainMapOSMActivity.java method setTrackingMode()
+	JIRA TKTRIN-119:
+		-Updated text to: "Fail to send image. Click here to retry" on SendImageToServer.java(ln 235)
+
+Version Code 263 (6.0.213)
+	JIRA TKTRIN-116:
+		-This issue happens only in android 4.4 there was a change on:
+          android.intent.action.MEDIA_MOUNTED is protected now.
+           Changed android.intent.action.MEDIA_MOUNTED to Intent.ACTION_MEDIA_SCANNER_SCAN_FILE
+           in Project CamaraIntent TakePhoto.java (ln 140)
+		
+	JIRA TKTRIN-115:
+		-Set listView height = fill parent in journal_list.xml
+
+Version Code 262 (6.0.212)
+	JIRA TKTRIN-68:
+		-Added fade.xml
+		-Added new resource folder anim. 
+		-Added icon searching location in geo_map_osm_main.xml.java
+		-Handled searching location icon in MainMapOSMActivity.java.
+
+		
+
+Version Code 261 (6.0.211)
+	- Implemented Image Manager in ViewTaskAssetsActivity.java
+	JIRA TKTRIN-114:
+		-Added menu and back buttons and methods to handle menu options to:
+			*UserListActivity.java
+			*Launcher.java
+			*IncidentSelectorActivity.java
+			*OperationalPeriodSelectorActivity.java
+			*ViewAssetActivity.java
+			*ViewAddresstActivity.java
+			*EquipmentListActivity.java
+			*ViewTasksActivity.java
+			*ViewTaskActivity.java
+			*ViewPriorityTaskActivity.java
+			*ViewTaskAssetActivity.java
+			*ViewTaskCollectionsActivity.java
+			*ViewCollectionActivity.java
+			*TriageMainActivity.java
+			*CasualityListActivity.java
+			*ViewCasualtyActivity.java
+			*EnterTrackingIdActivity.java
+			*JournalListActivity.java
+			*ViewJournalActivity.java
+			*ViewJournalEntryActivity.java
+		-Added view_casualty.xml
+		-Added view_task_collectives.xml
+	
+	JIRA TKTRIN-112:
+		-Added MapSettings to BaseMapActivity.java
+		-Added  createLayerOnline() method to BaseMapActivity.java
+		-Added createLayers method to MainMapOSMActivity.java that overrides createLayers method from  BaseMapActivity.java
+		-Added  setTrackingMode and displayTrakingOptions methods to MainMapOSMActivity.
+		-Comment-out all code related to default menu in MainMapOSMActivity
+		
+Version Code 260 (6.0.210)
+		-Updated BaseMapActivity.java set default layout: geo_map_osm_main.xml
+		-Added geo_map_osm_main.xml
+		-Updated MainMapOSMActivity:
+			-Added displayMapMode method.
+			-Added displayCenterMode method.
+			-Added displayGeneralOptions method.
+			-Added electMapFile method.
+			
+	JIRA TKTRIN 94:
+		-Added methods to get the images server address, username and password to GQueueCommon\MercurySettings.java
+		-Updated Client.java , DownloadImageFromServer.java and SendImagesToServer:
+			- server address, username and password are now acquired from Mercury.
+		-Added methods isServerSettingsAvailable and showDownloadConfiguration to Launcher.java
+
+	JIRA TKTRIN 99:
+		-Updated  no location found message when creating a journal Entry.
+
+VersionCode=259 (6.0.209)
+	- Add AxBroadcaster to AxTrinity launcher activity if AxBroadcaster is installed on device.
+	- fix build errors:
+		- comment-out code in ScreenSlideActivity.fillArrayListImages().
+	JIRA TKTRIN-97:
+	-Updated edit_log_entry.xml and set location check by default.
+	-Updated EditJournalEntryActivity.java:
+		*Overrides Done button click to handle missing location.
+		*set addLocation = true in onCreate.
+		*Added method handleCurrentLocation.
+		*A message appears if the user hits Done and we don't have a location to use.
+		*Ask user if they want to continue without adding location to log.
+	
+	
+Version code =258 (6.0.208)
+	-Update menu option now we display only two options, Refresh and Menu.
+	-Added Select File Map option to menu group.
+	-Set as default location for the maps Trinity/Maps.
+	-Incomplete file maps are not displayed.
+	
+
+Version code =257 (6.0.207)
+	-Set Scale Factor on  AxTrinityApplication.java to prevent small text.
+	JIRA TKTRIN-85:
+	-Set chunk size = 128 * 1024 when decoding image. on AESEncryptation decryptInChunks method.
+	-If the file is corrupted is delete form the local database in DownloadImagesFromServer.java(line 286)
+	-Corrupted File is deleted from the phone.
+	-Display Toast if the file is corrupted.
+	
+Version code =256 (6.0.206)
+	-Added IncidentJournalEntryAddress to IncindetJournalDataSet on AxModel.
+	-Call Address.close(); when the cursor is no longer need it on DrawingsLayer.java
+	JIRA TKTRIN -9
+		-Added <item android:id="@+id/menu_map_offline_online"> to main_map_osm.xml menu
+		-Added globals currentMapMode=1, MAP_MODE_OFFLINE = 2 AND  MAP_MODE_ONLINE = 1 to MainMapOSMActivity.java.
+		-Tile of the menu is set it base on the current map mode in onPrepareOptionsMenu.
+		-Added method switchMapMode() to MainMapOSMActivity.java.
+		-Display green dot next to the current map mode (Online/Offline).
+		-BaseMapActivity updated:
+			-Added MapFilePath Preference to BaseMapActivity.java.
+			-Added TileRendererLayer to BaseMapActivity.java
+			-Updated getMapFile() method, now it uses the path saved in MapData Preferences.
+		-MainMapOSMActivity was updated:
+			-Added onActivityResult method.
+			-Added mapModeOffline() method.
+			-Added mapModeOnline() method
+			-Removed switchMapMode() method.
+			-If the offlineMap is called for first time the SelectFileActivity.java is called.
+		-Added SelectFileActivity.java, select_file_activity.xml and select_file_activity_list_item.xml
+		-Added file.png, ic_menu_back.png and ic_menu_archive.png to res/drawable-hdpi folder.
+		
+	JIRA TKTRIN-83:
+		-Added AddressExtraInfo.java to AxModel.
+		-Added AddressExtraInfo To AllTablesDataSet on AxModel Project.
+		-Added AddressExtraInfo to DrawingDataSet;
+		-Added DrawingDataSet to MapViewDataSet;
+		-Added  AddressExtraInfo to <configSections> on app.config in MobileServer.
+		-Added Queries on mobile Server for AddressExtraInfo table.		
+		-Added  getExtraInfo() method in Address Table.
+		-Added queryAddressExtraInfo and getAddressExtraInfoCursor methods to AddressExtraInfo Table.
+		-Added method  getAddressExtraInfoXMLData to DrawingsLayer.
+		-Added method  parseXMLData to DrawingsLayer.
+		-Added createARGBColorFromString method to Utils.java
+		-Added DrawingStyle.java
+		
+	JIRA TKTRIN-82:
+		-Added DrawingObserver class
+		-MainMapOSMActivity.java. now listen for any changes on the Drawings.
+		-Added TypeUnknown to DrawingLayer class to prevent any crash related to unknown drawings types.
+
+Version code =255 (6.0.205)
+	JIRA TKTRIN-77:
+		-Added DrawingLayer.java.
+		-Added _drawing cursor to MainMapOSM.java.
+	
+	JIRA TKTRIN-76:
+		-Added  Drawing, DrawingAddress and IncidentDrawing to <configSections> on app.config in MobileServer.
+		-Added New Tables To AllTablesDataSet on AxModel Project.
+		-Added Queries on mobile Server for the new tables.
+				
+	JIRA TKTRIN-75:
+		-Added Drawing, DrawingAddress and IncidentDrawing to AxModel.
+		-Added DrawingDataSet to IncidentDataSet.
+		-Created DrawingDataSet class where we add the tables for Drawings.
+
+Version code =254 (6.0.204)
+	JIRA TKTRIN-65:
+		-Removed android:padding="5dp" journal_list.xml, user_list.xml and equipment_list.xml		
+	JIRA TKTRIN-68:
+		-Updated text displayed when the current location of the user is null.
+		-Displayed toast message when the location of the user was Acquired.
+		-Create Interface MyLocationNotifier on MyLocationOverlay.java
+		-MainMapOSMActivity now implements MyLocationOverlay.MyLocationNotifier interface.
+	JIRA TKTRIN-70:
+		-Added onTap method in the IncindentOverlay.java
+		-Added fields context and Id to IncidentOverlay.java
+	JIRA TKTRIN-71:
+		-android:configChanges="orientation|keyboardHidden"
+		
+Version code =253 (6.0.203) this is related to the new MAP API.
+		-Added property android:launchMode="singleTask" to mainMapOSMActivity 
+		-Call MainMapOSMActivity instead of MainMapActivity in Launcher.java
+	JIRA TKTRIN-64:
+		- Added android:padding="5dp" android:background="@color/widget_background" properties to
+			journal_list.xml, user_list.xml and equipment_list.xml
+	JIRA TKTRIN-70:
+		-Added TriageObserver, AssetObserver, AddressObserver and IncidentObserver class.
+		-the observers are unregister in the method onDestroy();
+		-the observers are registered after all the icon where loaded.
+		-Request redraw on incident Layer when the location of the incident change.
+		-When the address of Triage, Personnel or Equipment change, all the respective layers are removed and Added again.
+	JIRA TKTRIN-68:
+		-Check if the incident have an address so we can center the map on that location.
+		-Check if the Activity have extra data to center the map on the data (Equipment, Personnel, Triage, Task/Ptask)
+		-Call MainMapOSMaActivity.java instead of MainMapActivity.java on ViewAddressActivity.java, ViewAssetActivity.java,
+			ViewPriorityTaskActivity.java, ViewTaskActivity.java, ViewCasualtyActivity.java
+		-Added method to get the location of the given Address cursor.
+		-Added Menu center Mode(user location or incident) it display a green dot next to the selected option.
+		-Added Menu Gps Status.
+		-Added Menu Refresh.
+	JIRA TKTRIN-26:
+		-Added IncindetOverlay.java and IncidentOverlayItem.java
+		-Use LatLong class on all overlay classes.
+		-Added EquipmentViewCursorByCheckIn.java
+		-Added EquipmentOverlay.java
+		-Added Equipment Overlay Item
+		-Delete IncidentOverlayItem.
+		-IncidentOverlay implements Marker.
+		-IncidentOverlay rewritten.	
+		-Added PersonnelOverlay
+    	-Added PersonnelViewCursorByCheckIn
+    	-Added EquipmentViewCursorByCheckIn
+    	-Can tap Icons (display the info of the Icon on a new Activity)
+    	-Removed EquipmentOverlayItem and IncindetOverlayItem.
+    	-Added TasksOverlay.java
+    	-Added querys for task and priorityTasks on MainMapOSMActivity.
+    	-Added method addTaskOverlay()
+    	-Added method addPriorityTaskOverlay()
+    	-Display all the Task and Ptask Icons on the map
+    	-Background color of the Tasks Task is selected based on the Status.
+		-Can tap Tasks/Ptasks Icons (display the info of the Icon on a new Activity)
+		-Added TriageOverlay.java and display all the Triage Icons on the map.
+		-Can tap on Triage Icons (display the info of the Icon on a new Activity).
+		-Added My location Overlay to the map.
+		-Added placemarkblue.png to res/drawables. This is the icon used to display the location of the user for now.
+    	-Create MyLocationOverlay base on the one provide it by maps forge and request updates every 30 sec or 100mts.
+    	-Increment the reference count of the bitmap when is used in more the one marker.
+	JIRA TKTRIN-3:
+		-Create MyLocationOverlay class and MyLocationOverlayItem to display User location
+        -Removed MyLocationOverlayItem, is not usefull anymore.
+        -Updated MyLocationOverlayItem to display the Icon in the given location and also a blue circle.
+        -Created interface GpsOnLocationChangeNotifier on GPS.java
+        -GpsOnLocationChangeNotifier interface was implemented in MainMapOSMActivity
+	JIRA TKTRIN-67:
+		- Replace TileRender(offline map) with TileDownloader(online Map).
+		- call TileDownloadLayer.onPause() when the activity goes to the background.
+		- call TileDownloadLayer.onResume() when the activity get the focus.
+	Jira TKTRIN-7:
+		-Added getLruImageCache() method.
+		-Update all overlays classes to search first if the Icon exists on the cache(personnel, equipment, tasks, triage, incident.)
+		-Added Icon id to the query and method to return it on EquipmentViewCursorByCheckIn and PersonnelViewCursorByCheckIn
+		- MainMapOsmActivity uses ImageManager and clears all the cache when the activity is destroyed.
+
+Version code=252 (6.0.202)
+	-Added the new GUI style for those activities that need it:
+		-Triage List now use the new GUI style.
+		-updated layout files used to view the details of an asset,task,etc.
+			boolean_as_checkBox_list_item.xml , casuality_list_item.xml,view_casualities.xml,
+			view_equipment.xml,view_indexed_type.xml, view_item_list_item, view_journal.xml,view_log_entry.xml,
+			view_tactic.xml.
+		-set visibility=gone to ImageView if icon not exist on getIndexedTypeView method of ViewItemActivity.java.
+		-replaced text color grey_button_gradient_end with widget_background on CasualityListActivity.java(line 348)
+	-Implemented ImageManager in ViewTaskCollectionsActivity.
+	JIRA:TKTRIN-39:
+		-Set ((TextView)view.findViewById(R.id.title)).setText("Category Name"); in JournalListActivity.java.
+	JIRA:TKTRIN-52
+		- collection_list_item.xml was modified, Collections now uses the new GUI Style
+	JIRA:TKTRIN-42
+		-Added android:configChanges="orientation|keyboardHidden" property to ViewAddressActivity tag in manifest file.
+		-Added IsCheckedIn to the intent as extras when we want to start the ViewAddressActivity.java 
+		-in ViewAddressActivity.java, if the user asset is not checked-in a pop-up will be displayed and the showOnMap method is not called.
+		-Added displayAlert() method in ViewAddressActivity.java.
+	
+
+Version code =251 (6.0.201)
+	-Added Method onActivityResult in Launcher.java and check if _syncServiceConnection.getCurrentTransaction()!=null display the progressView
+
+Version code =250 (6.0.200)
+JIRA: TKTRIN-56
+	-Remove static reference to GridView on  EditJournalEntryActivity.java (line 44).
+	-Removed imagesToDelete object from EntryImageObject.java(line 36) and method addImageToDelete.
+	-Added EntryImageObjectManager.java
+	-Removed all code not related to create a new EntryImageObject  on EntryImageObject.java.
+	-relationIDPosition is no longer Created Each Time ViewJournalEntryActivity.java is called.
+	  1.-Coomment-out // EntryImageObjectManager.relationIDPosition = new HashMap<String,Integer>();
+	  2.-Added relationIDPosition =  new HashMap<String,Integer>(); on EntryImageObjectManager//
+	  3.- Call relationIDPosition.clear() onDestroy() in ViewJournalEntryActivity.java.
+	-Added Method to remove the ImageManagerListener on ImageManager.java
+		1.- removed the listener when activity is destroyed: 
+			ViewJournalEntryActivity,UserListActivity,EquipmentListActivity,IncidentSelectorActivity
+	-Removed ImageManager From ViewItemActivity.java.
+		1.-Added ImageManager to ViewJournalEntryActivity.java
+	-Added ImageManager.Close() method.
+	-Wake up and destroy ImageManagerThread on ImageManager.Close Method.
+	-Call ImageManager.Close() on IncidentSelectorActicity,EquipmentListActivity,UserListActivity and ViewJournalEntryActivity .onDestroy method
+	-Remove ImageManager Context Param  in the constructor is not needed anymore.
+	-Added Method Close to TextUpdater.
+	-Call TextUpdater.close on ViewJournalActivity and JournalListActivity 
+JIRA: TKTRIN-57
+	-IncidentSeletor activity and OperationalPeriodSelector activity are now launched as startActivityForResult().
+	-ProgressView is displayed when IncidentSelector or OperationalPeriod return a RESULT_OK
+	-Before finish IncidentSelector added setResult(Result_OK)
+	
+
+	
+Version code =249 (6.0.199)
+	-Create a scaled Icon instead of the full icon size on: Personnel,Equipment and Incident lists.
+	-Applied ConvertView Pattern on the adapter that populates the activities on Launcher.java(line 360).
+	-Set scrollingCache = false on all list in the app. This option is set to true by default 
+		and it was causing a memory leak. Also this prevent that the GC get called a lot of times. 
+	-Call recycle() on all bitmaps store on the ImageManagerCache when clearCache method is called.
+	- Added getScaledBitmapFromBytes() in GetImageBitmap.java class.
+
+Version code =248 (6.0.198)
+	-Log entry PRIORITY_HIGH is now orange
+	-Toast Displayed when the sync is Rescheduled instead of the pop up.	
+
+Version code =247 (6.0.197)	
+	-Build for release.
+	-reverted all the changes made it on the 246 version.
+	
+Version code =246 (6.0.196)	
+	TKTRIN-29:
+		-IncidentSelector launch OperationalPeriod  as StartActivityForResult.
+		-Launcher.java  launch IncidentSelector  as StartActivityForResult.
+		-added selectOperatinalPeriod boolean to check if the incident period is selected by settings or activity.
+		-No longer Hide the ProgessView on pause of the launcher Activity.
+
+Version code =245 (6.0.195)	
+	TKTRIN-29:
+		1.- Added check if the Equipment Cursor has been closed before access it.(EquipmentOverlay.java line 42)
+		2.- If the cursor is closed 0 is returned as Size of the cursor.(EquipmentOverlay.java line 42)
+	TKTRIN-32:
+		1.- Comment-out Image Manager constructor with one parameter.
+		2.- Check if a element exists on the position, before clean it on ImageManager line 129.
+		
+Version code =244 (6.0.194)	
+	TKTRIN-22:
+		-Set the current version of the software on the manifest File.
+	TKTRIN-19:
+		- comment-out line 28-38 in map_options_menu.xml
+		- comment-out line 730 -738 in MainMapActivity.java
+		
+		
+Version code =243 (6.0.193)	
+	--Build made it for test by Dave.
+	--comment all code related to mapsfroge in GPS.java 
+	JIRA TKTRIN-18:
+		-Check if the cursor was closed before set the title to the UserListActivity.java line 217
+		-getEntryImages() method is called now only id the data != null ViewJournalEntryActivity.java line 77
+		
+Version code =242 (6.0.192)	
+	--Build made it for test by Dave where the map was not working.
+
+Version code =241 (6.0.191)	
+	JIRA TKTRIN-16:
+		- Set the cache of images to 1Mib if there is memory available if not, the cache size  is the half of the 
+			available memory.
+	JIRA TKTRIN-15:
+		-set yellow_transparent_background color transparency to CC=20% in Colors.xml
+		-comment orange_transparent_background color in Colors.xml
+
+Version code=240 (6.0.190)
+	Mantis 9115:
+		-Change Orange transparent color of lists(personnel,equipment,logs,incident,operational period) to yellow.
+	*Removed all _rescheduledDialog dialog pop up code from Launcher.java. This was annoying for the users. 
+		-(this is a quick fix)
+	Mantis 9123:
+		-Added try catch on MyAdapter.getEquipmentAgency(ViewAssetActivity.java:334) to prevent crash when the
+		agency was not synced and return "Agency not synced" message.
+	
+Version code=239 (6.0.189)
+	Mantis 9105:
+		-Create SHA1 of the image file in pieces instead of all the file.
+
+Version code=238 (6.0.188)
+	Mantis 9098:
+		-Update the Masterlog view UI.
+	Mantis 9000:
+		-Change the position of the Icons to prevent text overlapping. 
+	Mantis 9100:
+		-Added ProgressBar when downloading image.
+			-Added interface to DownloadImageFromServer.
+			-ViewJournalEntry implements download interface.
+			-Added Progressbar and Text to image.
+	Mantis 9093:
+		-Added check when the cache of the images was cleared to prevent null pointer exception.(ImageManager 134)
+	
+
+Version code=237 (6.0.187)
+
+	View Journal Entry Activity is now only in Portrait mode.	
+	Mantis 9090:
+		-IncidentSelectorAvtivity.java now uses ImageManger instead of LruImageCache.java 
+	Mantis 9089:
+		-Modified: Logs,Equipment,Personnel,Incident,Operational Period files that are associated to List Style.
+		 *Added image_icon_background to the ImageView.
+	Mantis 9061:
+		-Modified AESEncryption.encryptAsBase64 to work with chunks of 128kb		
+		-Modified SendImageToServer.sendImagePieceToServer to handle the server Response without JSONArray;
+		-ImageManager will get only 10% of the available memory.
+		-Clear cache when is not longer needed on Equipment,Logs,Personnel,Incident Activities.
+		-GetImage.php was modified now sends chunks of 128kb.
+		
+Version code=236 (6.0.186)
+	Manits 9061,9076:
+		-Modified SendImagesToServer to handle save chunks in database instead of on memory.
+		-Added AESEncryptionChunk interface to AESEncryption
+		-Implements AESEncryptionChunk interface on SendImageToServer.java (handles chunk)
+		
+Version code=235 (6.0.185)	
+	Mantis 9069:
+		-GUI of Personnel, Tasks and Equipment was modified.
+	Mantis 9063:
+		-Clear Chunk LinkedList after Use on SendImageToServer.java(230)
+		-Create array of X size instead of creating a new one each time: AesEncyptation.java(54).
+
+Version code=234 (6.0.184)
+	Mantis 9059,9060:
+	-DownloadImagesFromServer was created to replace old DownloadImageFromServer.java
+	-SendImageToServer was created to replace old SendImagesToServer.java
+	Mantis 9058:
+		-Now, Images are loaded in a separate thread. 
+			*Created ImageManager.java (will replace LruImageCache.java)
+			*Removed all LruImageCache Code from ViewItemActivity.java and ViewJournalEntry.java
+	Mantis 9057:
+		-The total of images for each journal/journal entry is obtained now in a separate thread. 
+			*TextUpdater.java updates Text in a separate thread
+			*Implement TextUpdater.TextUpdateerListener interface in ViewJournalActivity.java and JournalListActivity.java
+
+Version code=233 (6.0.183)
+	Mantis 9054:
+		-set chunk=null; on method createServerRequests(SendImageToServer:229)
+	Mantis 9053:
+		-Added code sendBrodcast() when the sdcard is not mounted.
+		-Handler created to display toast in ViewJournalEntryActivity 
+
+Version code=232 (6.0.182)
+	Mantis 9052,9051:
+		-Create drawable  list_background_grey.
+
+Version code=231 (6.0.181)
+	Mantis 9047:
+		-Added Code that verifies if there are images to send on ALL Logs views and display a message that notifies the user.
+	Mantis 9041: 
+		-Added missing "?" In SendImageToServer when deleting a record from LocalMedia Database. 
+	Mantis 9040"
+		*comment-out line 119 SendImageToServer.java
+		//imageNotification.notifyUploadSuccess("Image was sent successfully");
+	Mantis 9039:
+		-Added ImageView and text to master_log_list_item;
+		-Added code to MyAdapter$bindView to set the number of images for the entry.
+	Mantis 9038:
+		* comment-out line 171-175 in ViewMasterJournalActivity
+			//SourceType sourceType = journalEntry.getSourceType(ViewMasterJournalActivity.this);
+			//	if (sourceType != null)
+			//	{
+			//		setTextView(view, R.id.source, sourceType.getName());
+			//	}
+	Mantis: 9037:
+		-Added DateTime.setContext(ViewJournalEntryActivity.this); and	DateTimeZone.setProvider(null);
+			to ViewJournalEntryActivity MyAdapter constructor.
+			
+Version code=230 (6.0.180)
+	Mantis 9036:
+		-ImagesNotification class created;
+		-SendImageToServer class refactored.
+	Mantis 9034:
+		-Changed Text title for location on logs to "Add Current GPS Location To Log?" 
+	Mantis 9033:
+		Remove location option, when editing a log. 
+		
+
+Version code=229 (6.0.179)
+	Mantis 7566:
+		-Added images for task and priority task buttons in mdpi,xdpi and hdpi folders.
+	Mantis 7770,5928:
+		- Add "AND IsAccessory=0" to the selection args of query in EquipmentViewCursorByCheckIn
+	Mantis 7755:
+		-Added android:maxLength="60" and android:inputType="textCapSentences|textNoSuggestions"
+	Mantis 8872:
+		-Added if(_rescheduledDialog==null) on onRescheduled() method at Launcher Activity.
+	Mantis 6030:
+		-Added appInstalledOrNot check to verify is Barcode Scanner is installed if not prompt an Alert.
+Version code=228 (6.0.178)
+	Mantis 8806:
+		-Added  android:windowSoftInputMode="stateVisible" property to AuthorizeIncidentActivity in manifest.
+	Mantis 8754:
+		-Added getPriorityColor in JournalEntryPriorityBinding.
+		-Added 	if (vid.type == ITEM_TYPE_TEXT) validation to set the color of the priority in ViewJournalActivity;
+		-Added ((TextView)view.findViewById(R.id.text1)).setTextColor(JournalEntryPriorityBinding.getPriorityColor(null,journalEntry.getPriority())); in ViewJournal 
+		to set the color of the priority.
+	Mantis 8656:
+		-Added android:fadeScrollbars="false" to gridview in launcher_main.xml
+	Mantis 8686:
+		-Added period to the end of incident Password alertDialog message.
+	Mantis 8383,7520:
+		-Added android:listSelector="@drawable/list_item_selector_transparent_focused_state" />
+		property on JournalEntry, Journal Lists and view_tactics.xml 
+	Mantis 8382:
+		-Menu removed from main view of Triage.
+	Mantis 8827,8852:
+		 -Added isFinising() check before display the alert. This will prevent that we are trying to display an AlertDialog when the activity enters in a finishing stage or when the launcher activity doesn't exist. 
+	Mantis 9005:
+		-Remove AlphaAnimation on Incident Button.
+
+Version code=227 (6.0.177)
+	Mantis 8960:
+		-Added GPS class that gets the current LAT and LONG.
+		-AxModel Address.java insertAddress method added.
+	Mantis 8961:
+		-Now, the box will increase its size to keep all the text in screen.
+		-removed lines attribute of edittext in edit_journal_entry.
+	
+Version code=226 (6.0.176)
+	Mantis 8974:
+	-Added IncidentCategory class to AxModel on Globlalclases package because this class only store
+		 the ID of the Incident Category template and we are not getting this from server. 
+	Mantis 8972:
+	-Image Action Text was removed
+	
+	
+Version code=225 (6.0.175)
+	Mantis 8979,8653:
+	*No longer recreated the Activity ViewTasksMainActivity when the orientation of the device
+	 change, with:android:configChanges="orientation" in the manifest.Also this will prevent
+	 that on each screen orientation change, the priority tasks button is selected automatically again.
+	Mantis 9003:
+	*The LinearLayout in the spinner_dropdown_item_2.xml, was replaced with com.futureconcepts.ax.trinity.widget.ClickeableLinearLayout
+	
+Version code=224 (6.0.174)
+	Mantis 8968:
+	*Added Feature take picture.
+	 -Library created that handles select and take picture.
+	Mantis 7821:
+	* Override On back pressed and set data to null to revert changes.
+
+Version code=223 (6.0.173)
+	12/30/2013
+	* When SyncManager.deleteDataSet() is invoked, first clear the sync queue and abort any current SyncTransaction
+		- When a new Incident is selected via IncidentSelectorActivity, SyncManager.deleteDataSet() is invoked
+			before the new IncidentDataSet is synced.
+		- This change should fix the missing sync progress view described in Mantis 8969
+	Mantis: 8969
+	darnold
+	
+Version code =222 (6.0.172)
+	*Handle database update new fields..
+	
+Version code =221 (6.0.171)
+
+	Mantis: * 8965 personnel assets crash from Ryan
+	Mantis: * 8971 Crashing when selecting logs in "name rosebowl 50" incident
+	Version code=220 (6.0.170)
+	* Fixed bug when the user sent images to server and quickly enter to the same entry, some images are not displayed.	
+	
+Version code=219 (6.0.169)
+	* Point request to Live server for  Images.
+
+Version code=218 (6.0.168)
+	* Modify Download images to download only those in the current journalEntry
+
+Version code=217 (6.0.167)
+	Mantis: 8923
+	*Create class LruImageCache, to hold the icons.
+	* implement LruImageCache, on incident List, UserList.
+	Mantis: 8958
+	*change ViewItemActivity, ViewJournalEntry. No longer render all images each time.
+	Mantis: 8873
+	* change the text of the message for the toast on DownloadImageFromServer.java.	
+	Mantis:8957: 	
+	* Display a image with a red X, if the image is not available.
+	* Prevent user add the same image for download twice.
+	* Detect if image exists on server or if exists only as a TEMP file.
+	 -Added state to image: Downloading
+	 -Change boolean needDownload to int.
+
+Version code=216 (6.0.166)
+	Mantis: 8920
+	* Modify ViewJournalEntry getImages method to send TEMP Path to mediahandler class.
+	* Added password (md5) to AES256.
+	* Remove local certificate on https request(images connection).
+	* Hard code all ipServerAdress.
+	* added sha1 file verification on DownloadImageFromServer.
+	* added sha1 file verification on SendImageToServer.
+Version code=215 (6.0.165)
+	Mantis:8851
+	-Hide Incident Log Source item form ViewJournalEntry.
+		*comment this code:"new ViewItemDescriptor( "Source", MY_ITEM_TYPE_SOURCE, JournalEntry.SOURCE )"
+	-Implement AES256 when sending and downloading images for Logs entries.
+		*Added class AES256
+		*Modify class DownloadImageFormServer and SendImageToServer to implement AES256.
+	-To download an image now a temp file is created. Once the file is complete and decrypted form AES256 this file is deleted.
+	Mantis:8873
+	-change "Finish Downloading Images" message for "Image Download Complete" 
+
+Version code=214 (6.0.164)
+	-Remove hardcoded server address(for images) from DownloadImageFormServer and SendImageToServer.
+	-Added code to get server address(for images) from MercurySettings.
+
+Version code=213 (6.0.163)
+	Mantis:8763
+	-No longer store bitmaps, instead are decoded each time we needed.
+	-Added code to boolean needDownlod to EntryImagesObject, to detect if a image needs to be download or not.
+	-removed "getEntryImages()" line code form onCreate of ViewJournalEntry.	
+
+Version code=212 (6.0.162)
+	Mantis: 8793 
+	* Remove code to delete image from local database and added code to update file size instead.
+	Mantis:8763,8800
+	* removed code in IncidentDataSet AxModel
+		addItem(new IncidentDataSetTable("IncidentJournalEntry", Address.CONTENT_URI));
+		addItem(new IncidentDataSetTable("Media", Address.CONTENT_URI));
+	*Change context to getApplicationContext() in DownloadImageFromServer.
+
+Version code=211 (6.0.161)
+	Mantis: 8776
+	* Set android:scrollingCache="false" to listview on view_journal.xml 
+Version code=210 (6.0.160)
+	Mantis: 8759
+	* Added "DateTime.setContext(ViewJournalActivity.this);" and "DateTimeZone.setProvider(null);"
+Version code=209 (6.0.159)
+	* bug fix 8755
+	-Fix memory leak at downloading images form server.
+	-Added image viewer.
+Version code=208 (6.0.157)
+	*Added: upload/download images for JounarlEntry.
+	-change style of alerts for JournalEntry images.
+	-remove code to recycle bitmap on viewJournlEntry.
+	-clean images when adding new LogEntry.
+	-bug fixed: 8759
+
+VersionCode=205 (6.0.155)
+	* Blank now accepted for the trackingID of a triage casualty.  This will get assigned a trackingID of
+		"Unknown".
+	Mantis: 7722	
+VersionCode=204 (6.0.154)
+	* one more time: fix crash in ViewTasksMainActivity when changing orientation
+	Mantis: 8647
+	* added interval syncing to ViewJournalEntryActivity, ViewMasterJournalActivity and CasualtyListActivity
+	Mantis: 8612, 8618, 8619
+	* Fix bug causing personnel from not syncing in map correctly
+	Mantis: 8615
+	* fix crash in MainMapActivity when new asset is added to map and user taps on asset
+	Mantis: 8613
+	
+VersionCode=203 (6.0.153)
+	* fix crash in ViewTasksMainActivity when changing orientation and tapping on PriorityTasks or Tasks again.
+	Mantis: 8647
+	* Removed "Scan Tag" menu option from TriageMainActivity
+	Mantis: 7679
+	* Added resync interval timer to ViewTaskAssetsActivity & ViewTaskCollectionsActivity
+	Mantis: 8620
+	
+VersionCode=202 (6.0.152)
+	* remove JournalEntry media stuff from EditModelActivity--EditModelActivity is a base class used by
+		many other classes.  Please derive from EditModelModelActivity instead of changing it.  This caused a
+		crash in Triage.
+	Mantis: 8614
+	
+VersionCode=201 (6.0.151)
+	* comment-out line 256-257 in ViewJournalActivity
+	//	startManagingCursor(_journalEntryMedia = JournalEntryMedia.queryJournalEntryMedia(getApplicationContext(), _journalEntry.getID()));
+	//  ((TextView)view.findViewById(R.id.num_images)).setText(""+_journalEntryMedia.getCount());
+	* comment-out line 164-173 in ViewJournalEntryActivity
+	// else if(vid.type == MY_ITEM_TYPE_IMAGE){
+	//			
+	//	if(!EntryImageObject.images.isEmpty()){
+	//		result = getImageView(vid,getApplicationContext(),EntryImageObject.images);					
+	//				
+	//	}else
+	//	{
+	//		result = getImageView(vid,getApplicationContext(),EntryImageObject.images);
+	//	}
+	//}
+	Mantis: 8624
+
+VersionCode=200 (6.0.150)
+	* Comment-out line 225 in JournalListActivity:
+			//get all media for the Journal
+			//	int total = getTotalMediaOfJournal(context);				
+			//    ((TextView)view.findViewById(R.id.num_images)).setText(""+total);
+			//  Log.d("ViewJournal","I get This value of media: "+ total);
+		
+VersionCode=199 (6.0.149)
+	* fix bug in syncprogressview in Launcher
+	Mantis: 8605
+	
+VersionCode=198 (6.0.148)
+	* Caesar's log images changes
+	
+VersionCode=197 (6.0.147)
+	* update android support library v4
+	* rebuilt with latest android platform tools
+	* fix query string
+	Mantis: 8334
+	 
+VersionCode=196 (6.0.146)
+	* MainMapActivity launchMode="singleTask"--this solves the issue of a chained activity stack
+		such as MainMapActivity->ViewAsset->MainMapActivity->ViewAsset
+	Mantis: 8361
+	* Update asset list header count when data changes
+	Mantis: 8339
+	
+VersionCode=195 (6.0.145)
+	* Show "ghost" assets in the Equipment or Personnel layers
+		- easy fix: just do an LEFT OUTER JOIN (instead of INNER JOIN) on Equipment (or User)
+		- was already doing a query on Asset.Status=UNKNOWN
+	* Update version #
+	Mantis: 8335
+	
+VersionCode=194 (6.0.144)
+	* Aligned Equipment and Personnel overlays on map with the desktop MIM
+		- assets are now considered using Asset.CheckInTime and Asset.CheckoutTime
+			relative to NOW.
+	Mantis: 8280
+	* Added total # of equipment to equipment list
+	Mantis: 7523
+			
+VersionCode=193 (6.0.143)
+	* CurrentIncidentID and CurrentOperationalPeriodID are now managed by Mercury
+	Mantis: 8321
+	
+VersionCode=192 (6.0.142)
+	* Restore Latitude/Longitude and zoom level in geo.MainMapActivity when orientation changes
+		- there was existing code to handle this, but there was a bug that prevent the code from working
+			correctly. 
+	Mantis: 7639
+	* Fix crash when tapping on priority in EditJournalEntryActivity
+	Mantis: 8308
+	
+VersionCode=191 (6.0.141)
+	* Moved "Reset Data" menu item in LauncherActivity to AxSync SyncLogActivity
+	Mantis: 8225
+	* Hide the Incident/Operational Period select buttons in Launcher while a sync operation is in progress.
+		- While trying to repro mantis 8173, I found that if I selected an incident while a sync operation
+			was in progress the sync service got in a bad state.  
+	Mantis: 8173
+	* Fix regular task query in MainMapActivity--regular tasks in the current operational period
+	Mantis: 7644
+	* Add Source when viewing log entries (ViewJournalEntryActivity)
+	Mantis: 8240
+	* Fix typo in ViewAssetActivity (Checkin to Check-in)
+	Mantis: 7675
+	* Change title of triage.ViewCasualtyActivity to "Triage Casualty Information"
+	Mantis: 7944
+	* Changed ViewCollectionActivity title to "Collective: <callsign>"
+	Mantis: 7678
+	* Changed title of ViewAddressActivity to "Address Details"
+	Mantis: 7677
+	* Add Personnel Type to ViewAssetActivity
+	Mantis: 6751
+	* Removed Address Type from ViewAddressActivity
+	Mantis: 5906
+	* Show Add/Edit title in EditJournalActivity
+	Mantis: 6204 
+	
+VersionCode=190 (6.0.140)
+	* Add priority to logs (JournalEntry)
+		- changes to ViewJournalEntryActivity, EditJournalEntryActivity, JournalEntryPriorityBinding
+			simple_list_item_3
+	Mantis: 8249
+	
+VersionCode=189 (6.0.139)
+	* Fix crash in ViewItemActivity.getAddressView()
+		- for some reason, an asset had a reference to an address that wasn't sync'd yet
+			in that case just don't crash, just return "None" as the address until the address
+			is synced.  Note: this situation should not occur.  I suspect there may be an issue
+			with the launcher that was allowing a user to view assets before the incident was 
+			completely synced.
+	Mantis: 7809
+	
+VersionCode=188 (6.0.138)
+	* Fix crash in AxTrinity when no incident selected, user taps Mapping, then taps "Home"
+		at "Please select Incident" dialog
+	Mantis: 7865
+	
+VersionCode=187 (6.0.137)
+	* Align main activity titles
+	Mantis: 7765
+	* Fix crash in TriageARDemoActivity when device has no camera support
+	* Fix handling of main activities when no incident has been selected
+	Mantis: 7865
+	* popups in activities are not cancelable.  Users can't tap outside dialog.
+	Mantis: 7864
+	* Significant UI changes to Trinity Launcher activity
+		- Added sync progress view that is displayed (activity icons hidden)
+			when a required sync operation is being performed.  Currently, the
+			only required sync operations are for initial static data sync (like after a fresh install)
+			and when an incident is changed.
+	* Added confirmation dialog when deleting log entry in ViewJournalEntryActivity
+	Mantis: 7839, 6029
+	* call startSyncing() in IncidentSelectorActivity.doSelectIncident
+	Mantis: 7809
+	* Removed "ON"/"OFF" text from ViewTasksMainActivity
+	Mantis: 7774
+	
+VersionCode=183 (6.0.133)
+	* Added auto-refresh to JournalListActivity & ViewJournalActivity
+	Mantis: 7756, 7757
+	* refresh menu on equipment assets
+	Mantis: 7754
+	* refresh menu on personnel assets
+	Mantis: 7753
+	
+VersionCode=182 (6.0.132)
+	* Catch exception caused by TriageObserver _deferredRunnable firing after the
+		TriageObserver was unregistered.
+	Mantis: 7745
+	
+VersionCode=181 (6.0.131)
+	* Catch exception caused by AssetObserver _deferredRunnable firing after the
+		AssetObserver was unregistered.
+	Mantis: 7718, 7720
+	* Added auto-refresh sync to UserListActivity
+	Mantis: 7725
+	* Added auto-refresh sync to EquipmentListActivity
+	Mantis: 7724
+	* Enabled Refresh menu item in EquipmentListActivity
+	Mantis: 7641
+	* Added auto-refresh sync to ViewTasksMainActivity
+	Mantis: 7723
+	
+VersionCode=180 (6.0.130)
+	* Remove syncing pop-up from Launcher, except for initial (StaticDataSet) synchronization.
+	Mantis: 7683, 7558
+	* Added synchronization auto-refresh to MainMapActivity on a 1-minute interval.
+	
+VersionCode=179 (6.0.129)
+	* Fix crash in MapMapActivity--IncidentObserver fired when _incident cursor was closed
+		- added code to prevent this from happening and added try/catch around IncidentObserver.defferedRunnable
+	Mantis: 7594
+	
+VersionCode=178 (6.0.128)
+	* Use new icons for toggling between priority tasks and regular tasks in ViewTaskMainActivity
+	Mantis: 6501
+	* Show new "No network connectivity." popup dialog during failed sync operations.  This
+		- will give users the ability to retry sync immediately or wait until it's rescheduled.
+	Mantis: 7496
+	
+VersionCode=177 (6.0.127)
+	* Don't filter equipment by operational period
+	Mantis: 7534
+	* attempt to fix glitchy zoom controls in mapping (uses joined queries)
+	Mantis: 7549
+	* ViewAddressActivity now has a "Show on Map" menu item
+	Mantis: 7548
+	* Don't cancel launcher activity when "syncing..." dialog is shown and user
+		taps outside the dialog box.
+	Mantis: 6840
+	
+VersionCode=176 (6.0.126)
+	* Fix exported/signed build problem manifesting as MainMapActivity not working.
+	- This is a known Android ADT problem that doesn't appear to be fixed yet, but there is a workaround.
+	http://code.google.com/p/android/issues/detail?id=27940
+	Mantis: 7524, 7526
+	
+VersionCode=175 (6.0.125)
+	* fix bug in new WKT to Point code had bug (reverse X/Y)
+	Mantis: 7524
+	* "syncing..." popup dialog remains when sync service is rescheduled to run later
+		(i.e. when the network is unreachable (lost connectivity))
+	Mantis: 7496
+	* initial configuration now syncs schemas for all incident tables.  This
+		should prevent, once and for all, the occasional "Table X not found" exception.
+	* use joined query in IncidentSelectorActivity--should improve performance
+	
+VersionCode=174 (6.0.124)
+	* Use new optimizations (joined query) in EquipmentListActivity
+	
+VersionCode=173 (6.0.123)
+	* draw highlight selector on top of log list item when user taps on it
+	Mantis: 7012
+	* layout changes to ViewMasterJournalActivity
+	Mantis: 6857
+	* Fix bug in AssetListActivity causing wrong Asset types to be shown:
+		- If asset has a Equipment or User reference, use Equipment.Type or User.Type
+			instead of Asset.EquipmentType or Asset.UserType
+	Mantis: 6834
+	
+VersionCode=172 (6.0.122)
+	* Fix normal tasks not showing
+	Mantis: 7497
+	* Restrict triage tracking id to a single line
+	Mantis: 7511
+	* Make clickable address items more readable (use Deanna's latest arrow graphic)
+	Mantis: 7482
+	* Fix Tracking ID not getting refreshed after edit
+	Mantis: 7498, 6987
+	* Prevent resync everytime you return to launcher activity
+	Mantis: 7495
+	* Use "Log Time" instead of "Journal Time"
+	Mantis: 6860
+	* Added Refresh menu option to ViewMasterJournalActivity
+	Mantis: 6858
+	
+VersionCode=171 (6.0.121)
+	* Fix crash in Heads-Up caused by a namespace change during refactoring.
+	Mantis: 7481
+	* Added "Messenger" icon to launcher--linked to DrakeUI
+	Mantis: 7480
+	* Fix orientation change problems with Tasks
+	Mantis: 7133
+	
+VersionCode=170 (6.0.121)
+	* Unfiltered Triage (COLOR not selected in CasualtyListActivity) now filter by Incident ID
+	Mantis: 7485
+	* Sort Triage casualties by Triage.COLOR (Guid ascending) consistently
+	Mantis: 7484
+	* Fix synchronizer issue caused by last sync version (change tracking) not getting reset
+		on incident changes
+
+VersionCode=169 (6.0.120)
+	* Forked from Trinity Version=168

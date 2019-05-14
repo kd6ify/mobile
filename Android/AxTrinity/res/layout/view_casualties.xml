@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+    <LinearLayout
+    	android:id="@+id/container_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+		<Button android:id="@+id/btn_minor"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@drawable/green_button"
+		    android:text="Minor"
+		    android:textSize="16sp"
+		    android:onClick="onMinorClicked" />
+		<Button android:id="@+id/btn_delayed"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@drawable/yellow_button"
+		    android:text="Delayed"
+		    android:textSize="16sp"
+		    android:onClick="onDelayedClicked" />
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/container_below_top"
+		android:layout_below="@+id/container_top"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+		<Button android:id="@+id/btn_immediate"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@drawable/red_button"
+		    android:text="Immediate"
+		    android:textSize="16sp"
+		    android:onClick="onImmediateClicked" />
+   		<Button android:id="@+id/btn_deceased"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@drawable/grey_button"
+		    android:text="Deceased"
+		    android:textSize="16sp"
+		    android:textColor="@android:color/white"
+		    android:onClick="onDeceasedClicked" />
+	</LinearLayout>
+	 <com.futureconcepts.ax.trinity.widget.EditTextWithSearch 
+        android:id="@+id/triage_search"
+        android:layout_height="wrap_content"
+        android:hint="Search Triage..."
+        android:gravity="left"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/container_below_top"/>
+	 <TextView android:id="@+id/empty_triage"
+	    android:layout_below="@+id/triage_search"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:text="No Triage Found"
+		android:textSize="24sp" />
+	<ListView android:id="@android:id/list"
+	    android:layout_below="@+id/triage_search"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:scrollingCache="false"
+		android:divider="@null"
+		android:dividerHeight="0dp" 
+		android:layout_above="@+id/menu_options_container"/>
+	<LinearLayout 
+		android:id="@+id/menu_options_container"
+		android:orientation="horizontal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:gravity="center"
+		android:background="@android:color/background_dark"
+		android:layout_alignParentBottom="true" >
+		<ImageButton android:id="@+id/menu_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/menu_bar"
+			android:onClick="displayMenuOptions" />
+		<ImageButton android:id="@+id/menu_refresh"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:scaleType="fitCenter"
+			android:layout_weight="1"
+			android:background="@android:color/transparent"
+			android:src="@drawable/refresh_bar"
+			android:onClick="refresh" />
+		<ImageButton android:id="@+id/back_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:scaleType="fitCenter"
+			android:background="@android:color/transparent"
+			android:src="@drawable/back_bar"
+			android:onClick="goBack" />
+	</LinearLayout>	 
+</RelativeLayout>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;AxTrinity/res/drawable-hdpi/broadcaster_trinity_button.png&apos; to &apos;launcher_broadcaster.png&apos;" description="Rename resource &apos;broadcaster_trinity_button.png&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/drawable-hdpi/broadcaster_trinity_button.png" name="launcher_broadcaster.png" stamp="1402101026379" updateReferences="true"/>
+</session>

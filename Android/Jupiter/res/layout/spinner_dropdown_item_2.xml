@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content" >
+	<ImageView
+		android:id="@+id/image"
+		android:layout_width="wrap_content"
+		android:layout_height="?android:attr/listPreferredItemHeight"
+		android:padding="5sp"
+		android:gravity="center"
+		android:src="@+drawable/alert" />
+	<CheckedTextView
+		android:id="@+id/text1"
+		style="?android:attr/spinnerDropDownItemStyle"
+		android:singleLine="true"
+		android:layout_width="fill_parent"
+		android:layout_height="?android:attr/listPreferredItemHeight" >
+	</CheckedTextView>
+</LinearLayout>
+	

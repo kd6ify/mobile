@@ -1,0 +1,675 @@
+﻿==== AntaresX Mobile Services Change Log ====
+Version 7.0.46
+	Added new Device configuration "VsmServerAddress"--this
+	is used by iOS Video Viewer for connecting to a VSM service
+	(either the PHP VSM web service or WOWZA IP Camera Integration
+	module)
+
+Version 7.0.45
+	Added new section under configSections:
+	-IncidentNotes.
+	-IncidentCollectionAddress.
+	Added Initial, InsertsAndUpdates and Deletes querys for:
+	-IncidentNotes.
+	-IncidentCollectionAddress.
+
+Version 7.0.44
+	Added suport for InsertandUpdates/Delete queries in table:
+	-Gender.
+	-AgencyType.
+	-AddressType
+	-Agency
+	-Icon
+	-SourceType
+	-INCITS38200x
+	-IncidentType
+	-AssetType
+	-AssetStatus
+	-EquipmentType
+	-UserType
+	-UserRankType
+	-JournalType
+	-JournalStatus
+	-TacticType
+	-TacticStatus
+	-TacticPriority
+	-TriageStatus
+	-TriageColor
+	-CollectionType
+
+Version 7.0.43
+	Add AuthToken HTTP header to Authenticate service
+
+Version 7.0.42
+	Call CheckAuthorization() in all service methods in
+		ICDBResource that return SyncResults or TransactionContextV3
+		was only in SyncInitialTable.
+	-- not calling CheckAuthorization() was preventing the
+		AuthToken from getting sent in HTTP responses, which
+		forced clients to go through the HEAVYWEIGHT LDAP
+		authentication on each and every ICDB transaction
+
+Version 7.0.41
+	Added New Settings to MobileServerSettings.cs:
+		-Setting MediaImagesServerUserName.
+		-Setting MediaImagesServerService.
+		-Setting MediaImagesServerPassword.
+	Added Properties to DeviceConfiguration:
+		-MediaImagesServerAddress.
+		-MediaImagesServerUser.
+		-MediaImagesServerPassword.
+
+Version 7.0.40
+	Added  <IncidentJournalEntryAddress> query and IncidentJournalEntryAddress to configSections
+
+Version 7.0.39
+	Added  <IncidentAddressExtraInfo> query and IncidentAddressExtraInfo to configSections
+
+Version 7.0.38
+	Added <IncidentDrawingAddress> query and IncidentDrawingAddress to configSections
+
+Version 7.0.37
+	Added IncidentDrawing, Drawing, DrawingAddress tables to configSections and the queries they need in app.config. 
+	Added MediaImagesServerAddress setting to DeviceConfiguration.
+	Added MediaImagesServerService on MobileServerSettings that store default value for MediaImagesServerAddress.
+
+Version 7.0.36
+	* Added IncidentJournalEntryMedia table to configSections and the queries for this table in app.config.
+	* Added Media table to configSections and the queries for this table in app.config.
+
+Version 7.0.35
+	* Clear device context from DeviceContextManager on Admin.DownloadConfiguration request
+		- this prevents the situation where MobileServer caches equipment queries
+			that may become out-of-date when the equipment changes (such as Equipment.Name
+			used by Mercury for DeviceName).
+
+Version 7.0.34
+	* Added IncidentRequest and IncidentRequestStatus tables
+
+Version 7.0.33
+	* Fix "Incident" and "OperationalPeriod" query string in app.config.
+		String.Format string was incorrect
+		Changed "WHERE CT.SYS_CHANGE_OPERATION='{2}'" "to WHERE CT.SYS_CHANGE_OPERATION='{1}'"
+	Mantis: 6265
+
+Version 7.0.32
+	* Send DeviceName (Equipment.Name) back to device during DownloadConfiguration (Admin/GetConfiguration)
+		which eventually gets stored on device in the Mercury configuration
+		and later used during WSUS update client registration
+
+Version 7.0.31
+	* Major changes to handling updates.
+		- Removed all update code and moved into WSUS Bridge Service (Project20\SystemTools\Update\Bridge).
+		- Admin/GetConfiguration() now returns WSUSBridgeServiceAddress to device.
+
+Version 7.0.30
+	* Pass authentication if DeviceID is registered > 0 equipment records.  Previously, it had to be in one and only one
+		equipment record.
+		The name and equipmentID used for the deviceContext are from the first Equipment record found.
+	Mantis: 5989
+
+Version 7.0.29
+	* Fix IncidentPerson and IncidentUser queries to pick up changes to the User and Asset tables that directly
+		or indirectly reference the Person table.  Also, the query configuration changes (Inserts and Updates
+		were combined into InsertsAndUpdates)
+
+Version 7.0.28
+	* Change MobileServerSetup project InstallAllUsers property to true
+	Mantis: 5035
+	* Fix typo in TriageColor query
+	* Fix IncidentEquipment query--pick-up equipment from Asset changes
+
+Version 7.0.27
+	* Fixed bug in IncidentTacticCollection and IncidentTacticAsset queries.
+	Mantis: 5956
+
+Version 7.0.26
+	* Fixed bug in IncidentTactic (Tasks) query.  All tasks (Tactic rows) have the Tactic.Incident column
+		set.
+
+Version 7.0.25
+	* Fixed bug with DateTimeOffset causing insert/updates to fail.
+	Mantis: 5796
+
+Version 7.0.24
+	* Added instrumentation (Debug.WriteLine) to WebUserNamePasswordValidator
+		- to help troubleshoot device authentication errors
+
+Version 7.0.23
+	* All MobileServer endpoints are now must be authenticated (HTTP basic auth)
+
+Version 7.0.22
+	* Security enhancements
+		- See Trinity changelog for VersionCode=114
+
+Version 7.0.21
+	* Added support for new DateTimeOffset columns
+
+Version 7.0.20
+	* Add sync support for two new tables: TacticPriority and AssetStatus
+
+Version 7.0.19
+	* Post SVN Checkout fixes
+	* Look for Equipment.Communication.IsPrimary instead of previous Phone.IsPrimary
+	* Fix bug causing potential duplicate rows during sync operation
+
+Version 7.0.18
+	* Fixed typo in IncidentCollection sync query
+
+Version 7.0.17
+	* Added AddressType sync query.  This was a missing query required for syncing Address.Type
+	Mantis: 5190
+
+Version 7.0.16
+	* fix client "connection reset" when attempting to sync IncidentAsset with large # of assets
+		-	Error seen in MobileServer.svclog:
+			System.Runtime.Serialization.SerializationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+			Maximum number of items that can be serialized or deserialized in an object graph is '65536'. Change the object graph or increase the MaxItemsInObjectGraph quota. 
+		- # of objects needed to do an initial sync of IncidentAsset=N*C*2 (N=asset count, C=38 columns, 2=each column requires name/value pair)
+		- Jose and Dave agree on a 15,000 assets per incident limit of 15000
+			15000*38*2=1140000
+		- changed MaxItemsInObjectGraph to 1140000
+
+Version 7.0.15
+	* fix bug causing sync queries returning duplicate rows.
+		-- Filter duplicate rows in ICDBResource.ConvertDataTableToDictionary()
+
+Version 7.0.14
+	* Fix typo in EquipmentWhereDeviceID query--missing '
+
+Version 7.0.13
+	* Fix EquipmentWhereDeviceID query that was erroneously removed from app.config
+
+Version 7.0.12
+	* Fix typo in IncidentAddress Update query
+
+Version 7.0.11
+	* New queries added to support Trinity 94
+
+Version 7.0.10
+	* Increased a couple service configuration parameters that were preventing large log entries from posting.
+		- webHttpBinding.authWebBinding.maxReceivedMessageSize="100000000"
+		- webHttpBinding.authWebBinding.readerQuotas.maxStringContentLength="2147483647"
+	Mantis: 5052
+	* Fixed bug in TrackerV3 service.  It was using the incorrect connection string
+		WAS
+			SqlProvider sqlProvider = new SqlProvider(); // use default connection string
+		NOW
+			MobileServerSettings settings = new MobileServerSettings();
+			SqlProvider sqlProvider = new SqlProvider(settings.ICDBIsolatedConnectionString);
+	Mantis: 5066
+
+Version 7.0.9
+	* Added logic to handle expired change tracking data as
+		described in "Validating the Last Synchronized Version"
+		in http://msdn.microsoft.com/en-us/library/cc280358.aspx
+		When a Trinity device attempts to synchronize with a table
+		using a given last_synch_version that is too old
+		because the data has expired, MobileServer will force an
+		initial synchronization on that table.
+
+Version 7.0.8
+	* Fix bug in Admin/Configuration - caused when moving settings to FCSettings
+		(low-level WCF serialization error)
+	Mantis: 5037
+	darnold
+
+Version 7.0.7
+	* Fix bug in ICDBResource.DeleteTableRow()
+	darnold
+
+Version 7.0.6
+	* Use FCSettings instead of app.config for connectionStrings 
+	Mantis: 5026
+	* Fix errors in app.Config error strings causing sync errors for JournalEntry and Incident
+	Mantis: 5031
+	darnold
+
+Version 7.0.5
+	* VerifyLDAP using wrong host--using entire LDAP domain instead of just the host portion.
+	Mantis: 5020
+
+Version 7.0.4
+	* Fix to use UpdateClientInfo.Id instead of DeviceContext.DeviceID in WSUS.GetApprovedPackages()
+	Mantis: 5020
+	* Move settings from app.config to FCSettings and FCMobileServerSettings.
+	Mantis: 5019
+	darnold
+
+Version 7.0.3
+	* Changes to WSUS code in WebService/Admin: Use Equipment.ID for UpdateClientInfo.Id and Equipment.Name for UCI.DnsName
+	Mantis: 5018
+	darnold
+
+Version 7.0.2
+	* Major changes to synchrnoization--prep for testing
+
+Version 7.0.1
+	* Major V3 changes + addition of DataResource service
+	* tracker interface is the same
+
+Version 6.0.27
+	* Fix service installer in custom actions -- one more time
+	Mantis: 4020
+
+Version 6.0.26
+	* Check LDAP domain when MobileServer starts
+	* Added Unhandled Exception e-mail handler (configurable through MobileServer.exe.config)
+
+Version 6.0.25
+	* Fix debugstring after READY
+	Mantis: 4024
+	* Fix MobileServer not installing as a Windows Service
+	Mantis: 4020
+	* MobileServer returns PhoneNumber in DeviceConfiguration during DownloadConfiguration
+		If equipment has phone number.
+	Mantis: 4091
+	* Check DB connection when MobileServer starts
+	Mantis: 4026
+
+Version 6.0.24
+	* Support connection string suffix (i.e. _debug, _release, _test)
+	Mantis: 4027
+	* Fix problem with errors during DownloadConfiguration
+	Mantis: 4025
+
+Version 6.0.23
+	* re-enable push service--it may be needed for WSUS updates
+
+Version 6.0.22
+	* changes to support battery state (Okay, Low) in TrackerV3 service.
+	* disable push service until required
+
+Version 6.0.21
+	4/28/2011
+	* Fix null pointer exception in Tracker.UpdateLocation() when device is not in Equipment table
+		DeviceContextManager now throws UnregisteredDeviceException when a DeviceID is not found in the Equipment table.
+		Previously it returned null causing null pointer exception.
+	* unreported bug fixes and some cleanup.
+
+Version 6.0.20
+	4/25/2011
+	* Mercury V3 changes
+
+Version 6.0.19
+	3/18/2011
+	* First check-in for V3 changes
+	darnold
+
+Version 6.0.18
+	2/2/2011
+	* Added support for the DiagConsole and the Diag WebService
+		-- this will enable us (tech support) to diagnose issues with MobileServer and Mercury/Trinity
+			and monitor devices in the field.  It also provides DebugView functionality without requiring
+			somebody to standby the machine MobileServer is running on.
+	darnold
+	
+Version 6.0.17
+	1/26/2011
+	* Fixes to push service (improve reliability)
+	darnold
+	
+Version 6.0.16
+	1/18/2011
+	* Crash on startup if there are duplicates in DeviceId column 
+	Mantis: 3245
+	* Added device id to debug output for all Incident sync requests (when device id is known)
+	Mantis: 1994
+	darnold
+
+Version 6.0.15
+	1/14/2011
+	* Fixes "key not found in dictionary" in MobileDeviceManager when MobileDevice entry is not associated
+		with Equipment.
+	Mantis: 3409
+	darnold
+	
+Version 6.0.14
+	1/12/2011
+	* Support for new WSUS services
+	darnold
+	
+Version 6.0.13
+	7/29/2010
+	* fixed Exception in MobileServer while Device was loading Resources 
+	Mantis: 2709
+	darnold
+
+Version 6.0.12
+	6/21/2010
+	* Added reliability to Push Service for cases where Verizon presents an open socket that is actually closed.
+	darnold
+	
+Version 6.0.11
+	5/19/2010
+	* Added instrumentation to help track down lost updates (i.e. UpdateId to UpdateItem)
+	* Fix bug in Queue.ReceiveCompleted that could cause loss of updates to device
+	* Added MobileServer version to ServerStatus returned from /Admin/status
+	darnold
+
+Version 6.0.10
+	5/18/2010
+	* Fix incident and assets positioned at 0,0
+	Mantis 2270: 	
+	darnold
+
+Version 6.0.9
+	5/18/2010
+	* Support for Objectives, tactics and drawings
+	darnold
+	
+Version 6.0.8
+	4/27/2010
+	* Fixed bug--FlushAllFilters was not getting called on system shutdown (ServiceBase.OnShutdown())
+	darnold
+
+Version 6.0.7
+	4/9/2010
+	* Support for Tracker Admin Console
+	darnold
+
+Version 6.0.6
+	3/17/2010
+	* Fix ClientManager.CheckForUpdates so that it never sends an update notification for a specific version twice to a device
+	darnold
+
+Version 6.0.5
+	3/15/2010
+	* Fix bug in incident check-in/out
+	darnold
+
+Version 6.0.4
+	3/10/2010
+	* Fix: After updating to Trinity 60 the devices will display Sync Errors "An item with the same key has already been added." 
+	Mantis: 2069
+	darnold
+
+Version 6.0.3
+	3/4/2010
+	* Fix bug in Admin.GetAndroidPackage(): allow multiple phones simultaneous access to Trinity package.
+		Open File Read-only and FileShare.Read
+	* Admin.GetAndroidPackage() not sending entire package.  Set SendTimeout WebBinding to 20 minutes.  Was 1 minute--not enough time to
+		send entire package.
+	darnold
+
+Version 6.0.2
+	3/2/2010
+	* Make the Admin Service multithreaded:
+	    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
+	darnold
+
+Version 6.0.1
+	3/1/2010
+	* Added support for "Check For Updates" on Trinity.
+	Mantis: 2030
+	
+Version 5.0.5
+	2/25/2010
+	* Removed EmitDefaultValue=false from IncidentComponent DataMembers
+	Mantis: 2035
+	* Use correct path to AndroidPackage in Admin.GetAndroidPackage().  Was using "Trinity.apk" should have been Push.TrinityUpdateManager.PackagePath.
+
+Version 5.0.4
+	2/24/2010
+	* Add mgwz.dll (from Android SDK) to install package
+	* Use correct path to AndroidPackage in Admin.GetAndroidPackage().  Was using "Trinity.apk" should have been Push.TrinityUpdateManager.PackagePath.
+
+Version 5.0.3
+	2/24/2010
+	* Fixed path problem in TrinityUpdateManager--Need to add double-quote around android package.
+
+Version 5.0.2
+	2/24/2010
+	* Fixed path problem in TrinityUpdateManager--Environment.CurrentDirectory will not work when run as a service.  Using Reflection instead.
+
+Version 5.0.1
+	2/23/2010
+	* Fixed bug in UpdateItem contract--added EmitDefaultValue=false
+
+Version 4.0.1
+	2/19/2010
+	* Fixed: Assets cannot be removed from map 
+	Mantis: 1984
+	
+Version 2.0.26
+	2/11/2010
+	* Added some more Debug.WriteLine() that could help troubleshooting synchronizer issues.
+	* Added Message/chat incident service
+	darnold
+	
+Version 2.0.25
+	2/10/2010
+	* Trinity 44 does not GetUpdates from Mobile Server (actually, Trinity 44 reconnects didn't GetUpdates)
+	Mantis: 1996
+	darnold
+
+Version 2.0.24
+	2/9/2010
+	* Fix push service issue when using wifi and wifi goes DORMANT
+	Mantis: 
+	darnold
+	
+Version 2.0.23
+	2/5/2010
+	* Fixes 
+		Description: 
+		Whenever Equipment and Personnel are checked in, MobileServer outputs an error message:
+		[3244] *** Encountered data state error for MobileDevice 351680031948098 ***
+		[3244] OldItem com.futureconcepts.action.sync.UPDATE vnd.android.cursor.item/vnd.futureconcepts.Equipment
+			8959e95e-dc94-4729-b927-19f4163d3f9b ->	com.futureconcepts.action.sync.INSERT insert after update? 
+		[3244] GetUpdates
+		[3244] Function=com.futureconcepts.action.sync.UPDATE MimeType=vnd.android.cursor.item/vnd.futureconcepts.Equipment
+			PrimaryKeyValue=8959e95e-dc94-4729-b927-19f4163d3f9b 
+	Mantis: 1977
+	* Fixes Invalid tablename operationcomponents
+	Mantis: 1976
+	* Fixes Trinity failed to check in equipment when already checked in
+	Mantis: 1970
+	* SqlServiceBrokerQueueWatcher will display rows dispatched in SSB mobile queue if AppSettings["ShowMobileQueue"]="true"
+	* Flush SQLServiceBrokerQueueWatcher.FilterManager on service Stop()
+	darnold
+	
+Version 2.0.22
+	1/14/2010
+	* Major change to synchronizer framework.  The Old Mobile* triggers are removed.  New required version of Haroon's synchronizer stuff.
+	* Queue sync.RESYNC when queue is cleared.  Queue size is checked even when device connected (previously only checked
+		when the device was not connected to MobileServer PUSH service).
+	* Fixed problem where incident join/leave was not updating cached mobiledevice entry.
+	* Fixed problem where incident check-in was not working correctly if the device was already checked-in.
+	* Maintain aspect-ratio for resource type icons sent during initial sync
+	darnold
+
+Version 2.0.21
+	1/4/2010
+	* Fix multithreaded problem in services
+	Mantis: 1932
+	* Remove "KEEP ALIVE" from Debug output and add more useful info to exceptions in Push service client handler
+	* Dispatch Trigger Messages only to devices that have joined incident (major code change)
+	darnold
+
+Version 2.0.20
+	12/31/2009
+	* Tracker wasn't updating LastModifiedTime in UpdateLocation()
+	darnold
+	
+Version 2.0.19
+	12/21/2009
+	* Removed all references to ThinkGeo components
+	Mantis: 1903
+	darnold
+
+Version 2.0.18
+	12/21/2009
+	* Added support for Operational (Incident) Components
+	* Removed DLL references from solution
+	darnold
+
+Version 2.0.17
+	11/20/2009
+	* Change size of thumbnails sent from 32 to 48.  The Droid is a high density
+		screen and icons @ 32 look too small.
+	Mantis: 1816
+	* Check for changes in the MobileDevice table--previously rows from MobileDevice
+		were preloaded when MobileServer was started.
+	Mantis: 1817
+	darnold
+
+Version 2.0.16
+	11/16/2009
+	* Fix bug in SyncIncidentPersonnel and SyncIncidentEquipment so that the
+		asset LastUpdateTime comes from the asset table not the checkinout table
+	
+Version 2.0.15
+	11/13/2009
+	* Fixes to unsupported tracker interfaces useful for troubleshooting and viewing resources using Google Earth:
+		/Tracker/<device_id>/Location/KML
+		/Tracker/Incident/<incident_id>/KML
+		
+Version 2.0.14
+	11/11/2009
+	* No Personnel Status section in ReStat.  Moved ReStat service to Incident/ReStat
+	Mantis: 1782
+	darnold
+
+Version 2.0.13
+	11/6/2009
+	* Add better error reporting for client posted updates.  Update services now return a TransactionContext which includes an error message.  The
+		error message is reported in the client device ShowQueueErrorActivity.
+	Mantis: 1759
+	* Replaced use of UpdateTrackerLocation SP with LINQ.  The SP was not providing error feedback back to the client device.
+	Mantis: 1760 ?
+	darnold
+
+Version 2.0.12
+	11/3/2009
+	* Synchronizer optimizations
+	darnold
+	
+Version 2.0.11
+	10/7/2009
+	* Batch sync messages (speed up performance for initial sync)
+	
+Version 2.0.10
+	10/6/2009
+	* New ResourceType web service (more sync performance stuff)
+	
+Version 2.0.9
+	10/5/2009
+	* Synchronization performance improvements
+
+Version 2.0.8
+	9/29/2009
+	* Sync Complete notification should show when an incident is finished syncing
+	  Mantis: 1711
+
+Version 2.0.7
+	9/22/2009
+	* Return mobile username and phonenumber for incident equipment
+	  Mantis: 1401
+
+Version 2.0.6
+	9/15/2009
+	* Added support for incident checkin/out
+	  Mantis: 1635
+	* Limit size of MSMQ queue--configurable using the MaxQueueSize AppSetting.  
+		If messages in queue reach the max and the device is not connected to the push service,
+			all messages are purged and the queue is disabled until the device reconnects.
+			Whenever a device connects to the push service, an auto-resync operation will be invoked.
+	  Mantis: 1677
+	* Add personnel resource--supports syncing Personnel to device (includes new triggers)
+	
+Version 2.0.5
+	9/3/2009
+	* Filter incident set to just active incidents
+	  Mantis: 1682
+	* More work on shutdown procedures.  It takes one minute to completely shutdown mobile server due to a timeout in the 
+		MobileWaitForChanges stored procedure. 
+	  Mantis: 1681
+	* Fixes crash in PushService when an unknown (non-configured) deviceId disconnects from the socket
+	  Mantis: 1678
+	* Changed Incident and Incident-data sync algorithm.  Now uses a IHAVE/SENDME algorithm instead of fetching all data.
+	darnold
+
+Version 2.0.4
+	8/31/2009
+	* Changed the Incident REST URLs to return incident type name and icon.
+	* Fixed crash in LINQ to SQL when Operations has invalid XML data in LocationData column (not querying this column).
+	  Mantis: 1657
+	darnold
+	
+Version 2.0.3
+	08/27/2009
+	* Fixes problem where Intel, Log and Log Entries inserts and updates do not show up on device
+	  Mantis: 1662
+	* Add Debug.WriteLine() to MobileServer for SyncIncidents()
+	  Mantis: 1659
+	* Fixes crash in MobileServer when a device connects that is not configured in SQL MobileDevice
+	  Mantis: 1656
+	darnold
+	
+Version 2.0.2
+	08/26/2009
+	* Changes to Mobile_Operations* triggers
+	* Added Mobile_Equipment* triggers
+	* Added support for sync'ing to Equipment
+	
+Version 2.0.1
+	07/30/2009
+	* revamp - much has changed
+	* Cleanup and normalization of some of web service URLs
+	* all transactions between mobile device and server are by deviceId--some where by equipmentId.
+		This removes a dependency on equipmentId and the need to store equipmentId on device.
+	* MobileServices renamed MobileServer
+	* MobileServer uses the new MobileDevice table instead of the Devices.xml file
+	* new LoadMobileDevices command is used to populate the MobileDevice table with a Devices.xml file
+	* Tracker.UpdateLocation() uses ICCDataContext.UpdateTrackerLocation instead of the old SqlCommand stuff
+	* MobileServer now synchronizes Incident-based data with devices using new SQL Triggers:
+		* New SQL Triggers:
+			Operations:
+				Mobile_OperationsOnInsert
+				Mobile_OperationsOnUpdate
+				Mobile_OperationsOnDelete
+			Intelligence:
+				Mobile_IntelligenceOnInsert
+				Mobile_IntelligenceOnUpdate
+				Mobile_IntelligenceOnDelete
+			Notes:
+				Mobile_NotesOnInsert
+				Mobile_NotesOnUpdate
+				Mobile_NotesOnDelete
+			NoteEntry:
+				Mobile_NoteEntryOnInsert
+				Mobile_NoteEntryOnUpdate
+				Mobile_NoteEntryOnDelete
+	
+Version 1.0.7.0
+	07/09/2009
+	* Includes new MobilePushCmd command-line utility for forcing PUSH commands to Trinity devices
+	* Fix build problem
+	darnold
+
+Version 1.0.6.0
+	07/06/2009
+	* Implemented PUSH service
+	Mantis: 1385
+	darnold
+
+Version 1.0.5.0
+	06/29/2009
+	* Return IncidentId for incident-related Events.  
+	Mantis: 1343
+	06/24/2009
+	* Exclude incidents with name of "Unknown Incident" from result set.
+	  Mantis: 1345
+	* Fix bug in KML document returned from Tracker GetLocationKML
+	06/25/2009
+	* Added PhoneNumber to HandsetConfiguration.  If the phone number is not present
+		in the Devices.xml file, it is fetched from the AntaresXWeb Users table (using
+		the username found in Devices.xml).
+	darnold
+
+Version 1.0.4.0
+	06/18/2009
+	* Sort Events from most recent to oldest
+	  Mantis: 1290
+	darnold

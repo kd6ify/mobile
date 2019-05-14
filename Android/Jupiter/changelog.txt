@@ -1,0 +1,121 @@
+VersionCode=16 (0.16)
+	* True North for compass is supported. Added preference to toggle True North / Magnetic North
+	  Mantis: 2854
+	* Stats from NavComputer integrated into Compass
+	  Mantis: 2941
+	* Deleted NavComputer
+	* Shorten unit labels "meters/sec" to "m/s", and "miles" to "mi"
+	* Fixed issue with Compass going full circle at 0 transition
+	kdixon
+	
+
+VersionCode=15 (0.15)
+	* UTM coordinates are slightly off
+	Mantis: 2848
+	* Crow-flies ruler (Menu->Tools->Distance Ruler)
+	Mantis: 2879
+	* UTM grid won't show unless ...
+	Mantis: 2931
+	* Merge MapActivity with MainActivity
+	Mantis: 2862
+	* Need coordinate conversion tool--anywhere a coordinate can be entered or shown, other units can be selected
+	Mantis: 2859
+	* Reverse Geocoding--uses Google service, requires Internet connection (use Menu->My Location)
+	Mantis: 1923
+	
+VersionCode=14 (0.14)
+	* Refactored units conversion code so it can be shared
+	* Added Placemarks and Routes to main map menu
+	* Replaced Routes, Placemarks, Media, Tracks, etc. with the Folder browser 
+	* Show confirmation when a preference is changed
+	Mantis: 2853
+	* Altitude values shown as meters when preferences->Distance set to feet
+	Mantis: 2855
+	* Added reverse geocoding features--taping on menu->"My Location" from the MainMapAcitivty
+		shows the current location coordinates and a reverse geocoded address (if available)
+	Mantis: 2863
+	* Fix toggling zoomLayer problem
+	Mantis: 2892
+	* Do not autocenter when fix acquired
+	Mantis: 2891
+	* View*Activity(s) now detected changes to underlying data
+	* Verify Map data exists--present error toast if no map data
+	Mantis: 2889
+	* Added UTM Grid tool
+	Mantis: 2864 
+
+VersionCode=13 (0.13)
+	* Fix: Layer State lost on leaving Map activity 
+	Mantis: 2798
+	* Support Android 1.6 (previous required Android 2.0)
+	* Start of new Coordinates layer
+	
+VersionCode=12 (0.12)
+	* Fix crash in MainActivity when tapping on "Media"
+	Mantis: 2797
+	
+VersionCode=11 (0.11)
+	* Implement Export
+	
+VersionCode=10 (0.10)
+	* Implement Import KMZ
+
+VersionCode=9 (0.9)
+	* Allow access to "Computer" screen from map
+	Mantis: 2773
+	* fixes to placemarks and waypoints showing on map
+	* Waypoints/tracks should be able to be dropped on the map without a gps fix.
+		-- you can you mark a placemark/waypoint without a gps signal.  The placemark is
+			created with a lat/lon of 0.  The user must edit the placemark and put in an actual location at some time, or the placemark
+			will show up off the coast of Africa.
+	Mantis: 1895
+	
+VersionCode=8 (0.8)
+	* Added new MainScreen 
+	* Added Computer (Telemetry) screen showing GPS Status--this replace the old Gps status layer shown on the map that
+		was difficult to read.  This also include altitude.
+	Mantis: 2764
+	Mantis: 2740
+	* Route recording is now handled by an Android foreground service with notification panel icon and service toggle activity.
+		- Jupiter now requires the device to be >= Android 2.1 (API level 5)
+	* Added new AboutActivity -- to determine version of installed version
+	Mantis:  1931
+	* Fix: Time/distance based tracking does not respect parameters. 
+	Mantis: 1946, 1901
+
+VersionCode=7 (0.7)
+	* fix Waypoints not shown on map
+	Mantis: 2757
+	* fix Too-persistent Zoom Layer
+	Mantis: 2758
+	* fix Needs unit conversion (added UTM)
+	Mantis: 1921
+	* fix breadcrumbs -- this feature is supported with route recording
+	Mantis: 2742
+	* fix add ability to change map datum
+	Mantis: 2738
+
+VersionCode=6 (0.6)
+	* Changes to the GPS Status layer
+	* Fixes to route recorder (wasn't showing tracks correctly)
+	
+VersionCode=5 (0.5.0)
+	* New menu item "My Location"--tapping on it will always center on current
+		location. When the current location changes, it will not re-center the map. You
+		must tap "My Location" to re-center. This matches what I think the user expects
+		because it is how google maps/navigation also works.
+	* address search--can be activated from Routes activity. Menu->Directions,
+		enter address. A route will be created from current location to addresses
+		location and you can view the destination on the map.
+	* I fixed a bug where the waypoints activity wasn't showing waypoints created
+		outside of a route. They will show up now.
+	* New preferences activity--can set distance units (metric or imperial) and
+		coordinate display format (degrees, minutes, seconds)--will add UTM later.
+	* New "GPS Status" layer will show GPS status info. This layer includes lat/lon
+		(in coordinate preference), altitude (in distance preference) and speed
+		(miles/hr or km/hr depending on distance preference), bearing, error (+/-
+	accuracy and number of satellites)
+	* Zoom layer is not lost on orientation change
+	* Removed Skyhook location provider; it was causing problems with wifi getting turned on/off at the wrong times.
+		Since this project is for backcountry navigation, wifi location is probably not necessary.
+		 

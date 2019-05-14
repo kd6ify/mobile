@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent" >
+    <!--
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:padding="5sp" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Type:" />
+	     <Spinner android:id="@+id/log_type"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:prompt="@string/select_log_type" />
+	</LinearLayout>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+  -->
+  <LinearLayout 
+  		android:orientation="horizontal"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" >   	
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:layout_weight="1" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Status:"
+	     	android:gravity="center_horizontal"
+	     	android:textStyle="bold"
+	     	android:textSize="14dp" />
+	     <Spinner android:id="@+id/log_status"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:prompt="@string/select_log_status" />
+	</LinearLayout>
+    <View
+     	android:layout_width="3dip"
+     	android:layout_height="match_parent"
+     	android:background="?android:attr/listDivider" />
+    <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+          android:layout_weight="1" >
+	    <TextView
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:text="Priority:"
+	     	android:gravity="center_horizontal"
+	     	android:textStyle="bold"
+	     	android:textSize="14dp" />
+	     <Spinner android:id="@+id/log_priority"
+	     	android:layout_width="fill_parent"
+	     	android:layout_height="wrap_content"
+	     	android:prompt="@string/select_log_priority" />
+	</LinearLayout>
+	</LinearLayout>  
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="3dip"
+     	android:padding="5sp"
+     	android:background="?android:attr/listDivider" /> 
+    <LinearLayout
+    	android:id="@+id/locationContainer"
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content">    
+    	<TextView
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:textStyle="bold"
+	     	android:textSize="14sp"
+	     	android:text="Add Current GPS Location To Log?" />
+    	<CheckBox
+    		android:id="@+id/checkBoxGPS"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:text="Yes" 
+    		android:checked="true"   
+    		android:layout_marginLeft="10dp"
+    		android:onClick="addLocationToLog" />
+    	<LinearLayout
+        android:id="@+id/addressContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:layout_below="@+id/otherContainer">
+         <TextView
+             android:id="@+id/entry_address_text"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Address (Acquiring Your Current Location)"
+             android:textAppearance="?android:attr/textAppearanceLarge" />
+         
+    	 <LinearLayout
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="horizontal" 
+        	android:layout_below="@+id/timesContainer">
+        	<TextView
+             android:id="@+id/entry_lat"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:text="Lat: none"/>
+        	<TextView
+             android:id="@+id/entry_long"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+              android:layout_weight="1"
+             android:text="Long: none" />
+        </LinearLayout>
+         
+     </LinearLayout>
+    	
+    </LinearLayout>
+     <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="3dip"
+     	android:padding="5sp"
+     	android:background="?android:attr/listDivider" />
+	<EditText android:id="@+id/text1"
+     	android:layout_width="fill_parent"
+     	android:layout_height="wrap_content"
+     	android:layout_margin="5sp"
+     	android:inputType="textMultiLine"
+     	android:gravity="top"/>
+    <View
+     	android:layout_width="wrap_content"
+     	android:layout_height="1dip"
+     	android:background="?android:attr/listDivider" />
+    <LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/select_image"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_weight="1"
+			android:drawableLeft="@drawable/mediaviewer"
+			android:gravity="center_vertical|center_horizontal"
+			android:height="75dp"
+			android:paddingLeft="10dp"
+			android:text="Gallery"
+			android:onClick="selectImage"
+			android:textColor="#ffffff"
+			android:textSize="14sp"
+			android:textStyle="bold|italic"
+			android:background="@drawable/grey_button" />
+
+		<Button
+			android:id="@+id/take_image"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_weight="1"
+			android:drawableLeft="@drawable/cameraphoto_icon"
+			android:gravity="center_vertical"
+			android:height="75dp"
+			android:paddingLeft="10dp"
+			android:text="Camera"
+			android:onClick="takeImage"
+			android:textColor="#ffffff"
+			android:textSize="14sp"
+			android:textStyle="bold|italic"
+			android:background="@drawable/grey_button" />
+	</LinearLayout>
+
+<!--     <LinearLayout  -->
+<!--     	 android:orientation="horizontal" -->
+<!--          android:layout_width="fill_parent"  -->
+<!--          android:layout_height="wrap_content" -->
+<!--          android:padding="5sp">       -->
+<!--       <Button -->
+<!--        	android:id="@+id/select_image" -->
+<!--        	android:layout_weight="1"      -->
+<!--         android:layout_height="60dp" -->
+<!--         android:layout_width ="0dp" -->
+<!--         android:drawableLeft="@drawable/mediaviewer" -->
+<!--         android:gravity="center_vertical" -->
+<!--         android:text="Select Photo" -->
+<!--         android:onClick="selectImage" -->
+<!--         android:textColor="#000" -->
+<!--         android:textSize="25sp" -->
+<!--         android:textStyle="bold|italic" -->
+<!--         android:paddingLeft="10dp"/> -->
+<!--      <Button -->
+<!--        	android:id="@+id/take_image" -->
+<!--        	android:layout_weight="1"  -->
+<!--         android:layout_width="0dp" -->
+<!--         android:layout_height="60dp" -->
+<!--         android:drawableLeft="@drawable/mediaviewer" -->
+<!--         android:gravity="center_vertical" -->
+<!--         android:text="Take Photo" -->
+<!--         android:onClick="takeImage" -->
+<!--         android:textColor="#000" -->
+<!--         android:textSize="25sp" -->
+<!--         android:textStyle="bold|italic" -->
+<!--         android:paddingLeft="10dp"/> -->
+<!--      </LinearLayout> -->
+      <GridView
+      	android:id="@+id/grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="80dp"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5px"
+        android:gravity="center_horizontal"
+        android:numColumns="5"                       
+        android:scrollbarDefaultDelayBeforeFade="50000"
+        android:scrollbarStyle="outsideInset" />
+     
+</LinearLayout>

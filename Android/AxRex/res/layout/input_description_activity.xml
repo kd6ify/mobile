@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <TextView
+        style="@style/InputLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Incident Name:" />
+    <EditText android:id="@+id/incident_name"
+        style="@style/EnterDescriptionStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        style="@style/InputLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Incident Description:" />
+    <EditText android:id="@+id/description"
+        style="@style/EnterDescriptionStyle"
+        android:layout_width="fill_parent"
+        android:maxLines="10"
+        android:layout_height="wrap_content" />
+    <Button
+        style="@style/BigButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/done"
+        tools:context=".StartActivity"
+        android:onClick="onDoneClick" />
+</LinearLayout>

@@ -1,0 +1,9 @@
+﻿System.ServiceModel.AddressAccessDeniedException
+
+	The process does not have permission to access the MobileServer port (8280). 
+	Run the following command as Administrator:
+
+	$ netsh http add urlacl url=http://+:8280/ user=<user with permissions to access port 8280> (such as Administrator)
+
+		URL reservation successfully added
+

@@ -1,0 +1,86 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.futureconcepts.ax.sync"
+      android:versionCode="33"
+      android:versionName="0.0.33">
+      
+      <uses-sdk android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+       
+    <application android:icon="@drawable/redswoosh64" android:label="AntaresX Synchronizer">
+
+        <activity android:name=".app.SyncLogActivity" android:label="Show Sync Status" >
+			<intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".app.ShowQueueErrorActivity" android:label="Queue Error" >
+        </activity>
+        
+        <activity android:name=".app.ShowSyncUpdateActivity" android:label="Show Sync Update" >
+        </activity>
+        <activity android:name=".app.SqlUploadErrorActivity" android:icon="@drawable/icon"
+                  android:label="Upload Error" >
+        </activity>
+        <activity android:name=".app.SqlDownloadErrorActivity" android:icon="@drawable/icon"
+		          android:label="Download Error" >
+        </activity>
+        
+        
+  		<service android:label="SQL Replication Queue Service" android:name=".SyncService" android:exported="true" >
+  			<meta-data android:name="QueueUri" android:value="content://com.futureconcepts.provider.gqueue/queue/sqlreplsync">
+  			</meta-data>
+  		  	<meta-data android:name="ErrorService" android:value="com.futureconcepts.ax.sync.SqlDownloadErrorQueueService">
+  			</meta-data>
+  		</service>
+        <receiver android:name=".SyncService$RestartReceiver" >
+        	<intent-filter>
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+  		    
+  		<service android:label="SQL Upload Queue Service" android:name=".SqlUploadQueueService">
+  			<meta-data android:name="QueueUri" android:value="content://com.futureconcepts.provider.gqueue/queue/sqlupload">
+  			</meta-data>
+  		  	<meta-data android:name="ErrorService" android:value="com.futureconcepts.ax.sync.SqlUploadErrorQueueService">
+  			</meta-data>
+		</service>
+        <receiver android:name=".SqlUploadQueueService$RestartReceiver" >
+        	<intent-filter>
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+  		<service android:label="SQL Download Error Queue Service" android:name=".SqlDownloadErrorQueueService">
+  			<meta-data android:name="QueueUri" android:value="content://com.futureconcepts.provider.gqueue/queue/sqldownloaderror">
+  			</meta-data>
+		</service>
+        <receiver android:name=".SqlDownloadErrorQueueService$RestartReceiver" >
+        	<intent-filter>
+				<action android:name="com.futureconcepts.action.START_SERVICES" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+        <provider android:name="com.futureconcepts.ax.sync.provider.ICDBProvider" 
+        	android:authorities="com.futureconcepts.ax.sync.provider.icdb" />
+        <provider android:name="com.futureconcepts.ax.sync.provider.ICDBSchemaProvider" 
+        	android:authorities="com.futureconcepts.ax.sync.provider.icdb.schema" />
+    </application>
+    
+</manifest>
